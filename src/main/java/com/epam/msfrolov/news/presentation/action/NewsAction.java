@@ -24,7 +24,7 @@ public class NewsAction extends DispatchAction {
 
         List<News> newsList = getNewsList();
         newsForm.setNewsList(newsList);
-        request.setAttribute("newsList", newsList);
+//        request.setAttribute("newsList", newsList);
 
         return mapping.findForward("show-news-list");
     }
