@@ -9,6 +9,7 @@ public class NewsForm extends ActionForm {
 
     private Integer id;
     private String title;
+    private String info;
 
     public Integer getId() {
         return id;
