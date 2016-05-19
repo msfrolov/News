@@ -1,10 +1,11 @@
-package com.epam.msfrolov.struts01.model;
+package com.epam.msfrolov.news.model;
 
-import java.sql.Date;
+
+import java.time.LocalDate;
 
 public class News {
     private Integer id;
-    private Date date;
+    private LocalDate date;
     private String title;
     private String brief;
     private String content;
@@ -20,11 +21,11 @@ public class News {
         this.id = id;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

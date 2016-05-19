@@ -3,13 +3,13 @@
         "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
 <struts-config>
     <form-beans>
-        <form-bean name="newsForm" type="com.epam.msfrolov.struts01.presentation.form.NewsForm"/>
+        <form-bean name="newsForm" type="com.epam.msfrolov.news.presentation.form.NewsForm"/>
     </form-beans>
 
     <action-mappings>
         <action path="/news"
-                type="com.epam.msfrolov.struts01.presentation.action.NewsAction"
-                parameter="method">
+                type="com.epam.msfrolov.news.presentation.action.NewsAction"
+                parameter="method" name="newsForm">
             <forward name="welcome" path="page.welcome"/>
             <forward name="show-news-list" path="page.newsList"/>
             <forward name="add-news" path="page.addNews"/>
