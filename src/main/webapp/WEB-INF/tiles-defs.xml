@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+        "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+    <definition name="base.definition" path="/WEB-INF/jsp/layout/template.jsp">
+        <put name="title" value="Base"/>
+        <put name="header" value="/WEB-INF/jsp/layout/header.jsp"/>
+        <put name="menu" value="/WEB-INF/jsp/layout/menu.jsp"/>
+        <put name="bottom" value="/WEB-INF/jsp/layout/footer.jsp"/>
+    </definition>
+    <definition name="page.welcome" extends="base.definition">
+        <put name="title" type="string" value="Welcome"/>
+        <put name="body" value="/WEB-INF/jsp/layout/welcome.jsp"/>
+    </definition>
+    <definition name="page.newsList" extends="base.definition">
+        <put name="title" type="string" value="News list"/>
+        <put name="body" value="/WEB-INF/jsp/layout/news-list.jsp"/>
+    </definition>
+    <definition name="page.addNews" extends="base.definition">
+        <put name="title" type="string" value="Add news"/>
+        <put name="body" value="/WEB-INF/jsp/layout/add.jsp"/>
+    </definition>
+</tiles-definitions>
