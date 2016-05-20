@@ -3,13 +3,15 @@
 <%@taglib prefix="b" uri="http://struts.apache.org/tags-bean" %>
 <%@taglib prefix="h" uri="http://struts.apache.org/tags-html" %>
 <h2>Book List</h2>
-<h:form action="/news" >
+<h:form action="/news" method="showNewsList">
     <%--<h:text property="newsList"/>--%>
-    <l:present name="newsList">
+    <h:form name="newsList">  </h:form>
         <table style="height:50px; border: 1px solid dimgray;border-collapse: collapse" border="1">
-            <l:iterate id="news" name="${newForm.newsList}">
+            <l:iterate id="news" name="${newsForm.newsList}">
                 <tr>
                     <td>
+                        <h4>_----------------------_</h4>
+                        <label style="text-align: left;">${news}</label>
                         <label style="text-align: left;"><b:write name="news" property="title"/></label>
                         <label style="text-align: right;"><b:write name="news" property="date"/></label>
                         <label><b:write name="news" property="brief"/></label>
@@ -17,6 +19,6 @@
                 </tr>
             </l:iterate>
         </table>
-    </l:present>
+
 </h:form>
 

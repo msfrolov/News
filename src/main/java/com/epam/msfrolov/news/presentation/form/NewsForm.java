@@ -13,6 +13,7 @@ public class NewsForm extends ActionForm {
     private Integer idNews;
     private News news;
     private List<News> newsList;
+    private List<String> list;
 
     public Integer getIdNews() {
         return idNews;
@@ -36,5 +37,15 @@ public class NewsForm extends ActionForm {
 
     public void setNewsList(List<News> newsList) {
         this.newsList = newsList;
+    }
+
+    /////////////
+
+    public List<String> getList() {
+        return list;
+    }
+
+    public void setList(List<String> list) {
+        this.list = list;
     }
 }
