@@ -7,7 +7,7 @@
     <%--<h:text property="newsList"/>--%>
     <l:present name="newsList">
         <table style="height:50px; border: 1px solid dimgray;border-collapse: collapse" border="1">
-            <l:iterate id="news" name="${}">
+            <l:iterate id="news" name="${newForm.newsList}">
                 <tr>
                     <td>
                         <label style="text-align: left;"><b:write name="news" property="title"/></label>
