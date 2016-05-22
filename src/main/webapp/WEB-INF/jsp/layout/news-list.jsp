@@ -3,32 +3,35 @@
 <%@taglib prefix="b" uri="http://struts.apache.org/tags-bean" %>
 <%@taglib prefix="h" uri="http://struts.apache.org/tags-html" %>
 <h2>News list</h2>
-<br>
 <h:form action="/news?method=delete">
     <table style="height:50px; border: 1px solid dimgray;border-collapse: collapse" border="1">
         <l:iterate id="news" property="newsList" name="newsForm">
             <tr>
                 <td>
-                    <h:text readonly="true" property="title" name="news" style="text-align: left;"/>
-                    <h:text readonly="true" property="date" name="news" style="text-align: right;"/>
-                    <h:textarea readonly="true" property="brief" name="news" style="text-align: right;"/>
+                    <%--<div style="text-align: left;">--%>
+                        <%--<b:write name="news" property="id" ></b:write>--%>
+                    <%--</div>    --%>
+                     <div style="text-align: left;">${news.id}</div>
+                    <div style="text-align: left;">
+                        <b:write name="news" property="title"></b:write>
+                    </div>
+                    <div style="text-align: right;">
+                        <b:write name="news" property="date"></b:write>
+                    </div>
+                    <div style="text-align: left;">
+                        <b:write name="news" property="brief"></b:write>
+                    </div>
                     <h:link action="/news?method=viewNews">
-                        <h:param name="newForm.idNews" value="news.id"/>
-                        <h3>VIEW</h3>
-                    </h:link>
+                        <h:param name="idNews" value="${news.id}"/>VIEW</h:link>
                     <h:link action="/news?method=editNews">
-                        <h:param name="newForm.idNews" value="news.id"/>
-                        <h3>EDIT</h3>
-                    </h:link>
-                    <h:multibox property="idList">
-                        <h3>SELECT</h3>
-                    </h:multibox>
+                        <h:param name="idNews" value="${news.id}"/>EDIT</h:link>
+                    <h:multibox property="idList" value="${news.id}">SELECT</h:multibox>
                 </td>
             </tr>
         </l:iterate>
     </table>
     <h:submit>
-        <h3>DELETE</h3>
+        DELETE
     </h:submit>
 </h:form>
 

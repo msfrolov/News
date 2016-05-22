@@ -4,7 +4,7 @@ package com.epam.msfrolov.news.model;
 import java.time.LocalDate;
 
 public class News {
-    private Integer id;
+    private int id;
     private LocalDate date;
     private String title;
     private String brief;
@@ -13,11 +13,11 @@ public class News {
     public News() {
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -60,7 +60,7 @@ public class News {
 
         News news = (News) o;
 
-        if (id != null ? !id.equals(news.id) : news.id != null) return false;
+        if (id != news.id) return false;
         if (date != null ? !date.equals(news.date) : news.date != null) return false;
         if (title != null ? !title.equals(news.title) : news.title != null) return false;
         if (brief != null ? !brief.equals(news.brief) : news.brief != null) return false;
@@ -70,7 +70,7 @@ public class News {
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
+        int result = id;
         result = 31 * result + (date != null ? date.hashCode() : 0);
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + (brief != null ? brief.hashCode() : 0);

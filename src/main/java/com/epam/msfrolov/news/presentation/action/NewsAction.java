@@ -67,8 +67,8 @@ public class NewsAction extends DispatchAction {
                                 HttpServletResponse response){
 
         NewsForm newsForm = (NewsForm) form;
-        for (Integer id:newsForm.getIdList()) {
-            log.debug("ID: ", id);
+        for (int id:newsForm.getIdList()) {
+            log.debug("ID: {}", id);
         }
         return mapping.findForward("delete");
     }

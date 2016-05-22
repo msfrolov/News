@@ -10,16 +10,16 @@ import java.util.List;
 public class NewsForm extends ActionForm {
     private final static Logger log = LoggerFactory.getLogger(NewsForm.class);
 
-    private Integer idNews;
+    private int idNews;
     private News news;
     private List<News> newsList;
-    private Integer[] idList;
+    private int[] idList;
 
-    public Integer getIdNews() {
+    public int getIdNews() {
         return idNews;
     }
 
-    public void setIdNews(Integer idNews) {
+    public void setIdNews(int idNews) {
         this.idNews = idNews;
     }
 
@@ -39,11 +39,11 @@ public class NewsForm extends ActionForm {
         this.newsList = newsList;
     }
 
-    public Integer[] getIdList() {
+    public int[] getIdList() {
         return idList;
     }
 
-    public void setIdList(Integer[] idList) {
+    public void setIdList(int[] idList) {
         this.idList = idList;
     }
 }
