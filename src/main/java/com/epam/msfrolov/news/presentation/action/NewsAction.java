@@ -6,15 +6,19 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 
 public class NewsAction extends DispatchAction {
+    private static final Logger log = LoggerFactory.getLogger(NewsAction.class);
     public ActionForward showNewsList(ActionMapping mapping,
                                       ActionForm form,
                                       HttpServletRequest request,
@@ -24,15 +28,6 @@ public class NewsAction extends DispatchAction {
 
         List<News> newsList = getNewsList();
         newsForm.setNewsList(newsList);
-        List<String> strings = new ArrayList<>();
-        strings.add(",bld");
-        strings.add(",bld");
-        strings.add(",bld");
-        strings.add(",bld");
-        strings.add(",bld");
-        newsForm.setList(strings);
-//        request.setAttribute("newsList", newsList);
-
         return mapping.findForward("show-news-list");
     }
 
@@ -66,5 +61,35 @@ public class NewsAction extends DispatchAction {
         return mapping.findForward("add-news");
     }
 
+    public ActionForward delete(ActionMapping mapping,
+                                ActionForm form,
+                                HttpServletRequest request,
+                                HttpServletResponse response){
 
+        NewsForm newsForm = (NewsForm) form;
+        for (Integer id:newsForm.getIdList()) {
+            log.debug("ID: ", id);
+        }
+        return mapping.findForward("delete");
+    }
+
+    public ActionForward viewNews(ActionMapping mapping,
+                                ActionForm form,
+                                HttpServletRequest request,
+                                HttpServletResponse response){
+
+        NewsForm newsForm = (NewsForm) form;
+            log.debug("view-news");
+        return mapping.findForward("view-news");
+    }
+
+    public ActionForward editNews(ActionMapping mapping,
+                                ActionForm form,
+                                HttpServletRequest request,
+                                HttpServletResponse response){
+
+        NewsForm newsForm = (NewsForm) form;
+            log.debug("edit-news");
+        return mapping.findForward("edit-news");
+    }
 }

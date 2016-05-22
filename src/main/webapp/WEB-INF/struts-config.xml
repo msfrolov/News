@@ -13,6 +13,9 @@
             <forward name="welcome" path="page.welcome"/>
             <forward name="show-news-list" path="page.newsList"/>
             <forward name="add-news" path="page.addNews"/>
+            <forward name="view-news" path="page.viewNews"/>
+            <forward name="edit-news" path="page.editNews"/>
+            <forward name="delete" path="/news.do?method=showNewsList" redirect="true"/>
         </action>
     </action-mappings>
 

@@ -1,3 +1,3 @@
 <%@ page language="java" %>
-<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
-<tiles:insert definition="page.welcome" flush="true"/>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="t" %>
+<t:insert definition="page.welcome" flush="true"/>

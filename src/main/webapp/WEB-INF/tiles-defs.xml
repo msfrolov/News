@@ -21,4 +21,12 @@
         <put name="title" type="string" value="Add news"/>
         <put name="body" value="/WEB-INF/jsp/layout/add.jsp"/>
     </definition>
+    <definition name="page.viewNews" extends="base.definition">
+        <put name="title" type="string" value="Views news"/>
+        <put name="body" value="/WEB-INF/jsp/layout/view.jsp"/>
+    </definition>
+    <definition name="page.editNews" extends="base.definition">
+        <put name="title" type="string" value="Edit news"/>
+        <put name="body" value="/WEB-INF/jsp/layout/edit.jsp"/>
+    </definition>
 </tiles-definitions>
