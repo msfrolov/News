@@ -1,3 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/">
+    <Resource name="jdbc/news"
+              auth="Container"
+              type="javax.sql.DataSource"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+              initialSize="10"
+              maxActive="20"
+              maxIdle="20"
+              minIdle="10"
+              timeBetweenEvictionRunsMillis="34000"
+              minEvictableIdleTimeMillis="55000"
+              validationQuery="SELECT 1"
+              validationInterval="34000"
+              testOnBorrow="true"
+              removeAbandoned="true"
+              removeAbandonedTimeout="55"
+              auttoreconnect="true"
+              useSSL="false"
+              username="FROLOV"
+              password="Qwer55355"
+              driverClassName="oracle.jdbc.OracleDriver"
+              url="jdbc:oracle:thin:@//localhost:1521/XE"
+    />
 </Context>

@@ -19,6 +19,12 @@
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <javax.servlet.jps-api.version>2.3.1</javax.servlet.jps-api.version>
     </properties>
+    <repositories>
+        <repository>
+            <id>codelds</id>
+            <url>https://code.lds.org/nexus/content/groups/main-repo</url>
+        </repository>
+    </repositories>
     <dependencies>
         <!--/////LOG//////-->
         <dependency>
@@ -83,9 +89,17 @@
             <version>${javax.servlet.jps-api.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.3</version>
+        </dependency>
+
     </dependencies>
 
     <build>
         <finalName>Struts</finalName>
     </build>
+
+
 </project>
