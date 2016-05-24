@@ -1,4 +1,4 @@
-package com.epam.msfrolov.news.db.dao;
+package com.epam.msfrolov.news.dao;
 
 import com.epam.msfrolov.news.model.News;
 
@@ -8,10 +8,10 @@ public interface NewsDao {
 
     List<News> getList();
 
-    boolean save();
+    News save(News news);
 
-    boolean remove();
+    boolean remove(News news);
 
-    News fetchById();
+    News findById(int id);
 
 }

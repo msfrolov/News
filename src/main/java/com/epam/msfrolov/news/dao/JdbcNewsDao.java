@@ -1,8 +1,7 @@
-package com.epam.msfrolov.news.db.dao;
+package com.epam.msfrolov.news.dao;
 
 import com.epam.msfrolov.news.model.News;
 import com.epam.msfrolov.news.util.AppException;
-import com.sun.prism.impl.Disposer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -73,7 +72,7 @@ public class JdbcNewsDao implements NewsDao {
     }
 
     @Override
-    public boolean remove() {
+    public boolean remove(News news) {
         return false;
     }
 
@@ -103,7 +102,7 @@ public class JdbcNewsDao implements NewsDao {
                 news.setBrief(brief);
                 news.setContent(content);
                 //other field
-            } else new AppException("The object News with [" + id + "] - id is not found");
+            } else throw new AppException("The object News with [" + id + "] - id is not found");
         } catch (Exception e) {
             throw new AppException("Request failed", e);
         }

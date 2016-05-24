@@ -1,10 +1,8 @@
-package com.epam.msfrolov.news.db.dao;
+package com.epam.msfrolov.news.dao;
 
-import com.epam.msfrolov.news.db.pool.DBConnectionPool;
+import com.epam.msfrolov.news.pool.DBConnectionPool;
 import com.epam.msfrolov.news.util.AppException;
-import com.epam.msfrolov.news.util.FileManager;
 
-import javax.activation.DataSource;
 import java.sql.Connection;
 
 public class JdbcDaoFactory implements DaoFactory {

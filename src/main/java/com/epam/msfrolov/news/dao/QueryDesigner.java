@@ -1,4 +1,4 @@
-package com.epam.msfrolov.news.db.dao;
+package com.epam.msfrolov.news.dao;
 
 
 import com.epam.msfrolov.news.util.Common;

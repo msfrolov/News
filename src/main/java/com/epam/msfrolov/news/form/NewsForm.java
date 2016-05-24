@@ -1,4 +1,4 @@
-package com.epam.msfrolov.news.presentation.form;
+package com.epam.msfrolov.news.form;
 
 import com.epam.msfrolov.news.model.News;
 import org.apache.struts.action.ActionForm;

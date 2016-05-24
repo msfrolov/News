@@ -3,6 +3,9 @@ package com.epam.msfrolov.news.model;
 public class BaseEntity {
     private Integer id;
 
+    public BaseEntity() {
+    }
+
     public Integer getId() {
         return id;
     }

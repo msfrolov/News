@@ -1,10 +1,8 @@
-package com.epam.msfrolov.news.presentation.action;
+package com.epam.msfrolov.news.action;
 
-import com.epam.msfrolov.news.db.dao.DaoFactory;
-import com.epam.msfrolov.news.db.pool.DBConnectionPool;
+import com.epam.msfrolov.news.dao.DaoFactory;
 import com.epam.msfrolov.news.model.News;
-import com.epam.msfrolov.news.presentation.form.NewsForm;
-import com.epam.msfrolov.news.util.AppException;
+import com.epam.msfrolov.news.form.NewsForm;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -14,14 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.StringJoiner;
 
 
 public class NewsAction extends DispatchAction {
@@ -33,10 +24,11 @@ public class NewsAction extends DispatchAction {
                                       HttpServletResponse response) {
         System.out.println("!showNewsList");
         NewsForm newsForm = (NewsForm) form;
+        log.debug("1");
         try (DaoFactory daoFactory = DaoFactory.newInstance()) {
-            // TODO: 5/24/2016
-//            List<News> newsList = daoFactory.getDao().getList();
-//            newsForm.setNewsList(newsList);
+            log.debug("2");
+            List<News> newsList = daoFactory.getDao().getList();
+            newsForm.setNewsList(newsList);
         }
         return mapping.findForward("show-news-list");
     }
@@ -58,9 +50,9 @@ public class NewsAction extends DispatchAction {
         News news = newsForm.getNews();
         log.debug("Current news: {}", news);
         try (DaoFactory daoFactory = DaoFactory.newInstance()) {
-            // TODO: 5/24/2016
-//            News SavedObject = daoFactory.getDao().save(news);
-//            newsForm.setNews(SavedObject);
+
+            News SavedObject = daoFactory.getDao().save(news);
+            newsForm.setNews(SavedObject);
         }
         return mapping.findForward("show-news-list");
     }
@@ -84,9 +76,9 @@ public class NewsAction extends DispatchAction {
         NewsForm newsForm = (NewsForm) form;
         int idNews = newsForm.getIdNews();
         try (DaoFactory daoFactory = DaoFactory.newInstance()) {
-            // TODO: 5/24/2016
-//            News foundObject = daoFactory.getDao().findById(idNews);
-//            newsForm.setNews(foundObject);
+
+            News foundObject = daoFactory.getDao().findById(idNews);
+            newsForm.setNews(foundObject);
         }
         log.debug("view-news");
         return mapping.findForward("view-news");
