@@ -11,7 +11,7 @@ public class NewsForm extends ActionForm {
     private final static Logger log = LoggerFactory.getLogger(NewsForm.class);
 
     private int idNews;
-    private News news;
+    private News news = new News();
     private List<News> newsList;
     private int[] idList;
 

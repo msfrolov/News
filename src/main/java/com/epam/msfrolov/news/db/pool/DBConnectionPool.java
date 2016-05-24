@@ -1,19 +1,30 @@
 package com.epam.msfrolov.news.db.pool;
 
+import com.epam.msfrolov.news.util.AppException;
+
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnectionPool {
 
-
-    public static Connection getConnection() {
+//    public static Connection getConnection() {
+//        try {
+//            Class.forName("oracle.jdbc.OracleDriver");
+//            Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/XE", "FROLOV", "Qwer55355");
+//            return connection;
+//        } catch (Exception e) {
+//            throw new AppException("Failed to get connection", e);
+//        }
+//    }
+ public static Connection getConnection() {
         try {
             return InstanceHolder.getInstance().getConnection();
         } catch (SQLException e) {
-            throw new ConnectionPoolException("Failed to get connection", e);
+            throw new AppException("Failed to get connection", e);
         }
     }
 
@@ -26,13 +37,13 @@ public class DBConnectionPool {
             try {
                 initialContext = new InitialContext();
                 dataSource = (DataSource) initialContext.lookup("java:/comp/env/jdbc/news");
-            } catch (NamingException e) {
-                throw new ConnectionPoolException("InitialContext exception", e);
+            } catch (Exception e) {
+                throw new AppException("InitialContext exception", e);
             }
             return dataSource;
         }
 
-        public static DataSource getInstance() {
+        private static DataSource getInstance() {
             return DATASOURCE;
         }
     }

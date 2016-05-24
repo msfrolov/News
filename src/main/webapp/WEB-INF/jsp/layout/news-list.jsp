@@ -2,6 +2,7 @@
 <%@taglib prefix="l" uri="http://struts.apache.org/tags-logic" %>
 <%@taglib prefix="b" uri="http://struts.apache.org/tags-bean" %>
 <%@taglib prefix="h" uri="http://struts.apache.org/tags-html" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <h2>News list</h2>
 <h:form action="/news?method=delete">
     <table style="height:50px; border: 1px solid dimgray;border-collapse: collapse" border="1">
