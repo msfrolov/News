@@ -32,11 +32,11 @@ public class JdbcNewsDao implements NewsDao {
                 News news = new News();
                 Integer id = resultSet.getInt("id");
                 String title = resultSet.getString("title");
-                Date resultDate = resultSet.getDate("date_d");
-                LocalDate date = null;
-                if (resultDate != null) {
-                    date = resultDate.toLocalDate();
-                }
+                Date date = resultSet.getDate("date_d");
+//                LocalDate date = null;
+//                if (resultDate != null) {
+//                    date = resultDate.toLocalDate();
+//                }
                 String brief = resultSet.getString("brief");
                 String content = resultSet.getString("content");
                 news.setId(id);
@@ -54,22 +54,28 @@ public class JdbcNewsDao implements NewsDao {
 
     @Override
     public News save(News news) {
-        String query = "INSERT INTO NEWS(TITLE,DATE_D,BRIEF,CONTENT)VALUES (?,?,?,?);";
-        try (PreparedStatement stm = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
+        log.debug("SAVE!!!!!1 {}", news);
+        log.debug("news date!!!!!1 {}", news.getDate());
+        String query = "INSERT INTO NEWS(TITLE,DATE_D,BRIEF,CONTENT) VALUES (?,?,?,?)";
+            try (PreparedStatement stm = connection.prepareStatement(query)) {
             stm.setString(1, news.getTitle());
-            stm.setDate(2, Date.valueOf(news.getDate()));
+            stm.setDate(2,new Date(news.getDate().getTime()));
             stm.setString(3, news.getBrief());
             stm.setString(4, news.getContent());
-            stm.execute();
-            ResultSet generatedKeys = stm.getGeneratedKeys();
-            Integer id = generatedKeys.getInt(1);
-            log.debug("NEW ID: {}", id);
-            news.setId(id);
+            stm.executeQuery();
+//            ResultSet generatedKeys = stm.getGeneratedKeys();
+//            Integer id = generatedKeys.getInt(1);
+//            log.debug("NEW ID: {}", id);
+//            news.setId(id);
             return news;
         } catch (Exception e) {
             throw new AppException("Request failed", e);
         }
     }
+
+
+
+
 
     @Override
     public boolean remove(News news) {
@@ -90,11 +96,11 @@ public class JdbcNewsDao implements NewsDao {
             ResultSet resultSet = stm.getResultSet();
             if (resultSet.next()) {
                 String title = resultSet.getString("title");
-                Date resultDate = resultSet.getDate("date_d");
-                LocalDate date = null;
-                if (resultDate != null) {
-                    date = resultDate.toLocalDate();
-                }
+                Date date = resultSet.getDate("date_d");
+//                LocalDate date = null;
+//                if (resultDate != null) {
+//                    date = resultDate.toLocalDate();
+//                }
                 String brief = resultSet.getString("brief");
                 String content = resultSet.getString("content");
                 news.setTitle(title);

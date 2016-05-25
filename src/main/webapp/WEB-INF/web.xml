@@ -15,16 +15,17 @@
             <param-name>debug</param-name>
             <param-value>2</param-value>
         </init-param>
-        <init-param>
-            <param-name>application</param-name>
-            <param-value>ApplicationResources</param-value>
-        </init-param>
+        <!--<init-param>-->
+            <!--<param-name>application</param-name>-->
+            <!--<param-value>ApplicationResources</param-value>-->
+        <!--</init-param>-->
         <init-param>
             <param-name>nocache</param-name>
             <param-value>true</param-value>
         </init-param>
         <load-on-startup>2</load-on-startup>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>action</servlet-name>
         <url-pattern>*.do</url-pattern>

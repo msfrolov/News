@@ -1,10 +1,17 @@
 package com.epam.msfrolov.news.model;
 
 
-import java.time.LocalDate;
+import com.epam.msfrolov.news.util.AppException;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.ResourceBundle;
+import java.util.logging.SimpleFormatter;
 
 public class News extends BaseEntity {
-    private LocalDate date;
+    private Date date;
     private String title;
     private String brief;
     private String content;
@@ -13,11 +20,11 @@ public class News extends BaseEntity {
     }
 
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -45,10 +52,26 @@ public class News extends BaseEntity {
         this.content = content;
     }
 
+    public Date setStringToData(String s) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        try {
+            return simpleDateFormat.parse(s);
+        } catch (Exception e) {
+            throw new AppException("ParseException", e);
+        }
+    }
+
+    public String getDataToString() {
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        return simpleDateFormat.format(date);
+    }
+
     @Override
     public String toString() {
         return "News{" +
-                "date=" + date +
+                "id=" + getId() +
+                ", date=" + date +
                 ", title='" + title + '\'' +
                 ", brief='" + brief + '\'' +
                 ", content='" + content + '\'' +
