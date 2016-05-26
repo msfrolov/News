@@ -17,8 +17,11 @@
             <forward name="edit-news" path="page.editNews"/>
             <forward name="delete" path="/news.do?method=showNewsList" redirect="true"/>
         </action>
+        <action type="com.epam.msfrolov.news.action.LocaleAction" path="/locale" parameter="method"/>
+
     </action-mappings>
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+    <message-resources parameter="properties.messages"/>
     <!--<message-resources-->
             <!--parameter="properties.messages" />-->
     <plug-in className="org.apache.struts.tiles.TilesPlugin">

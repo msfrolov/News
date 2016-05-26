@@ -6,7 +6,6 @@ import org.apache.struts.action.ActionForm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -17,7 +16,7 @@ public class NewsForm extends ActionForm {
     private int idNews;
     private News news = new News();
     private List<News> newsList;
-    private int[] idList;
+    private int[] idArray;
     private String id;
     private String date;
     private String title;
@@ -49,11 +48,11 @@ public class NewsForm extends ActionForm {
     }
 
     public int[] getIdArray() {
-        return idList;
+        return idArray;
     }
 
-    public void setIdList(int[] idList) {
-        this.idList = idList;
+    public void setIdArray(int[] idArray) {
+        this.idArray = idArray;
     }
 
     ///Entity//

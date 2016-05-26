@@ -16,32 +16,38 @@
     .c003 {
         font-size: 15px;
     }
-</style>
-<h2>View news</h2>
-<div class="c001" style="text-align: left;">
-    <div class="c002">ID:</div>
-    <div class="c003"><b:write name="newsForm" property="news.idString"/></div>
-</div>
-<div class="c001" style="text-align: left;">
-    <div class="c002">Title:</div>
-    <div class="c003"><b:write name="newsForm" property="news.title"/></div>
-</div>
-<div class="c001" style="text-align: left;">
-    <div class="c002">Date:</div>
-    <div class="c003"><b:write name="newsForm" property="news.dateFormat"/></div>
-</div>
-<div class="c001" style="text-align: left;">
-    <div class="c002">Brief:</div>
-    <div class="c003"><b:write name="newsForm" property="news.brief"/></div>
-</div>
-<div class="c001" style="text-align: left;">
-    <div class="c002">Content:</div>
-    <div class="c003"><b:write name="newsForm" property="news.content"/></div>
-</div>
-<b:define id="news" name="newsForm"/>
-<h:link action="/news?method=editNews">
-    <h:param name="idNews" value="${newsForm.news.id}"/>EDIT</h:link>
-<h:link onclick="history.back()">CANCEL</h:link>
 
+    .c004 {
+        font-size: 15px;
+        width: 800px;
+        height: auto;
+    }
+</style>
+<h:form action="/news?method=editNews&idNews=${newsForm.news.id}">
+    <h2>View news</h2>
+    <div class="c001" style="text-align: left;">
+        <div class="c002">ID:</div>
+        <div class="c003"><b:write name="newsForm" property="news.idString"/></div>
+    </div>
+    <div class="c001" style="text-align: left;">
+        <div class="c002">Title:</div>
+        <div class="c003"><b:write name="newsForm" property="news.title"/></div>
+    </div>
+    <div class="c001" style="text-align: left;">
+        <div class="c002">Date:</div>
+        <div class="c003"><b:write name="newsForm" property="news.dateFormat"/></div>
+    </div>
+    <div class="c001" style="text-align: left;">
+        <div class="c002">Brief:</div>
+        <div class="c004"><b:write name="newsForm" property="news.brief"/></div>
+    </div>
+    <div class="c001" style="text-align: left;">
+        <div class="c002">Content:</div>
+        <div class="c004"><b:write name="newsForm" property="news.content"/></div>
+    </div>
+    <b:define id="news" name="newsForm"/>
+    <h:submit value="EDIT"/>
+    <h:reset onclick="history.back()" value="CANCEL"/>
+</h:form>
 
 

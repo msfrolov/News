@@ -17,9 +17,14 @@
     .c003 {
         font-size: 15px;
     }
+
+    .c004 {
+        font-size: 15px;
+        width: 800px;
+    }
 </style>
 <h2><t:getAsString name='title' ignore='true'/></h2>
-<h:form action="/news?method=update" >
+<h:form action="/news?method=update">
     <div class="c001" style="text-align: left;">
         <div class="c002">Title:</div>
         <div class="c003"><h:text name="newsForm" property="news.title"/></div>
@@ -30,11 +35,11 @@
     </div>
     <div class="c001" style="text-align: left;">
         <div class="c002">Brief:</div>
-        <div class="c003"><h:textarea name="newsForm" property="news.brief"/></div>
+        <div class="c004"><h:textarea name="newsForm" property="news.brief"/></div>
     </div>
     <div class="c001" style="text-align: left;">
         <div class="c002">Content:</div>
-        <div class="c003"><h:textarea name="newsForm" property="news.content"/></div>
+        <div class="c004"><h:textarea name="newsForm" property="news.content"/></div>
     </div>
     <h:submit value="SAVE"/>
     <h:reset onclick="history.back()" value="CANCEL"/>
