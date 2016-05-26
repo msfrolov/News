@@ -2,18 +2,40 @@
 <%@ taglib prefix="b" uri="http://struts.apache.org/tags-bean" %>
 <%@ taglib prefix="t" uri="http://struts.apache.org/tags-tiles" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<style>
+    .c001 {
+        border: 1px solid #000000; /* Белая рамка */
+        border-radius: 1px; /* Радиус скругления */
+        margin: 1px 0;
+        padding: 1%;
+    }
+
+    .c002 {
+        font-size: 17px;
+    }
+
+    .c003 {
+        font-size: 15px;
+    }
+</style>
 <h2><t:getAsString name='title' ignore='true'/></h2>
 <h:form action="/news?method=update" >
-    <h4>News Title</h4>
-    <h:text name="newsForm" property="news.title"/>
-    <h4>News Date</h4>
-    <h:text name="newsForm" property="news.dateFormat"/>
-    <h4>News brief</h4>
-    <h:textarea name="newsForm" property="news.brief"/>
-    <h4>News content</h4>
-    <h:textarea name="newsForm" property="news.content"/>
-    <h:submit value="SAVE">
-        <param name="method" value="<t:getAsString name='methodAction' ignore='true'/>"/>
-    </h:submit>
+    <div class="c001" style="text-align: left;">
+        <div class="c002">Title:</div>
+        <div class="c003"><h:text name="newsForm" property="news.title"/></div>
+    </div>
+    <div class="c001" style="text-align: left;">
+        <div class="c002">Date:</div>
+        <div class="c003"><h:text name="newsForm" property="news.dateFormat"/></div>
+    </div>
+    <div class="c001" style="text-align: left;">
+        <div class="c002">Brief:</div>
+        <div class="c003"><h:textarea name="newsForm" property="news.brief"/></div>
+    </div>
+    <div class="c001" style="text-align: left;">
+        <div class="c002">Content:</div>
+        <div class="c003"><h:textarea name="newsForm" property="news.content"/></div>
+    </div>
+    <h:submit value="SAVE"/>
     <h:reset onclick="history.back()" value="CANCEL"/>
 </h:form>

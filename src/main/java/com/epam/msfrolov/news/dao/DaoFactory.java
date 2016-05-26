@@ -7,7 +7,7 @@ public interface DaoFactory extends AutoCloseable {
 
     static DaoFactory newInstance() {
         String daoFactoryNameName = FileManager.getProperties("properties/connection.properties").getProperty("dao_factory_name");
-        DaoFactory instance = null;
+        DaoFactory instance;
         try {
             instance = (DaoFactory) Class.forName(daoFactoryNameName).newInstance();
         } catch (ClassNotFoundException e) {

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
         "http://jakarta.apache.org/struts/dtds/tiles-config_1_3.dtd">
-
 <tiles-definitions>
     <definition name="base.definition" template="/WEB-INF/jsp/tiles/template.jsp">
         <put name="title" value="Base"/>

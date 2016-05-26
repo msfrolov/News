@@ -3,6 +3,14 @@
         "http://java.sun.com/dtd/web-app_2_3.dtd">
 <web-app>
     <display-name>News</display-name>
+    <filter>
+        <filter-name>0CharacterEncodingFilter</filter-name>
+        <filter-class>com.epam.msfrolov.news.filter.CharEncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>0CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>action</servlet-name>
         <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
