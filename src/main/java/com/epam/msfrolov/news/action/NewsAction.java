@@ -22,51 +22,12 @@ public class NewsAction extends DispatchAction {
                                       ActionForm form,
                                       HttpServletRequest request,
                                       HttpServletResponse response) {
-        System.out.println("!showNewsList");
         NewsForm newsForm = (NewsForm) form;
-        log.debug("1");
         try (DaoFactory daoFactory = DaoFactory.newInstance()) {
-            log.debug("2");
             List<News> newsList = daoFactory.getDao().getList();
             newsForm.setNewsList(newsList);
         }
         return mapping.findForward("show-news-list");
-    }
-
-    public ActionForward addNews(ActionMapping mapping,
-                                 ActionForm form,
-                                 HttpServletRequest request,
-                                 HttpServletResponse response) {
-        NewsForm newsForm = (NewsForm) form;
-        return mapping.findForward("add-news");
-    }
-
-    public ActionForward save(ActionMapping mapping,
-                                 ActionForm form,
-                                 HttpServletRequest request,
-                                 HttpServletResponse response) {
-        System.out.println("!addNews");
-        NewsForm newsForm = (NewsForm) form;
-        News news = newsForm.getNews();
-        log.debug("Current news: {}", news);
-        try (DaoFactory daoFactory = DaoFactory.newInstance()) {
-
-            News SavedObject = daoFactory.getDao().save(news);
-            newsForm.setNews(SavedObject);
-        }
-        return mapping.findForward("show-news-list");
-    }
-
-    public ActionForward delete(ActionMapping mapping,
-                                ActionForm form,
-                                HttpServletRequest request,
-                                HttpServletResponse response) {
-
-        NewsForm newsForm = (NewsForm) form;
-        for (int id : newsForm.getIdList()) {
-            log.debug("ID: {}", id);
-        }
-        return mapping.findForward("delete");
     }
 
     public ActionForward viewNews(ActionMapping mapping,
@@ -76,7 +37,6 @@ public class NewsAction extends DispatchAction {
         NewsForm newsForm = (NewsForm) form;
         int idNews = newsForm.getIdNews();
         try (DaoFactory daoFactory = DaoFactory.newInstance()) {
-
             News foundObject = daoFactory.getDao().findById(idNews);
             newsForm.setNews(foundObject);
         }
@@ -84,13 +44,64 @@ public class NewsAction extends DispatchAction {
         return mapping.findForward("view-news");
     }
 
+    public ActionForward addNews(ActionMapping mapping,
+                                 ActionForm form,
+                                 HttpServletRequest request,
+                                 HttpServletResponse response) {
+        NewsForm newsForm = (NewsForm) form;
+        newsForm.setNews(new News());
+        return mapping.findForward("add-news");
+    }
+
     public ActionForward editNews(ActionMapping mapping,
                                   ActionForm form,
                                   HttpServletRequest request,
                                   HttpServletResponse response) {
+        NewsForm newsForm = (NewsForm) form;
+        int idNews = newsForm.getIdNews();
+        try (DaoFactory daoFactory = DaoFactory.newInstance()) {
+            News foundObject = daoFactory.getDao().findById(idNews);
+            newsForm.setNews(foundObject);
+        }
+        return mapping.findForward("edit-news");
+    }
+
+    public ActionForward save(ActionMapping mapping,
+                              ActionForm form,
+                              HttpServletRequest request,
+                              HttpServletResponse response) {
+        NewsForm newsForm = (NewsForm) form;
+        News news = newsForm.getNews();
+        log.debug("Current news: {}", news);
+        try (DaoFactory daoFactory = DaoFactory.newInstance()) {
+            News SavedObject = daoFactory.getDao().save(news);
+            newsForm.setNews(SavedObject);
+        }
+        return mapping.findForward("view-news");
+    }
+
+    public ActionForward update(ActionMapping mapping,
+                                ActionForm form,
+                                HttpServletRequest request,
+                                HttpServletResponse response) {
+        NewsForm newsForm = (NewsForm) form;
+        News news = newsForm.getNews();
+        try (DaoFactory daoFactory = DaoFactory.newInstance()) {
+            News SavedObject = daoFactory.getDao().update(news);
+            newsForm.setNews(SavedObject);
+        }
+        return mapping.findForward("view-news");
+    }
+
+    public ActionForward delete(ActionMapping mapping,
+                                ActionForm form,
+                                HttpServletRequest request,
+                                HttpServletResponse response) {
 
         NewsForm newsForm = (NewsForm) form;
-        log.debug("edit-news");
-        return mapping.findForward("edit-news");
+        try (DaoFactory daoFactory = DaoFactory.newInstance()) {
+            int removedObjects = daoFactory.getDao().remove(newsForm.getIdArray());
+        }
+        return mapping.findForward("delete");
     }
 }

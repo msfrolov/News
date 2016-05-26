@@ -48,7 +48,7 @@ public class NewsForm extends ActionForm {
         this.newsList = newsList;
     }
 
-    public int[] getIdList() {
+    public int[] getIdArray() {
         return idList;
     }
 

@@ -33,6 +33,11 @@ public class QueryDesigner {
         return this;
     }
 
+    public QueryDesigner delete() {
+        stringBuilder.append(" DELETE ");
+        return this;
+    }
+
     public QueryDesigner from() {
         stringBuilder.append(" FROM ");
         return this;
@@ -66,6 +71,11 @@ public class QueryDesigner {
 
     public QueryDesigner where() {
         stringBuilder.append(" WHERE ");
+        return this;
+    }
+
+    public QueryDesigner or() {
+        stringBuilder.append(" || ");
         return this;
     }
 
@@ -221,6 +231,7 @@ public class QueryDesigner {
         return this;
     }
 
+
     public QueryDesigner table(Object o) {
         checkNotNull(o);
         if (!(o instanceof Class)) {
@@ -228,7 +239,6 @@ public class QueryDesigner {
         }
         return camelCaseToUpperCase(((Class) o).getSimpleName());
     }
-
 
     public QueryDesigner camelCaseToUpperCase(String s) {
         stringBuilder.append(Common.camelCaseToUpperCase(s));
@@ -240,10 +250,9 @@ public class QueryDesigner {
         return this;
     }
 
+
     @Override
     public String toString() {
         return stringBuilder.toString();
     }
-
-
 }

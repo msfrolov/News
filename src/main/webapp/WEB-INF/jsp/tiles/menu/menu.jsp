@@ -8,6 +8,6 @@
     <br/>
     <html:link action="news?method=showNewsList">News list</html:link>
     <br/>
-    <html:link action="news?method=addNews">Add News</html:link>
+    <html:link action="news?method=addNews" >Add News</html:link>
     <br/>
 </div>

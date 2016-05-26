@@ -3,30 +3,30 @@
         "http://jakarta.apache.org/struts/dtds/tiles-config_1_3.dtd">
 
 <tiles-definitions>
-    <definition name="base.definition" template="/WEB-INF/jsp/layout/template.jsp">
+    <definition name="base.definition" template="/WEB-INF/jsp/tiles/template.jsp">
         <put name="title" value="Base"/>
-        <put name="header" value="/WEB-INF/jsp/layout/header.jsp"/>
-        <put name="menu" value="/WEB-INF/jsp/layout/menu.jsp"/>
-        <put name="bottom" value="/WEB-INF/jsp/layout/footer.jsp"/>
+        <put name="header" value="/WEB-INF/jsp/tiles/header/header.jsp"/>
+        <put name="menu" value="/WEB-INF/jsp/tiles/menu/menu.jsp"/>
+        <put name="bottom" value="/WEB-INF/jsp/tiles/footer/footer.jsp"/>
     </definition>
     <definition name="page.welcome" extends="base.definition">
         <put name="title" type="string" value="Welcome"/>
-        <put name="body" value="/WEB-INF/jsp/layout/welcome.jsp"/>
+        <put name="body" value="/WEB-INF/jsp/tiles/body/welcome.jsp"/>
     </definition>
     <definition name="page.newsList" extends="base.definition">
         <put name="title" type="string" value="News list"/>
-        <put name="body" value="/WEB-INF/jsp/layout/news-list.jsp"/>
-    </definition>
-    <definition name="page.addNews" extends="base.definition">
-        <put name="title" type="string" value="Add news"/>
-        <put name="body" value="/WEB-INF/jsp/layout/add.jsp"/>
+        <put name="body" value="/WEB-INF/jsp/tiles/body/news-list.jsp"/>
     </definition>
     <definition name="page.viewNews" extends="base.definition">
         <put name="title" type="string" value="Views news"/>
-        <put name="body" value="/WEB-INF/jsp/layout/view.jsp"/>
+        <put name="body" value="/WEB-INF/jsp/tiles/body/view.jsp"/>
+    </definition>
+    <definition name="page.addNews" extends="base.definition">
+        <put name="title" type="string" value="Add news"/>
+        <put name="body" value="/WEB-INF/jsp/tiles/body/add.jsp"/>
     </definition>
     <definition name="page.editNews" extends="base.definition">
         <put name="title" type="string" value="Edit news"/>
-        <put name="body" value="/WEB-INF/jsp/layout/edit.jsp"/>
+        <put name="body" value="/WEB-INF/jsp/tiles/body/edit.jsp"/>
     </definition>
 </tiles-definitions>

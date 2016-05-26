@@ -2,15 +2,14 @@ package com.epam.msfrolov.news.model;
 
 
 import com.epam.msfrolov.news.util.AppException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.ResourceBundle;
-import java.util.logging.SimpleFormatter;
 
 public class News extends BaseEntity {
+    private static final Logger log = LoggerFactory.getLogger(News.class);
     private Date date;
     private String title;
     private String brief;
@@ -52,20 +51,36 @@ public class News extends BaseEntity {
         this.content = content;
     }
 
-    public Date setStringToData(String s) {
+    public void setDateFormat(String dateString) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
         try {
-            return simpleDateFormat.parse(s);
+            Date date = simpleDateFormat.parse(dateString);
+            log.debug("dateToString", date.toString());
+            this.date = date;
         } catch (Exception e) {
             throw new AppException("ParseException", e);
         }
     }
 
-    public String getDataToString() {
-
+    public String getDateFormat() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        return simpleDateFormat.format(date);
+        String s = simpleDateFormat.format(date);
+        log.debug("dateToString", s);
+        return s;
+
     }
+
+    public String getIdString() {
+        return String.valueOf(getId());
+    }
+
+    public void setIdString(String id) {
+        setId(Integer.valueOf(id));
+    }
+
+
+
+
 
     @Override
     public String toString() {

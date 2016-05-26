@@ -8,9 +8,15 @@ public interface NewsDao {
 
     List<News> getList();
 
+    News update(News news);
+
     News save(News news);
 
-    boolean remove(News news);
+    News remove(News news);
+
+    boolean remove(int id);
+
+    int remove(int[] idArray);
 
     News findById(int id);
 
