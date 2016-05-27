@@ -74,8 +74,13 @@ public class QueryDesigner {
         return this;
     }
 
-    public QueryDesigner or() {
+    public QueryDesigner orSymbol() {
         stringBuilder.append(" || ");
+        return this;
+    }
+
+    public QueryDesigner or() {
+        stringBuilder.append(" OR ");
         return this;
     }
 

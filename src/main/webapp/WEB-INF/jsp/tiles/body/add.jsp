@@ -23,19 +23,19 @@
         width: 800px;
     }
 </style>
-<h2><t:getAsString name='title' ignore='true'/></h2>
+<h2><b:message key="body.title.add"/></h2>
 <h:form action="/news?method=save">
     <div class="c001">
-        <div class="c002">Title:</div>
+        <div class="c002"><b:message key="body.field.title"/>:</div>
         <h:text styleClass="c003" name="newsForm" property="news.title"/>
-        <div class="c002">Date:</div>
+        <div class="c002"><b:message key="body.field.date"/>:</div>
         <b:define id="news" name="newsForm"/>
-        <h:text styleClass="c003" name="news" property="date"/>
-        <div class="c002">Brief:</div>
+        <h:text styleClass="c003" name="news" property="date" value="${newsForm.news.dateFormat}"/>
+        <div class="c002"><b:message key="body.field.brief"/>:</div>
         <h:textarea styleClass="c004" name="newsForm" property="news.brief"/>
-        <div class="c002">Content:</div>
+        <div class="c002"><b:message key="body.field.content"/>:</div>
         <h:textarea styleClass="c004" name="newsForm" property="news.content"/>
     </div>
-    <h:submit value="SAVE"/>
-    <h:reset onclick="history.back()" value="CANCEL"/>
+    <h:submit><b:message key="body.button.save"/></h:submit>
+    <h:reset onclick="history.back()"><b:message key="body.button.cancel"/></h:reset>
 </h:form>

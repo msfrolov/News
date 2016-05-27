@@ -5,15 +5,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <style>
     .c000 {
-        border: 1px solid #000000; /* Белая рамка */
-        border-radius: 1px; /* Радиус скругления */
+        border: 1px solid #000000;
+        border-radius: 1px;
         margin: 1px 0;
         padding: 1%;
     }
 
     .c001 {
-        border: 1px solid gainsboro; /* Белая рамка */
-        border-radius: 1px; /* Радиус скругления */
+        border: 1px solid gainsboro;
+        border-radius: 1px;
         margin: 1px 0;
         padding: 6px;
     }
@@ -26,31 +26,31 @@
         font-size: 15px;
     }
 </style>
-<h2>News list</h2>
+<h2><b:message key="body.title.list"/></h2>
 <h:form action="/news?method=delete">
     <l:iterate id="news" property="newsList" name="newsForm">
         <div class="c000">
             <div class="c001" style="text-align: left;">
-                <div class="c002">Title:</div>
+                <div class="c002"><b:message key="body.field.title"/>:</div>
                 <div class="c003"><b:write name="news" property="title"/></div>
             </div>
             <div class="c001" style="text-align: left;">
-                <div class="c002">Date:</div>
+                <div class="c002"><b:message key="body.field.date"/>:</div>
                 <div class="c003"><b:write name="news" property="dateFormat"/></div>
             </div>
             <div class="c001" style="text-align: left;">
-                <div class="c002">Brief:</div>
+                <div class="c002"><b:message key="body.field.brief"/>:</div>
                 <div class="c003"><b:write name="news" property="brief"/></div>
             </div>
             <h:link action="/news?method=viewNews">
-                <h:param name="idNews" value="${news.id}"/>VIEW</h:link>
+                <h:param name="idNews" value="${news.id}"/><b:message key="body.button.view"/></h:link>
             <h:link action="/news?method=editNews">
-                <h:param name="idNews" value="${news.id}"/>EDIT</h:link>
-            <h:multibox property="idArray" value="${news.id}">SELECT</h:multibox>
+                <h:param name="idNews" value="${news.id}"/><b:message key="body.button.edit"/></h:link>
+            <h:multibox property="idArray" value="${news.id}"/>
         </div>
     </l:iterate>
     <h:submit>
-        DELETE
+        <b:message key="body.button.delete"/>
     </h:submit>
 </h:form>
 

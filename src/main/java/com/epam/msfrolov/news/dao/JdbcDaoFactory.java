@@ -24,7 +24,7 @@ public class JdbcDaoFactory implements DaoFactory {
             if (connection != null)
                 connection.close();
         } catch (Exception e) {
-            throw new AppException("It failed to close or not open", e);
+            throw new AppException("It failed to close orSymbol not open", e);
         }
     }
 }

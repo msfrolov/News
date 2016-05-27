@@ -1,8 +1,8 @@
 package com.epam.msfrolov.news.action;
 
 import com.epam.msfrolov.news.dao.DaoFactory;
-import com.epam.msfrolov.news.model.News;
 import com.epam.msfrolov.news.form.NewsForm;
+import com.epam.msfrolov.news.model.News;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.List;
 
 
@@ -49,7 +50,11 @@ public class NewsAction extends DispatchAction {
                                  HttpServletRequest request,
                                  HttpServletResponse response) {
         NewsForm newsForm = (NewsForm) form;
-        newsForm.setNews(new News());
+        News news = new News();
+        Date date = new Date();
+        log.debug("New date: {}", date);
+        news.setDate(date);
+        newsForm.setNews(news);
         return mapping.findForward("add-news");
     }
 

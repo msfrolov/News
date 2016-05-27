@@ -110,10 +110,10 @@ public class JdbcNewsDao implements NewsDao {
         QueryDesigner query = new QueryDesigner();
         query.delete()
                 .from().table(News.class)
-                .where().id().equal();
+                .where();
         for (int i = 0; i < idArray.length; i++) {
             if (i != 0) query.or();
-            query.question();
+            query.id().equal().question();
         }
         log.debug("remove query: {}", query.toString());
         try (PreparedStatement stm = connection.prepareStatement(query.toString())) {
