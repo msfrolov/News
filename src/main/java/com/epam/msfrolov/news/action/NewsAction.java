@@ -67,6 +67,7 @@ public class NewsAction extends DispatchAction {
         try (DaoFactory daoFactory = DaoFactory.newInstance()) {
             News foundObject = daoFactory.getDao().findById(idNews);
             newsForm.setNews(foundObject);
+            newsForm.setIdNews(foundObject.getId());
         }
         return mapping.findForward("edit-news");
     }
@@ -79,8 +80,9 @@ public class NewsAction extends DispatchAction {
         News news = newsForm.getNews();
         log.debug("Current news: {}", news);
         try (DaoFactory daoFactory = DaoFactory.newInstance()) {
-            News SavedObject = daoFactory.getDao().save(news);
-            newsForm.setNews(SavedObject);
+            News savedObject = daoFactory.getDao().save(news);
+            newsForm.setNews(savedObject);
+            newsForm.setIdNews(savedObject.getId());
         }
         return mapping.findForward("view-news");
     }
