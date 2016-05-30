@@ -12,7 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.epam.msfrolov.news.util.Common.firstUpperCase;
+import static com.epam.msfrolov.news.util.CommonsUtil.firstUpperCase;
 
 public class ReflectUtil {
 

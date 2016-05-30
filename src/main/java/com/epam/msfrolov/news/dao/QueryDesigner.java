@@ -1,14 +1,14 @@
 package com.epam.msfrolov.news.dao;
 
 
-import com.epam.msfrolov.news.util.Common;
+import com.epam.msfrolov.news.util.CommonsUtil;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
-import static com.epam.msfrolov.news.util.Common.checkNotNull;
+import static com.epam.msfrolov.news.util.CommonsUtil.checkNotNull;
 
 public class QueryDesigner {
     private StringBuilder stringBuilder;
@@ -246,12 +246,12 @@ public class QueryDesigner {
     }
 
     public QueryDesigner camelCaseToUpperCase(String s) {
-        stringBuilder.append(Common.camelCaseToUpperCase(s));
+        stringBuilder.append(CommonsUtil.camelCaseToUpperCase(s));
         return this;
     }
 
     public QueryDesigner upperCaseToCamelCase(String s) {
-        stringBuilder.append(Common.upperCaseToCamelCase(s));
+        stringBuilder.append(CommonsUtil.upperCaseToCamelCase(s));
         return this;
     }
 

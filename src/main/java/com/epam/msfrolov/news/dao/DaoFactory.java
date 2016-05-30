@@ -10,9 +10,7 @@ public interface DaoFactory extends AutoCloseable {
         DaoFactory instance;
         try {
             instance = (DaoFactory) Class.forName(daoFactoryNameName).newInstance();
-        } catch (ClassNotFoundException e) {
-            throw new AppException("Class DAO factory not found", e);
-        } catch (InstantiationException e) {
+        } catch (ClassNotFoundException | InstantiationException e) {
             throw new AppException("Class DAO factory not found", e);
         } catch (IllegalAccessException e) {
             throw new AppException("Illegal access on some extended DAO factory not found", e);
@@ -24,6 +22,4 @@ public interface DaoFactory extends AutoCloseable {
 
     NewsDao getDao();
 
-    @Override
-    void close();
 }

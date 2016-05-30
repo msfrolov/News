@@ -10,24 +10,33 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Locale;
 
+import static java.util.Locale.ENGLISH;
+
+/**
+ *
+ */
 public class LocaleAction extends DispatchAction {
 
+    private static final Locale RUSSIA = new Locale("ru", "RU");
+    private static final String LOCALE = "org.apache.struts.action.LOCALE";
     private final static String SUCCESS = "success";
-    public static final Locale RUSSIA = new Locale("ru", "RU");
 
-    public ActionForward english(ActionMapping mapping, ActionForm form,
-                                 HttpServletRequest request, HttpServletResponse response)
-            throws Exception {
+    //
+    // TODO: Get rid of unnecessary params: form, response.
+    //
+    public ActionForward english(ActionMapping mapping, HttpServletRequest request) throws Exception {
         HttpSession session = request.getSession();
-        session.setAttribute("org.apache.struts.action.LOCALE", Locale.ENGLISH);
+        session.setAttribute(LOCALE, ENGLISH);
         return mapping.findForward(SUCCESS);
     }
 
+    //
+    // TODO: See above comment.
+    //
     public ActionForward russian(ActionMapping mapping, ActionForm  form,
-                                 HttpServletRequest request, HttpServletResponse response)
-            throws Exception {
+                                 HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
-        session.setAttribute("org.apache.struts.action.LOCALE", RUSSIA);
+        session.setAttribute(LOCALE, RUSSIA);
         return mapping.findForward(SUCCESS);
     }
 }

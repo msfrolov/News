@@ -13,10 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JdbcNewsDao implements NewsDao {
-    public static final String UPDATE_QUERY = "UPDATE NEWS SET TITLE = ? , DATE_D = ? , BRIEF = ?, CONTENT = ? WHERE ID = ?";
-    public static final String INSERT_QUERY = "INSERT INTO NEWS(TITLE,DATE_D,BRIEF,CONTENT) VALUES (?,?,?,?)";
-    public static final String DELETE_QUERY = "DELETE FROM NEWS WHERE ID = ?";
+
     private static final Logger log = LoggerFactory.getLogger(JdbcNewsDao.class);
+
+    // private
+    public static final String UPDATE_QUERY = "UPDATE news SET title = ? , date_d = ? , brief = ?, content = ? WHERE id = ?";
+    public static final String INSERT_QUERY = "insert into NEWS(TITLE,DATE_D,BRIEF,CONTENT) values (?,?,?,?)";
+    public static final String DELETE_QUERY = "DELETE FROM NEWS WHERE ID = ?";
+
     private final Connection connection;
 
     protected JdbcNewsDao(Connection connection) {
@@ -36,13 +40,16 @@ public class JdbcNewsDao implements NewsDao {
             ResultSet resultSet = stm.getResultSet();
             while (resultSet.next()) {
                 News news = new News();
-                Integer id = resultSet.getInt("id");
-                String title = resultSet.getString("title");
+
                 Date date = resultSet.getDate("date_d");
                 String brief = resultSet.getString("brief");
                 String content = resultSet.getString("content");
-                news.setId(id);
+
+                news.setId(resultSet.getInt("id"));
+
+                String title = resultSet.getString("title");
                 news.setTitle(title);
+
                 news.setDate(date);
                 news.setBrief(brief);
                 news.setContent(content);
@@ -56,6 +63,9 @@ public class JdbcNewsDao implements NewsDao {
 
     @Override
     public News update(News news) {
+        //
+        // TODO: wtf? redesign.
+        //
         String query = UPDATE_QUERY;
         log.debug("update query: {}", query);
         try (PreparedStatement stm = connection.prepareStatement(query)) {
@@ -64,8 +74,11 @@ public class JdbcNewsDao implements NewsDao {
             stm.setString(3, news.getBrief());
             stm.setString(4, news.getContent());
             stm.setInt(5, news.getId());
-            if (stm.executeUpdate() > 0) return news;
-            else throw new AppException();
+            if (stm.executeUpdate() > 0) {
+                return news;
+            } else {
+                throw new AppException("WTF ?"); // TODO: Redesign.
+            }
         } catch (Exception e) {
             throw new AppException("Failed to update change object in database", e);
         }
@@ -88,10 +101,11 @@ public class JdbcNewsDao implements NewsDao {
 
     @Override
     public News remove(News news) {
-        if (remove(news.getId()))
+        if (remove(news.getId())) {
             return news;
-        else
+        } else {
             throw new AppException("Failed to delete object from database");
+        }
     }
 
     @Override
@@ -112,7 +126,9 @@ public class JdbcNewsDao implements NewsDao {
                 .from().table(News.class)
                 .where();
         for (int i = 0; i < idArray.length; i++) {
-            if (i != 0) query.or();
+            if (i != 0) {
+                query.or();
+            }
             query.id().equal().question();
         }
         log.debug("remove query: {}", query.toString());
@@ -126,6 +142,11 @@ public class JdbcNewsDao implements NewsDao {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public News findById(int id) {
         QueryDesigner query = new QueryDesigner();
@@ -148,7 +169,9 @@ public class JdbcNewsDao implements NewsDao {
                 news.setBrief(brief);
                 news.setContent(content);
                 //other field
-            } else throw new AppException("The object News [id=" + id + "] is not found");
+            } else {
+                throw new AppException("The object News [id=" + id + "] is not found");
+            }
         } catch (Exception e) {
             throw new AppException("Request failed", e);
         }
