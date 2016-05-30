@@ -17,70 +17,64 @@ public class JdbcNewsDao implements NewsDao {
     private static final Logger log = LoggerFactory.getLogger(JdbcNewsDao.class);
 
     // private
-    public static final String UPDATE_QUERY = "UPDATE news SET title = ? , date_d = ? , brief = ?, content = ? WHERE id = ?";
-    public static final String INSERT_QUERY = "insert into NEWS(TITLE,DATE_D,BRIEF,CONTENT) values (?,?,?,?)";
-    public static final String DELETE_QUERY = "DELETE FROM NEWS WHERE ID = ?";
+    private static final String INSERT_QUERY = "insert into NEWS(TITLE,DATE_D,BRIEF,CONTENT) values (?,?,?,?)";
+    private static final String DELETE_QUERY = "DELETE FROM NEWS WHERE ID = ?";
 
     private final Connection connection;
 
-    protected JdbcNewsDao(Connection connection) {
+    public JdbcNewsDao(Connection connection) {
         this.connection = connection;
     }
 
     @Override
     public List<News> getList() {
-        //Formation queries
+        //prepare statement
+        //process statement
+        // Prepare
         QueryDesigner query = new QueryDesigner();
         query.select().asterisk()
                 .from().table(News.class);
-        List<News> newsList = new ArrayList<>();
-        log.debug("getList query: {}", query.toString());
+        log.debug("Query getList: {}", query.toString());
         try (PreparedStatement stm = connection.prepareStatement(query.toString())) {
             stm.execute();
             ResultSet resultSet = stm.getResultSet();
+            List<News> newsList = new ArrayList<>();
             while (resultSet.next()) {
                 News news = new News();
-
-                Date date = resultSet.getDate("date_d");
-                String brief = resultSet.getString("brief");
-                String content = resultSet.getString("content");
-
                 news.setId(resultSet.getInt("id"));
-
-                String title = resultSet.getString("title");
-                news.setTitle(title);
-
-                news.setDate(date);
-                news.setBrief(brief);
-                news.setContent(content);
+                news.setTitle(resultSet.getString("title"));
+                news.setDate(resultSet.getDate("date_d"));
+                news.setBrief(resultSet.getString("brief"));
+                news.setContent(resultSet.getString("content"));
                 newsList.add(news);
             }
+            return newsList;
         } catch (Exception e) {
-            throw new AppException("Request failed", e);
+            throw new AppException("Failed to process query for to get a list of news from database", e);
         }
-        return newsList;
     }
 
     @Override
     public News update(News news) {
-        //
-        // TODO: wtf? redesign.
-        //
-        String query = UPDATE_QUERY;
-        log.debug("update query: {}", query);
-        try (PreparedStatement stm = connection.prepareStatement(query)) {
+        QueryDesigner query = new QueryDesigner();
+        query.update().table(News.class)
+                .set()
+                .text("title").equal().question().comma()
+                .text("date_d").equal().question().comma()
+                .text("brief").equal().question().comma()
+                .text("content").equal().question().comma()
+                .where().id().equal().question();
+        log.debug("Query update: {}", query.toString());
+        try (PreparedStatement stm = connection.prepareStatement(query.toString())) {
             stm.setString(1, news.getTitle());
             stm.setDate(2, new Date(news.getDate().getTime()));
             stm.setString(3, news.getBrief());
             stm.setString(4, news.getContent());
             stm.setInt(5, news.getId());
-            if (stm.executeUpdate() > 0) {
-                return news;
-            } else {
-                throw new AppException("WTF ?"); // TODO: Redesign.
-            }
+            stm.executeUpdate();
+            return news;
         } catch (Exception e) {
-            throw new AppException("Failed to update change object in database", e);
+            throw new AppException("Failed to process query for to update change object in database", e);
         }
     }
 
@@ -143,7 +137,6 @@ public class JdbcNewsDao implements NewsDao {
     }
 
     /**
-     *
      * @param id
      * @return
      */

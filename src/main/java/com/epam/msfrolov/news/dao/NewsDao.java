@@ -4,7 +4,7 @@ import com.epam.msfrolov.news.model.News;
 
 import java.util.List;
 
-interface NewsDao {
+public interface NewsDao {
 
     List<News> getList();
 

@@ -7,12 +7,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-
 import static com.epam.msfrolov.news.util.CommonsUtil.checkNotNull;
 
 public class QueryDesigner {
-    private StringBuilder stringBuilder;
 
+    private StringBuilder stringBuilder;
 
     public QueryDesigner() {
         stringBuilder = new StringBuilder();
@@ -62,7 +61,6 @@ public class QueryDesigner {
         stringBuilder.append(s);
         return this;
     }
-
 
     public QueryDesigner insertInto() {
         stringBuilder.append(" INSERT INTO ");
@@ -236,7 +234,6 @@ public class QueryDesigner {
         return this;
     }
 
-
     public QueryDesigner table(Object o) {
         checkNotNull(o);
         if (!(o instanceof Class)) {
@@ -254,7 +251,6 @@ public class QueryDesigner {
         stringBuilder.append(CommonsUtil.upperCaseToCamelCase(s));
         return this;
     }
-
 
     @Override
     public String toString() {

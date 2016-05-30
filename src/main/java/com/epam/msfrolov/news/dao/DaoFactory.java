@@ -6,20 +6,22 @@ import com.epam.msfrolov.news.util.FileManager;
 public interface DaoFactory extends AutoCloseable {
 
     static DaoFactory newInstance() {
-        String daoFactoryNameName = FileManager.getProperties("properties/connection.properties").getProperty("dao_factory_name");
-        DaoFactory instance;
+        String daoFactoryImplementName = FileManager.getProperties("properties/connection.properties").getProperty("dao.factory.name");
         try {
-            instance = (DaoFactory) Class.forName(daoFactoryNameName).newInstance();
-        } catch (ClassNotFoundException | InstantiationException e) {
+            return (DaoFactory) Class.forName(daoFactoryImplementName).newInstance();
+        } catch (ClassNotFoundException e) {
             throw new AppException("Class DAO factory not found", e);
+        } catch (InstantiationException e) {
+            throw new AppException("Class DAO factory not init", e);
         } catch (IllegalAccessException e) {
             throw new AppException("Illegal access on some extended DAO factory not found", e);
         } catch (Exception e) {
-            throw new AppException("AppException", e);
+            throw new AppException("Failed to get DAO factory instance", e);
         }
-        return instance;
     }
 
     NewsDao getDao();
 
+    @Override
+    void close();
 }

@@ -18,24 +18,18 @@ import java.util.List;
 public class NewsAction extends DispatchAction {
     private static final Logger log = LoggerFactory.getLogger(NewsAction.class);
 
-    public ActionForward showNewsList(ActionMapping mapping,
-                                      ActionForm form,
-                                      HttpServletRequest request,
-                                      HttpServletResponse response) {
+    public ActionForward showNewsList(ActionMapping mapping, ActionForm form) {
         NewsForm newsForm = (NewsForm) form;
         try (DaoFactory daoFactory = DaoFactory.newInstance()) {
             List<News> newsList = daoFactory.getDao().getList();
             newsForm.setNewsList(newsList);
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         return mapping.findForward("show-news-list");
     }
 
-    public ActionForward viewNews(ActionMapping mapping,
-                                  ActionForm form,
-                                  HttpServletRequest request,
-                                  HttpServletResponse response) {
+    public ActionForward viewNews(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
         NewsForm newsForm = (NewsForm) form;
         int idNews = newsForm.getIdNews();
         try (DaoFactory daoFactory = DaoFactory.newInstance()) {
@@ -107,7 +101,7 @@ public class NewsAction extends DispatchAction {
                                 HttpServletResponse response) {
         NewsForm newsForm = (NewsForm) form;
         try (DaoFactory daoFactory = DaoFactory.newInstance()) {
-           daoFactory.getDao().remove(newsForm.getIdArray());
+            daoFactory.getDao().remove(newsForm.getIdArray());
         }
         return mapping.findForward("delete");
     }
