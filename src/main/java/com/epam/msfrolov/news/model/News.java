@@ -1,6 +1,5 @@
 package com.epam.msfrolov.news.model;
 
-
 import com.epam.msfrolov.news.util.AppException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,7 +8,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class News extends BaseEntity {
+
+    // TODO: When have time ...
     private static final Logger log = LoggerFactory.getLogger(News.class);
+
     private Date date;
     private String title;
     private String brief;
@@ -17,7 +19,6 @@ public class News extends BaseEntity {
 
     public News() {
     }
-
 
     public Date getDate() {
         return date;
@@ -51,6 +52,7 @@ public class News extends BaseEntity {
         this.content = content;
     }
 
+    @Deprecated
     public void setDateFormat(String dateString) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
         try {
@@ -62,6 +64,7 @@ public class News extends BaseEntity {
         }
     }
 
+    @Deprecated
     public String getDateFormat() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
         String s = simpleDateFormat.format(date);
@@ -77,10 +80,6 @@ public class News extends BaseEntity {
     public void setIdString(String id) {
         setId(Integer.valueOf(id));
     }
-
-
-
-
 
     @Override
     public String toString() {

@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.List;
 
-
 public class NewsAction extends DispatchAction {
     private static final Logger log = LoggerFactory.getLogger(NewsAction.class);
 
@@ -27,6 +26,8 @@ public class NewsAction extends DispatchAction {
         try (DaoFactory daoFactory = DaoFactory.newInstance()) {
             List<News> newsList = daoFactory.getDao().getList();
             newsForm.setNewsList(newsList);
+        } catch (Exception e) {
+
         }
         return mapping.findForward("show-news-list");
     }
@@ -50,9 +51,9 @@ public class NewsAction extends DispatchAction {
                                  HttpServletRequest request,
                                  HttpServletResponse response) {
         NewsForm newsForm = (NewsForm) form;
-        News news = new News();
         Date date = new Date();
         log.debug("New date: {}", date);
+        News news = new News();
         news.setDate(date);
         newsForm.setNews(news);
         return mapping.findForward("add-news");
@@ -67,6 +68,7 @@ public class NewsAction extends DispatchAction {
         try (DaoFactory daoFactory = DaoFactory.newInstance()) {
             News foundObject = daoFactory.getDao().findById(idNews);
             newsForm.setNews(foundObject);
+            newsForm.setIdNews(foundObject.getId());
         }
         return mapping.findForward("edit-news");
     }
@@ -79,8 +81,9 @@ public class NewsAction extends DispatchAction {
         News news = newsForm.getNews();
         log.debug("Current news: {}", news);
         try (DaoFactory daoFactory = DaoFactory.newInstance()) {
-            News SavedObject = daoFactory.getDao().save(news);
-            newsForm.setNews(SavedObject);
+            News savedObject = daoFactory.getDao().save(news);
+            newsForm.setNews(savedObject);
+            newsForm.setIdNews(savedObject.getId());
         }
         return mapping.findForward("view-news");
     }
@@ -102,10 +105,9 @@ public class NewsAction extends DispatchAction {
                                 ActionForm form,
                                 HttpServletRequest request,
                                 HttpServletResponse response) {
-
         NewsForm newsForm = (NewsForm) form;
         try (DaoFactory daoFactory = DaoFactory.newInstance()) {
-            int removedObjects = daoFactory.getDao().remove(newsForm.getIdArray());
+           daoFactory.getDao().remove(newsForm.getIdArray());
         }
         return mapping.findForward("delete");
     }

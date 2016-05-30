@@ -2,12 +2,24 @@ package com.epam.msfrolov.news.util;
 
 
 import com.epam.msfrolov.news.model.BaseEntity;
+import com.sun.istack.internal.NotNull;
+import com.sun.istack.internal.Nullable;
 
-public class Common {
+public final class CommonsUtil {
 
+    private CommonsUtil(){
+        // private constructor
+    }
+
+//    JAVAEE:
+//    @NotNull
+//    @Nullable
+    // Java Beans Validation (JSR-303 ??)
 
     public static void checkNotNull(Object o) {
-        if (o == null) throw new AppException("null validation fails");
+        if (o == null) {
+            throw new AppException("null validation fails");
+        }
     }
 
     public static void checkExtendsBaseEntity(Object o) {
@@ -19,7 +31,7 @@ public class Common {
     }
 
     public static String firstUpperCase(String s) {
-        Common.checkNotNull(s);
+        checkNotNull(s);
         return s.substring(0, 1).toUpperCase() + s.substring(1);
     }
 
@@ -31,7 +43,9 @@ public class Common {
         String[] parts = s.split("_");
         String result = "";
         for (String part : parts) {
-            result = result + part.substring(0, 1).toUpperCase() + part.substring(1).toLowerCase();
+            result = result
+                    + part.substring(0, 1).toUpperCase()
+                    + part.substring(1).toLowerCase();
         }
         return result.substring(0, 1).toLowerCase() + result.substring(1);
     }
