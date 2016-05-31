@@ -1,7 +1,7 @@
-package com.epam.msfrolov.news.dao;
+package com.epam.msfrolov.news.db.dao;
 
-import com.epam.msfrolov.news.pool.DBConnectionPool;
-import com.epam.msfrolov.news.util.AppException;
+import com.epam.msfrolov.news.db.pool.DBConnectionPool;
+import com.epam.msfrolov.news.exception.AppException;
 
 import java.sql.Connection;
 

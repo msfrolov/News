@@ -1,4 +1,4 @@
-package com.epam.msfrolov.news.util;
+package com.epam.msfrolov.news.exception;
 
 public class AppException extends RuntimeException {
 

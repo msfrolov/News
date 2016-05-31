@@ -1,14 +1,11 @@
-package com.epam.msfrolov.news.pool;
+package com.epam.msfrolov.news.db.pool;
 
-import com.epam.msfrolov.news.util.AppException;
+import com.epam.msfrolov.news.exception.AppException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.Locale;
 
 public class DBConnectionPool {

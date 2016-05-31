@@ -30,7 +30,7 @@
         <h:text styleClass="c003" name="newsForm" property="news.title"/>
         <div class="c002"><b:message key="body.field.date"/>:</div>
         <b:define id="news" name="newsForm"/>
-        <h:text styleClass="c003" name="news" property="date" value="${newsForm.news.dateFormat}"/>
+        <h:text styleClass="c003" name="news" property="date" value="${newsForm.date}"/>
         <div class="c002"><b:message key="body.field.brief"/>:</div>
         <h:textarea styleClass="c004" name="newsForm" property="news.brief"/>
         <div class="c002"><b:message key="body.field.content"/>:</div>

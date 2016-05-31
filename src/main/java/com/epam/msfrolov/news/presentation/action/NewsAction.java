@@ -1,8 +1,8 @@
-package com.epam.msfrolov.news.action;
+package com.epam.msfrolov.news.presentation.action;
 
-import com.epam.msfrolov.news.dao.DaoFactory;
-import com.epam.msfrolov.news.form.NewsForm;
+import com.epam.msfrolov.news.db.dao.DaoFactory;
 import com.epam.msfrolov.news.model.News;
+import com.epam.msfrolov.news.presentation.form.NewsForm;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;

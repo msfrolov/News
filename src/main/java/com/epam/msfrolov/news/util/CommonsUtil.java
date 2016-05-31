@@ -1,9 +1,8 @@
 package com.epam.msfrolov.news.util;
 
 
+import com.epam.msfrolov.news.exception.AppException;
 import com.epam.msfrolov.news.model.BaseEntity;
-import com.sun.istack.internal.NotNull;
-import com.sun.istack.internal.Nullable;
 
 public final class CommonsUtil {
 

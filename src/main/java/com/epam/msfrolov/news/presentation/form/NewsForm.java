@@ -1,7 +1,7 @@
-package com.epam.msfrolov.news.form;
+package com.epam.msfrolov.news.presentation.form;
 
+import com.epam.msfrolov.news.exception.AppException;
 import com.epam.msfrolov.news.model.News;
-import com.epam.msfrolov.news.util.AppException;
 import org.apache.struts.action.ActionForm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +37,11 @@ public class NewsForm extends ActionForm {
 
     public void setNews(News news) {
         this.news = news;
+        setId(String.valueOf(news.getId()));
+        setDate(dateToString(news.getDate()));
+        setTitle(news.getTitle());
+        setBrief(news.getBrief());
+        setContent(news.getContent());
     }
 
     public List<News> getNewsList() {
@@ -55,7 +60,10 @@ public class NewsForm extends ActionForm {
         this.idArray = idArray;
     }
 
-    ///Entity//
+    public String getId() {
+        return id;
+    }
+
     public void setId(String id) {
         this.id = id;
         try {
@@ -67,8 +75,8 @@ public class NewsForm extends ActionForm {
         }
     }
 
-    public String getId() {
-        return id;
+    public String getDate() {
+        return date;
     }
 
     public void setDate(String date) {
@@ -82,7 +90,45 @@ public class NewsForm extends ActionForm {
         }
     }
 
-    public String getDate() {
-        return date;
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getBrief() {
+        return brief;
+    }
+
+    public void setBrief(String brief) {
+        this.brief = brief;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    private String dateToString(Date date) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        try {
+            return simpleDateFormat.format(date);
+        } catch (Exception e) {
+            throw new AppException("Failed to format date [" + date + "] for field", e);
+        }
+    }
+
+    private Date stringToDate(String dateString) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        try {
+            return simpleDateFormat.parse(dateString);
+        } catch (Exception e) {
+            throw new AppException("Failed to parse date [" + dateString + "] from field", e);
+        }
     }
 }

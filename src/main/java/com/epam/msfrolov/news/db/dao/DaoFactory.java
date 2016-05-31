@@ -1,12 +1,12 @@
-package com.epam.msfrolov.news.dao;
+package com.epam.msfrolov.news.db.dao;
 
-import com.epam.msfrolov.news.util.AppException;
-import com.epam.msfrolov.news.util.FileManager;
+import com.epam.msfrolov.news.exception.AppException;
+import com.epam.msfrolov.news.util.FileUtil;
 
 public interface DaoFactory extends AutoCloseable {
 
     static DaoFactory newInstance() {
-        String daoFactoryImplementName = FileManager.getProperties("properties/connection.properties").getProperty("dao.factory.name");
+        String daoFactoryImplementName = FileUtil.getProperties("properties/connection.properties").getProperty("dao.factory.name");
         try {
             return (DaoFactory) Class.forName(daoFactoryImplementName).newInstance();
         } catch (ClassNotFoundException e) {

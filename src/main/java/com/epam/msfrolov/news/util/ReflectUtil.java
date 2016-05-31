@@ -1,6 +1,7 @@
 package com.epam.msfrolov.news.util;
 
 
+import com.epam.msfrolov.news.exception.AppException;
 import com.epam.msfrolov.news.model.BaseEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
