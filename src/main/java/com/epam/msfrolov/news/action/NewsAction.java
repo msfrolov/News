@@ -18,7 +18,7 @@ import java.util.List;
 public class NewsAction extends DispatchAction {
     private static final Logger log = LoggerFactory.getLogger(NewsAction.class);
 
-    public ActionForward showNewsList(ActionMapping mapping, ActionForm form) {
+    public ActionForward showNewsList(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
         NewsForm newsForm = (NewsForm) form;
         try (DaoFactory daoFactory = DaoFactory.newInstance()) {
             List<News> newsList = daoFactory.getDao().getList();

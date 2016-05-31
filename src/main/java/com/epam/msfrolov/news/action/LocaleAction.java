@@ -15,7 +15,6 @@ public class LocaleAction extends DispatchAction {
     private static final Locale RUSSIA = new Locale("ru", "RU");
     private static final String SUCCESS = "success";
 
-    //parameters request and response must be present
     public ActionForward english(ActionMapping mapping, ActionForm ignoredForm, HttpServletRequest request, HttpServletResponse ignoredResponse)
             throws Exception {
         HttpSession session = request.getSession();
@@ -23,8 +22,7 @@ public class LocaleAction extends DispatchAction {
         return mapping.findForward(SUCCESS);
     }
 
-    //view the comment above
-    public ActionForward russian(ActionMapping mapping, ActionForm ignoredForm, HttpServletRequest request, HttpServletResponse response)
+    public ActionForward russian(ActionMapping mapping, ActionForm ignoredForm, HttpServletRequest request, HttpServletResponse ignoredResponse)
             throws Exception {
         HttpSession session = request.getSession();
         session.setAttribute("org.apache.struts.action.LOCALE", RUSSIA);
