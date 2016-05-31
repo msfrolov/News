@@ -37,7 +37,7 @@ public class NewsForm extends ActionForm {
 
     public void setNews(News news) {
         this.news = news;
-        setId(String.valueOf(news.getId()));
+        setId(integerToString(news.getId()));
         setDate(dateToString(news.getDate()));
         setTitle(news.getTitle());
         setBrief(news.getBrief());
@@ -66,13 +66,7 @@ public class NewsForm extends ActionForm {
 
     public void setId(String id) {
         this.id = id;
-        try {
-            Integer integerId = Integer.valueOf(id);
-            log.debug("parse integerID: {}", integerId);
-            news.setId(integerId);
-        } catch (Exception e) {
-            throw new AppException("Parse exception", e);
-        }
+        news.setId(stringToInteger(id));
     }
 
     public String getDate() {
@@ -81,13 +75,7 @@ public class NewsForm extends ActionForm {
 
     public void setDate(String date) {
         this.date = date;
-        try {
-            Date parse = new SimpleDateFormat("MM/dd/yyyy").parse(date);
-            log.debug("parse date: {}", parse);
-            news.setDate(parse);
-        } catch (Exception e) {
-            throw new AppException("Parse exception", e);
-        }
+        news.setDate(stringToDate(date));
     }
 
     public String getTitle() {
@@ -96,6 +84,7 @@ public class NewsForm extends ActionForm {
 
     public void setTitle(String title) {
         this.title = title;
+        news.setTitle(title);
     }
 
     public String getBrief() {
@@ -104,6 +93,7 @@ public class NewsForm extends ActionForm {
 
     public void setBrief(String brief) {
         this.brief = brief;
+        news.setBrief(brief);
     }
 
     public String getContent() {
@@ -112,23 +102,62 @@ public class NewsForm extends ActionForm {
 
     public void setContent(String content) {
         this.content = content;
+        news.setContent(content);
     }
+
+    //Types adapters
 
     private String dateToString(Date date) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        try {
-            return simpleDateFormat.format(date);
-        } catch (Exception e) {
-            throw new AppException("Failed to format date [" + date + "] for field", e);
+        String dateString;
+        if (date == null) {
+            dateString = "";
+        } else {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+            try {
+                dateString = simpleDateFormat.format(date);
+            } catch (Exception e) {
+                throw new AppException("Failed to format date [" + date + "] for field", e);
+            }
         }
+        return dateString;
     }
 
-    private Date stringToDate(String dateString) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+    Date stringToDate(String dateString) {
+        boolean isValid;
+        Date parsedDate = null;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         try {
-            return simpleDateFormat.parse(dateString);
+            parsedDate = dateFormat.parse(dateString);
+            isValid = dateFormat.format(parsedDate).equals(dateString);
         } catch (Exception e) {
-            throw new AppException("Failed to parse date [" + dateString + "] from field", e);
+            isValid = false;
         }
+        if (!isValid) {
+            throw new AppException("Failed to parse date [" + dateString + "] from field");
+        }
+        return parsedDate;
     }
+
+    private String integerToString(Integer integer) {
+        String idString = "";
+        try {
+            idString = String.valueOf(integer);
+            if (idString == null) {
+                idString = "";
+            }
+        } catch (Exception ignored) {
+        }
+        return idString;
+    }
+
+    private Integer stringToInteger(String string) {
+        Integer integer = null;
+        try {
+            integer = Integer.valueOf(string);
+        } catch (Exception ignored) {
+        }
+        return integer;
+    }
+
+
 }

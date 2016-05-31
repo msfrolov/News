@@ -81,17 +81,22 @@ class JdbcNewsDao implements NewsDao {
                 .text("date_d").comma()
                 .text("brief").comma()
                 .text("content").cb()
-                .values().question().comma().
+                .values()
+                .ob().question().comma().
                 question().comma()
                 .question().comma()
                 .question().cb();
         log.debug("Query save: {}", query.toString());
-        try (PreparedStatement stm = connection.prepareStatement(query.toString())) {
+        try (PreparedStatement stm = connection.prepareStatement(query.toString(), new String[]{"ID"})) {
+            log.debug("Object: {}", news);
             stm.setString(1, news.getTitle());
             stm.setDate(2, new Date(news.getDate().getTime()));
             stm.setString(3, news.getBrief());
             stm.setString(4, news.getContent());
             stm.executeQuery();
+            ResultSet generatedKeys = stm.getGeneratedKeys();
+            generatedKeys.next();
+            news.setId(generatedKeys.getInt(1));
             return news;
         } catch (Exception e) {
             throw new AppException("Failed to save object in database", e);

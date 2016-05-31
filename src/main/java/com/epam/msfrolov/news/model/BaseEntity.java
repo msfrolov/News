@@ -2,13 +2,9 @@ package com.epam.msfrolov.news.model;
 
 import java.io.Serializable;
 
-public class BaseEntity implements Serializable {
+public class BaseEntity implements Serializable, Cloneable {
 
     private Integer id;
-
-//    @Version /// hiber
-//    @Column(name = "VERSION")
-//    private int version;
 
     public BaseEntity() {
     }
