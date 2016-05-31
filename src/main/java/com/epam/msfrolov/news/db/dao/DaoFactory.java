@@ -3,6 +3,7 @@ package com.epam.msfrolov.news.db.dao;
 import com.epam.msfrolov.news.exception.AppException;
 import com.epam.msfrolov.news.util.FileUtil;
 
+
 public interface DaoFactory extends AutoCloseable {
 
     static DaoFactory newInstance() {
@@ -22,6 +23,4 @@ public interface DaoFactory extends AutoCloseable {
 
     NewsDao getDao();
 
-    @Override
-    void close();
 }

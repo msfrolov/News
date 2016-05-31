@@ -6,14 +6,15 @@ import com.epam.msfrolov.news.model.BaseEntity;
 
 public final class CommonsUtil {
 
-    private CommonsUtil(){
+    private CommonsUtil() {
         // private constructor
     }
 
-//    JAVAEE:
-//    @NotNull
-//    @Nullable
-    // Java Beans Validation (JSR-303 ??)
+    // TODO !!!
+    //    JAVAEE:
+    //    @NotNull
+    //    @Nullable
+    //    Java Beans Validation (JSR-303 ??)
 
     public static void checkNotNull(Object o) {
         if (o == null) {

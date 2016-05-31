@@ -1,4 +1,4 @@
-package com.epam.msfrolov.news.presentation.action;
+package com.epam.msfrolov.news.action;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;

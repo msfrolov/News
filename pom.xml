@@ -52,7 +52,7 @@
     </repositories>
 
     <dependencies>
-        <!--//////STRUTS/////-->
+        <!--//////////////STRUTS////////////-->
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts-core</artifactId>
@@ -84,7 +84,7 @@
             <artifactId>struts-faces</artifactId>
             <version>${struts.version}</version>
         </dependency>
-        <!--/////SERVLET//////-->
+        <!--///////////SERVLET//////////-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -122,7 +122,7 @@
             <artifactId>ojdbc6</artifactId>
             <version>11.2.0.3</version>
         </dependency>
-        <!--CONNECTION POOL-->
+        <!--////////CONNECTION POOL//////////-->
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-dbcp</artifactId>
@@ -133,7 +133,7 @@
             <artifactId>javax.el-api</artifactId>
             <version>2.2.5</version>
         </dependency>
-        <!--TEST-->
+        <!--///////////TEST////////////////-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

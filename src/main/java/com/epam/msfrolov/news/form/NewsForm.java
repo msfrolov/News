@@ -1,4 +1,4 @@
-package com.epam.msfrolov.news.presentation.form;
+package com.epam.msfrolov.news.form;
 
 import com.epam.msfrolov.news.exception.AppException;
 import com.epam.msfrolov.news.model.News;
@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 public class NewsForm extends ActionForm {
+
     private final static Logger log = LoggerFactory.getLogger(NewsForm.class);
 
     private int idNews;

@@ -13,6 +13,7 @@ public class JdbcDaoFactory implements DaoFactory {
         connection = DBConnectionPool.getConnection();
     }
 
+
     @Override
     public NewsDao getDao() {
         return new JdbcNewsDao(connection);

@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-class JdbcNewsDao implements NewsDao {
+public class JdbcNewsDao implements NewsDao {
 
     private static final Logger log = LoggerFactory.getLogger(JdbcNewsDao.class);
 
@@ -82,10 +82,7 @@ class JdbcNewsDao implements NewsDao {
                 .text("brief").comma()
                 .text("content").cb()
                 .values()
-                .ob().question().comma().
-                question().comma()
-                .question().comma()
-                .question().cb();
+                .ob().question().comma().question().comma().question().comma().question().cb();
         log.debug("Query save: {}", query.toString());
         try (PreparedStatement stm = connection.prepareStatement(query.toString(), new String[]{"ID"})) {
             log.debug("Object: {}", news);
