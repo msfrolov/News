@@ -4,8 +4,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <style>
     .c001 {
-        border: 1px solid #000000; /* Белая рамка */
-        border-radius: 1px; /* Радиус скругления */
+        border: 1px solid #000000;
+        border-radius: 1px;
         margin: 1px 0;
         padding: 1%;
     }
