@@ -16,6 +16,21 @@
     </modules>
 
     <name>NEWS Project</name>
+
+    <developers>
+        <developer>
+            <name>Maxim Frolov</name>
+            <email>maxim_frolov@epam.com</email>
+            <organization>EPAM Systems</organization>
+            <organizationUrl>http://epam.com</organizationUrl>
+        </developer>
+    </developers>
+
+    <issueManagement>
+        <system>GIT</system>
+        <url>https://github.com/msfrolov/News/issues</url>
+    </issueManagement>
+
     <description>Task "News management".</description>
 
     <properties>
@@ -52,6 +67,7 @@
     </build>
 
     <dependencies>
+
         <!--Logger-->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -68,6 +84,7 @@
             <artifactId>logback-core</artifactId>
             <version>${logback.version}</version>
         </dependency>
+
         <!--Test-->
         <dependency>
             <groupId>junit</groupId>
