@@ -27,19 +27,19 @@
 <h:form action="/news?method=update">
     <div class="c001" style="text-align: left;">
         <div class="c002"><b:message key="body.field.title"/>:</div>
-        <div class="c003"><h:text name="newsForm" property="news.title"/></div>
+        <div class="c003"><h:text name="newsForm" property="title"/></div>
     </div>
     <div class="c001" style="text-align: left;">
         <div class="c002"><b:message key="body.field.date"/>:</div>
-        <div class="c003"><h:text name="newsForm" property="news.dateFormat"/></div>
+        <div class="c003"><h:text name="newsForm" property="date" value="${newsForm.date}"/></div>
     </div>
     <div class="c001" style="text-align: left;">
         <div class="c002"><b:message key="body.field.brief"/>:</div>
-        <div class="c004"><h:textarea name="newsForm" property="news.brief"/></div>
+        <div class="c004"><h:textarea name="newsForm" property="brief"/></div>
     </div>
     <div class="c001" style="text-align: left;">
         <div class="c002"><b:message key="body.field.content"/>:</div>
-        <div class="c004"><h:textarea name="newsForm" property="news.content"/></div>
+        <div class="c004"><h:textarea name="newsForm" property="content"/></div>
     </div>
     <h:submit><b:message key="body.button.save"/></h:submit>
     <h:reset onclick="history.back()"><b:message key="body.button.cancel"/></h:reset>

@@ -27,14 +27,13 @@
 <h:form action="/news?method=save">
     <div class="c001">
         <div class="c002"><b:message key="body.field.title"/>:</div>
-        <h:text styleClass="c003" name="newsForm" property="news.title"/>
+        <h:text styleClass="c003" name="newsForm" property="title"/>
         <div class="c002"><b:message key="body.field.date"/>:</div>
-        <b:define id="news" name="newsForm"/>
-        <h:text styleClass="c003" name="news" property="date" value="${newsForm.news.dateFormat}"/>
+        <h:text styleClass="c003" name="newsForm" property="date" value="${newsForm.date}"/>
         <div class="c002"><b:message key="body.field.brief"/>:</div>
-        <h:textarea styleClass="c004" name="newsForm" property="news.brief"/>
+        <h:textarea styleClass="c004" name="newsForm" property="brief"/>
         <div class="c002"><b:message key="body.field.content"/>:</div>
-        <h:textarea styleClass="c004" name="newsForm" property="news.content"/>
+        <h:textarea styleClass="c004" name="newsForm" property="content"/>
     </div>
     <h:submit><b:message key="body.button.save"/></h:submit>
     <h:reset onclick="history.back()"><b:message key="body.button.cancel"/></h:reset>

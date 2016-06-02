@@ -3,11 +3,11 @@
         "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
 <struts-config>
     <form-beans>
-        <form-bean name="newsForm" type="com.epam.msfrolov.news.form.NewsForm"/>
+        <form-bean name="newsForm" type="com.epam.msfrolov.form.NewsForm"/>
     </form-beans>
     <action-mappings>
         <action path="/news"
-                type="com.epam.msfrolov.news.action.NewsAction"
+                type="com.epam.msfrolov.action.NewsAction"
                 parameter="method"
                 name="newsForm">
             <forward name="welcome" path="page.welcome"/>
@@ -16,23 +16,16 @@
             <forward name="view-news" path="page.viewNews"/>
             <forward name="edit-news" path="page.editNews"/>
             <forward name="delete" path="/news.do?method=showNewsList" redirect="true"/>
-            <forward name="error" path="page.error"/>
         </action>
-        <!--<action path="/error">-->
-
-        <!--</action>-->
         <action path="/locale"
-                type="com.epam.msfrolov.news.action.LocaleAction"
+                type="com.epam.msfrolov.action.LocaleAction"
                 parameter="method"
                 name="newsForm">
             <forward name="success" path="page.newsList"/>
-            <!--<forward name="success" path="/news.do?method=showNewsList" redirect="true"/>-->
         </action>
     </action-mappings>
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
     <message-resources parameter="properties.messages"/>
-    <!--<message-resources-->
-    <!--parameter="properties.messages" />-->
     <plug-in className="org.apache.struts.tiles.TilesPlugin">
         <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml"/>
         <set-property property="moduleAware" value="true"/>

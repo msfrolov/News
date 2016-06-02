@@ -1,27 +1,27 @@
 <%@ page language="java" %>
-<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="t" %>
 <html>
 <head>
-    <title><tiles:getAsString name="title" ignore="true"/></title>
+    <title><t:getAsString name="title" ignore="true"/></title>
 </head>
 <body>
 <table border="0" width="100%">
     <tr>
         <td colspan="2" valign="top">
-            <tiles:insert attribute="header"/>
+            <t:insert attribute="header"/>
         </td>
     </tr>
     <tr valign="top">
         <td height="200" width="20%">
-            <tiles:insert attribute="menu"/>
+            <t:insert attribute="menu"/>
         </td>
         <td width="80%">
-            <tiles:insert attribute="body"/>
+            <t:insert attribute="body"/>
         </td>
     </tr>
     <tr>
         <td colspan="2" valign="top">
-            <tiles:insert attribute="bottom"/>
+            <t:insert attribute="bottom"/>
         </td>
     </tr>
 </table>

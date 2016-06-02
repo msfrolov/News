@@ -28,25 +28,25 @@
 </style>
 <h2><b:message key="body.title.list"/></h2>
 <h:form action="/news?method=delete">
-    <l:iterate id="news" property="newsList" name="newsForm">
+    <l:iterate id="newsItem" property="newsList" name="newsForm">
         <div class="c000">
             <div class="c001" style="text-align: left;">
                 <div class="c002"><b:message key="body.field.title"/>:</div>
-                <div class="c003"><b:write name="news" property="title"/></div>
+                <div class="c003"><b:write name="newsItem" property="title"/></div>
             </div>
             <div class="c001" style="text-align: left;">
                 <div class="c002"><b:message key="body.field.date"/>:</div>
-                <div class="c003"><b:write name="news" property="dateFormat"/></div>
+                <div class="c003"><b:write name="newsItem" property="date" formatKey="date.format"/></div>
             </div>
             <div class="c001" style="text-align: left;">
                 <div class="c002"><b:message key="body.field.brief"/>:</div>
-                <div class="c003"><b:write name="news" property="brief"/></div>
+                <div class="c003"><b:write name="newsItem" property="brief"/></div>
             </div>
             <h:link action="/news?method=viewNews">
-                <h:param name="idNews" value="${news.id}"/><b:message key="body.button.view"/></h:link>
+                <h:param name="idNews" value="${newsItem.id}"/><b:message key="body.button.view"/></h:link>
             <h:link action="/news?method=editNews">
-                <h:param name="idNews" value="${news.id}"/><b:message key="body.button.edit"/></h:link>
-            <h:multibox property="idArray" value="${news.id}"/>
+                <h:param name="idNews" value="${newsItem.id}"/><b:message key="body.button.edit"/></h:link>
+            <h:multibox property="idArray" value="${newsItem.id}"/>
         </div>
     </l:iterate>
     <h:submit>
