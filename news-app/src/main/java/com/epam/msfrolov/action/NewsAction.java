@@ -17,7 +17,7 @@ import java.util.Date;
 public class NewsAction extends DispatchAction {
 
     private static final Logger LOG = LoggerFactory.getLogger(NewsAction.class);
-    private NewsService service = new NewsService();
+    private NewsService service = NewsService.newInstance();
 
     public ActionForward showNewsList(ActionMapping mapping, ActionForm form, HttpServletRequest ignoredRequest, HttpServletResponse ignoredResponse) {
         NewsForm newsForm = (NewsForm) form;
