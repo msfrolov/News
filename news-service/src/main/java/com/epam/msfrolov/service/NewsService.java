@@ -1,6 +1,6 @@
 package com.epam.msfrolov.service;
 
-import com.epam.msfrolov.exception.AppException;
+import com.epam.msfrolov.exception.DatabaseModuleException;
 import com.epam.msfrolov.model.News;
 import com.epam.msfrolov.util.FileUtil;
 
@@ -13,13 +13,13 @@ public interface NewsService {
         try {
             return (NewsService) Class.forName(serviceImplementName).newInstance();
         } catch (ClassNotFoundException e) {
-            throw new AppException("Class NewsService not found", e);
+            throw new DatabaseModuleException("Class NewsService not found", e);
         } catch (InstantiationException e) {
-            throw new AppException("Class NewsService factory not init", e);
+            throw new DatabaseModuleException("Class NewsService factory not init", e);
         } catch (IllegalAccessException e) {
-            throw new AppException("Illegal access on some extended NewsService not found", e);
+            throw new DatabaseModuleException("Illegal access on some extended NewsService not found", e);
         } catch (Exception e) {
-            throw new AppException("Failed to get NewsService instance", e);
+            throw new DatabaseModuleException("Failed to get NewsService instance", e);
         }
     }
 

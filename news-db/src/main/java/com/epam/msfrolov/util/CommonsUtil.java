@@ -1,7 +1,7 @@
 package com.epam.msfrolov.util;
 
 
-import com.epam.msfrolov.exception.AppException;
+import com.epam.msfrolov.exception.DatabaseModuleException;
 import com.epam.msfrolov.model.BaseEntity;
 
 public final class CommonsUtil {
@@ -18,12 +18,13 @@ public final class CommonsUtil {
 
     public static void checkNotNull(Object o) {
         if (o == null) {
-            throw new AppException("null validation fails");
+            throw new DatabaseModuleException("null validation fails");
         }
     }
 
     public static void checkExtendsBaseEntity(Object o) {
-        if (!(o instanceof BaseEntity)) throw new AppException("failed validation: an instance of BaseEntity");
+        if (!(o instanceof BaseEntity))
+            throw new DatabaseModuleException("failed validation: an instance of BaseEntity");
     }
 
     public static boolean isEntity(Object o) {

@@ -1,5 +1,6 @@
-package com.epam.msfrolov.service;
+package com.epam.msfrolov.dao.jpa;
 
+import com.epam.msfrolov.dao.NewsDao;
 import com.epam.msfrolov.model.News;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,28 +8,30 @@ import org.slf4j.LoggerFactory;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class JpaNewsService implements NewsService {
+public class JpaNewsDao implements NewsDao {
 
-    private static final Logger LOG = LoggerFactory.getLogger(JpaNewsService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(JpaNewsDao.class);
 
     private EntityManager entityManager;
 
-    public JpaNewsService() {
-        LOG.debug("WTF1212");
+    public JpaNewsDao() {
+        LOG.debug("WTF121212");
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("oracle");
-        LOG.debug("WTF1313");
+        LOG.debug("WTF131313");
         this.entityManager = entityManagerFactory.createEntityManager();
     }
 
     public List<News> getList() {
-//        TypedQuery<News> namedQuery = entityManager.createNamedQuery("News.getAll", News.class);
-//        return namedQuery.getResultList();
-        return null;
+        LOG.debug("WTF GET LIST ????");
+        TypedQuery<News> namedQuery = entityManager.createNamedQuery("News.getAll", News.class);
+        return namedQuery.getResultList();
     }
 
     public News findById(int id) {
+        LOG.debug("WTF FIND BY ID = {}", id);
         return entityManager.find(News.class, id);
     }
 

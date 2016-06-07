@@ -1,6 +1,6 @@
 package com.epam.msfrolov.util;
 
-import com.epam.msfrolov.exception.AppException;
+import com.epam.msfrolov.exception.DatabaseModuleException;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,7 +17,7 @@ public class FileUtil {
             properties.load(FileUtil.class.getClassLoader().getResourceAsStream(fileName));
             return properties;
         } catch (IOException e) {
-            throw new AppException("IOException: failed to get property", e);
+            throw new DatabaseModuleException("IOException: failed to get property", e);
         }
     }
 
@@ -26,7 +26,7 @@ public class FileUtil {
         try {
             return Files.readAllLines(path);
         } catch (IOException e) {
-            throw new AppException("IOException: failed to get strings from file", e);
+            throw new DatabaseModuleException("IOException: failed to get strings from file", e);
         }
     }
 

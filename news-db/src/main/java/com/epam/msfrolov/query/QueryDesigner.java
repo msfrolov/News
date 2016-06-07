@@ -1,4 +1,4 @@
-package com.epam.msfrolov.dao;
+package com.epam.msfrolov.query;
 
 
 import com.epam.msfrolov.util.CommonsUtil;

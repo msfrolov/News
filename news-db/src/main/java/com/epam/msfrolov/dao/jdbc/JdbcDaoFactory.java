@@ -1,6 +1,8 @@
-package com.epam.msfrolov.dao;
+package com.epam.msfrolov.dao.jdbc;
 
-import com.epam.msfrolov.exception.AppException;
+import com.epam.msfrolov.dao.DaoFactory;
+import com.epam.msfrolov.dao.NewsDao;
+import com.epam.msfrolov.exception.DatabaseModuleException;
 import com.epam.msfrolov.pool.DBConnectionPool;
 
 import java.sql.Connection;
@@ -25,7 +27,7 @@ public class JdbcDaoFactory implements DaoFactory {
             if (connection != null)
                 connection.close();
         } catch (Exception e) {
-            throw new AppException("It failed to close or symbol not open", e);
+            throw new DatabaseModuleException("It failed to close or symbol not open", e);
         }
     }
 }

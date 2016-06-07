@@ -9,14 +9,18 @@ http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
 
     <package>com.epam.msfrolov</package>
 
-    <entity class="com.epam.msfrolov.model.News">
-        <table name="NEWS"/>
+    <entity class="com.epam.msfrolov.model.News" name="News" access="FIELD">
+        <named-query name="News.getAll">
+            <query>select n from News n</query>
+        </named-query>
         <attributes>
             <id name="id">
-                <generated-value strategy="SEQUENCE" generator="NEWS_SEQ"/>
+                <column name="ID"/>
+                <!--<generated-value strategy="SEQUENCE" generator="NEWS_SEQ"/>-->
             </id>
             <basic name="date">
                 <column name="DATE_D"/>
+                <temporal>DATE</temporal>
             </basic>
             <basic name="title">
                 <column name="TITLE"/>
@@ -32,6 +36,3 @@ http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
     </entity>
 
 </entity-mappings>
-        <!--<named-query name="News.getAll">-->
-        <!--<query>select n from NEWS n</query>-->
-        <!--</named-query>-->

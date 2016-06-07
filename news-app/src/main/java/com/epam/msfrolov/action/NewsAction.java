@@ -27,6 +27,7 @@ public class NewsAction extends DispatchAction {
 
     public ActionForward viewNews(ActionMapping mapping, ActionForm form, HttpServletRequest ignoredRequest, HttpServletResponse ignoredResponse) {
         NewsForm newsForm = (NewsForm) form;
+        LOG.debug("VIEW NEWS: ID = {}", newsForm.getIdNews());
         newsForm.setNews(service.findById(newsForm.getIdNews()));
         return mapping.findForward("view-news");
     }
