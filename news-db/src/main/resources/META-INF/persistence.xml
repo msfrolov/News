@@ -3,11 +3,7 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
 
-    <persistence-unit name="oracle">
-
-        <provider>org.hibernate.ejb.HibernatePersistence</provider>
-
-        <class>com.epam.msfrolov.model.News</class>
+    <persistence-unit name="oraclePU">
 
         <properties>
             <property name="hibernate.archive.autodetection" value="class"/>
@@ -22,34 +18,4 @@
 
     </persistence-unit>
 
-
 </persistence>
-
-        <!--<property name="hibernate.dialect" value="com.mysema.query.jpa.support.ExtendedOracleDialect"/>-->
-
-        <!--<persistence-unit name="pu" transaction-type="RESOURCE_LOCAL">-->
-        <!--&lt;!&ndash;<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>&ndash;&gt;-->
-        <!--&lt;!&ndash;<mapping-file>/META-INF/orm.xml</mapping-file>&ndash;&gt;-->
-
-        <!--<properties>-->
-
-        <!--<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>-->
-        <!--<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@//localhost:1521/XE"/>-->
-        <!--<property name="javax.persistence.jdbc.user" value="FROLOV"/>-->
-        <!--<property name="javax.persistence.jdbc.password" value="Qwer55355"/>-->
-
-        <!--<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>-->
-        <!--</properties>-->
-
-        <!--</persistence-unit>-->
-
-        <!--<property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver"/>-->
-        <!--<property name="hibernate.connection.username" value="FROLOV"/>-->
-        <!--<property name="hibernate.connection.password" value="Qwer55355"/>-->
-        <!--<property name="hibernate.connection.url" value="jdbc:oracle:thin:@//localhost:1521/XE"/>-->
-        <!--<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>-->
-
-        <!--<property name="hibernate.hbm2ddl.auto" value="create"/>-->
-        <!--<property name="hibernate.show_sql" value="true"/>-->
-        <!--<property name="hibernate.format_sql" value="true"/>-->
-        <!--<property name="current_session_context_class" value="thread"/>-->

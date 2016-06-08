@@ -9,7 +9,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import java.util.Collections;
 import java.util.List;
+
+import static java.util.Collections.EMPTY_MAP;
 
 public class JpaNewsDao implements NewsDao {
 
@@ -19,7 +22,7 @@ public class JpaNewsDao implements NewsDao {
 
     public JpaNewsDao() {
         LOG.debug("WTF121212");
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("oracle");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("oraclePU");
         LOG.debug("WTF131313");
         this.entityManager = entityManagerFactory.createEntityManager();
     }

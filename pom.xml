@@ -48,6 +48,8 @@
         <javax.servlet.jps-api.version>2.3.1</javax.servlet.jps-api.version>
         <tomcat-dbcp.version>9.0.0.M4</tomcat-dbcp.version>
 
+        <ojdbc.driver.version>12.1.0.1</ojdbc.driver.version>
+
         <!--<hibernate.core.version>5.2.0.Final</hibernate.core.version>-->
         <hibernate.core.version>5.1.0.Final</hibernate.core.version>
         <hibernate.entitymanager.version>5.1.0.Final</hibernate.entitymanager.version>
