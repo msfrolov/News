@@ -10,6 +10,10 @@ import java.sql.DriverManager;
 import java.util.Locale;
 import java.util.Properties;
 
+/**
+ * @deprecated Use Hibernate pool instead
+ */
+@Deprecated
 public class DBConnectionPool {
     private static final Logger log = LoggerFactory.getLogger(DBConnectionPool.class);
 
@@ -28,8 +32,7 @@ public class DBConnectionPool {
             String user = properties.getProperty("db.param.user");
             String password = properties.getProperty("db.param.password");
             Locale.setDefault(Locale.ENGLISH);
-            Connection connection = DriverManager.getConnection(url, user, password);
-            return connection;
+            return DriverManager.getConnection(url, user, password);
         } catch (Exception e) {
             throw new DatabaseModuleException("Failed to get connection", e);
         }

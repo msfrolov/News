@@ -5,10 +5,10 @@ import com.epam.msfrolov.model.News;
 
 import java.util.List;
 
-public class NewsServiceImplement implements NewsService {
+public class NewsServiceImpl implements NewsService {
     private final DaoFactory daoFactory;
 
-    public NewsServiceImplement() {
+    public NewsServiceImpl() {
         this.daoFactory = DaoFactory.newInstance();
     }
 

@@ -9,14 +9,12 @@
     <package>com.epam.msfrolov.model</package>
 
     <mapped-superclass class="BaseEntity">
-
         <attributes>
             <id name="id">
                 <column name="ID"/>
                 <generated-value strategy="SEQUENCE"/>
             </id>
         </attributes>
-
     </mapped-superclass>
 
     <entity class="News" name="News" access="FIELD">

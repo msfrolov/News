@@ -151,12 +151,12 @@ public class JdbcNewsDao implements NewsDao {
     }
 
     @Override
-    public int remove(int[] idArray) {
+    public int remove(int[] idsToRemove) {
         QueryDesigner query = new QueryDesigner();
         query.delete()
                 .from().table(News.class)
                 .where();
-        for (int i = 0; i < idArray.length; i++) {
+        for (int i = 0; i < idsToRemove.length; i++) {
             if (i != 0) {
                 query.or();
             }
@@ -164,8 +164,8 @@ public class JdbcNewsDao implements NewsDao {
         }
         log.debug("remove query: {}", query.toString());
         try (PreparedStatement stm = connection.prepareStatement(query.toString())) {
-            for (int i = 0; i < idArray.length; i++) {
-                stm.setInt(i + 1, idArray[i]);
+            for (int i = 0; i < idsToRemove.length; i++) {
+                stm.setInt(i + 1, idsToRemove[i]);
             }
             return stm.executeUpdate();
         } catch (Exception e) {

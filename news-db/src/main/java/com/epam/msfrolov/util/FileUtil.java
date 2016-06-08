@@ -9,7 +9,11 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Properties;
 
-public class FileUtil {
+public final class FileUtil {
+
+    private FileUtil() {
+        // private constructor
+    }
 
     public static Properties getProperties(String fileName) {
         try {

@@ -15,6 +15,10 @@ import java.util.stream.Collectors;
 
 import static com.epam.msfrolov.util.CommonsUtil.firstUpperCase;
 
+/**
+ * TODO: What does it stand for?
+ */
+@Deprecated
 public class ReflectUtil {
 
     private static Logger log = LoggerFactory.getLogger(ReflectUtil.class);
@@ -34,18 +38,20 @@ public class ReflectUtil {
         return null;
     }
 
-    public static Method getGetter(String methodName, Class clazz) {
+    public static Method getGetterForField(String name, Class clazz) {
         Method[] declaredMethods = clazz.getDeclaredMethods();
         for (Method method : declaredMethods) {
-            if ((method.getName().toUpperCase().contains(methodName.toUpperCase())) &&
-                    (method.getName().contains("get" + firstUpperCase(methodName))
-                            || method.getName().contains("is" + firstUpperCase(methodName)))) {
+            if ((method.getName().toUpperCase().contains(name.toUpperCase())) &&
+                    (method.getName().contains("get" + firstUpperCase(name))
+                            || method.getName().contains("is" + firstUpperCase(name)))) {
                 return method;
             }
         }
         if (clazz != BaseEntity.class) {
             clazz = clazz.getSuperclass();
-            if (clazz != Object.class) return getGetter(methodName, clazz);
+            if (clazz != Object.class) {
+                return getGetterForField(name, clazz);
+            }
         }
         return null;
     }

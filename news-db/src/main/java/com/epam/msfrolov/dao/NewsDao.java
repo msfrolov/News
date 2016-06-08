@@ -17,7 +17,7 @@ public interface NewsDao {
 
     boolean remove(int id);
 
-    int remove(int[] idArray);
+    int remove(int[] idsToRemove);
 
     News findById(int id);
 

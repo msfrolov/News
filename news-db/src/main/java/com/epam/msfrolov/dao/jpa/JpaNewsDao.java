@@ -9,10 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import java.util.Collections;
 import java.util.List;
-
-import static java.util.Collections.EMPTY_MAP;
 
 public class JpaNewsDao implements NewsDao {
 
@@ -21,21 +18,19 @@ public class JpaNewsDao implements NewsDao {
     private EntityManager entityManager;
 
     public JpaNewsDao() {
-        LOG.debug("WTF121212");
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("oraclePU");
-        LOG.debug("WTF131313");
         this.entityManager = entityManagerFactory.createEntityManager();
     }
 
     public List<News> getList() {
-        LOG.debug("WTF GET LIST ????");
         TypedQuery<News> namedQuery = entityManager.createNamedQuery("News.getAll", News.class);
         return namedQuery.getResultList();
     }
 
     public News findById(int id) {
-        LOG.debug("WTF FIND BY ID = {}", id);
-        return entityManager.find(News.class, id);
+        TypedQuery<News> getByIdParam = entityManager.createNamedQuery("News.getByIdParam", News.class);
+        getByIdParam.setParameter("id", id);
+        return getByIdParam.getSingleResult();
     }
 
     public News save(News news) {
@@ -49,7 +44,7 @@ public class JpaNewsDao implements NewsDao {
         return save(news);
     }
 
-    public int remove(int[] idArray) {
+    public int remove(int[] idsToRemove) {
 
         return 0;
     }

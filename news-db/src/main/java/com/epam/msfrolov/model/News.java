@@ -6,7 +6,17 @@ import java.util.Date;
 @Entity
 @Table(name = "NEWS")
 @Inheritance(strategy = InheritanceType.JOINED)
-@NamedQuery(name = "News.getAll", query = "select n from News n")
+@NamedQueries({
+        @NamedQuery(
+                name = "News.getAll",
+                query = "select n from News n"
+        ),
+        @NamedQuery(
+                name = "News.getByIdParam",
+                query = "select n from News n " +
+                        "where n.id = :id"
+        )
+})
 public class News extends BaseEntity {
 
     @Column(name = "DATE_D")
