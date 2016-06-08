@@ -1,7 +1,7 @@
 package com.epam.msfrolov.util;
 
 
-import com.epam.msfrolov.exception.AppException;
+import com.epam.msfrolov.exception.DatabaseModuleException;
 import com.epam.msfrolov.model.BaseEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -106,7 +106,7 @@ public class ReflectUtil {
             }
             return classes;
         } catch (Throwable e) {
-            throw new AppException("Throwable", e);
+            throw new DatabaseModuleException("Throwable", e);
         }
     }
 
@@ -117,9 +117,9 @@ public class ReflectUtil {
             else
                 return clazz.newInstance();
         } catch (InstantiationException e) {
-            throw new AppException("Can not return type of generic!", e);
+            throw new DatabaseModuleException("Can not return type of generic!", e);
         } catch (IllegalAccessException e) {
-            throw new AppException("No access to create an instance!", e);
+            throw new DatabaseModuleException("No access to create an instance!", e);
         }
     }
 
@@ -128,7 +128,7 @@ public class ReflectUtil {
             ParameterizedType genericType = (ParameterizedType) field.getGenericType();
             return (Class) genericType.getActualTypeArguments()[0];
         } catch (ClassCastException e) {
-            throw new AppException("Class cannot be cast!", e);
+            throw new DatabaseModuleException("Class cannot be cast!", e);
         }
 
 
@@ -152,9 +152,9 @@ public class ReflectUtil {
         try {
             return method.invoke(o, objects);
         } catch (IllegalAccessException e) {
-            throw new AppException("IllegalAccessException", e);
+            throw new DatabaseModuleException("IllegalAccessException", e);
         } catch (InvocationTargetException e) {
-            throw new AppException("InvocationTargetException", e);
+            throw new DatabaseModuleException("InvocationTargetException", e);
 
         }
     }
@@ -163,9 +163,9 @@ public class ReflectUtil {
         try {
             return method.invoke(o);
         } catch (IllegalAccessException e) {
-            throw new AppException("IllegalAccessException", e);
+            throw new DatabaseModuleException("IllegalAccessException", e);
         } catch (InvocationTargetException e) {
-            throw new AppException("InvocationTargetException", e);
+            throw new DatabaseModuleException("InvocationTargetException", e);
         }
     }
 

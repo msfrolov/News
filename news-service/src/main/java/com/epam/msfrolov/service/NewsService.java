@@ -1,42 +1,39 @@
 package com.epam.msfrolov.service;
 
-import com.epam.msfrolov.dao.DaoFactory;
+import com.epam.msfrolov.exception.DatabaseModuleException;
 import com.epam.msfrolov.model.News;
+import com.epam.msfrolov.util.FileUtil;
 
 import java.util.List;
 
-public class NewsService {
-    private final DaoFactory daoFactory;
+public interface NewsService {
 
-    public NewsService() {
-        this.daoFactory = DaoFactory.newInstance();
+    static NewsService newInstance() {
+        String serviceImplementName = FileUtil.getProperties("properties/service.properties").getProperty("service.name");
+        try {
+            return (NewsService) Class.forName(serviceImplementName).newInstance();
+        } catch (ClassNotFoundException e) {
+            throw new DatabaseModuleException("Class NewsService not found", e);
+        } catch (InstantiationException e) {
+            throw new DatabaseModuleException("Class NewsService factory not init", e);
+        } catch (IllegalAccessException e) {
+            throw new DatabaseModuleException("Illegal access on some extended NewsService not found", e);
+        } catch (Exception e) {
+            throw new DatabaseModuleException("Failed to get NewsService instance", e);
+        }
     }
 
-    public List<News> getList() {
-        return daoFactory.getDao().getList();
-    }
+    List<News> getList();
 
-    public News findById(int id) {
-        return daoFactory.getDao().findById(id);
-    }
+    News findById(int id);
 
-    public News save(News news) {
-        return daoFactory.getDao().save(news);
-    }
+    News save(News news);
 
-    public News update(News news) {
-        return daoFactory.getDao().update(news);
-    }
+    News update(News news);
 
-    public int remove(int[] idArray) {
-        return daoFactory.getDao().remove(idArray);
-    }
+    int remove(int[] idArray);
 
-    public boolean remove(int id) {
-        return daoFactory.getDao().remove(id);
-    }
+    boolean remove(int id);
 
-    public News remove(News news) {
-        return daoFactory.getDao().remove(news);
-    }
+    News remove(News news);
 }

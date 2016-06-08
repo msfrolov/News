@@ -1,6 +1,6 @@
 package com.epam.msfrolov.pool;
 
-import com.epam.msfrolov.exception.AppException;
+import com.epam.msfrolov.exception.DatabaseModuleException;
 import com.epam.msfrolov.util.FileUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +17,7 @@ public class DBConnectionPool {
         try {
             Class.forName("oracle.jdbc.OracleDriver");
         } catch (Exception e) {
-            throw new AppException("Failed init class jdbc", e);
+            throw new DatabaseModuleException("Failed init class jdbc", e);
         }
     }
 
@@ -31,7 +31,7 @@ public class DBConnectionPool {
             Connection connection = DriverManager.getConnection(url, user, password);
             return connection;
         } catch (Exception e) {
-            throw new AppException("Failed to get connection", e);
+            throw new DatabaseModuleException("Failed to get connection", e);
         }
     }
 }

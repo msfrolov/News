@@ -1,6 +1,6 @@
 package com.epam.msfrolov.dao;
 
-import com.epam.msfrolov.exception.AppException;
+import com.epam.msfrolov.exception.DatabaseModuleException;
 import com.epam.msfrolov.util.FileUtil;
 
 
@@ -11,13 +11,13 @@ public interface DaoFactory extends AutoCloseable {
         try {
             return (DaoFactory) Class.forName(daoFactoryImplementName).newInstance();
         } catch (ClassNotFoundException e) {
-            throw new AppException("Class DAO factory not found", e);
+            throw new DatabaseModuleException("Class DAO factory not found", e);
         } catch (InstantiationException e) {
-            throw new AppException("Class DAO factory not init", e);
+            throw new DatabaseModuleException("Class DAO factory not init", e);
         } catch (IllegalAccessException e) {
-            throw new AppException("Illegal access on some extended DAO factory not found", e);
+            throw new DatabaseModuleException("Illegal access on some extended DAO factory not found", e);
         } catch (Exception e) {
-            throw new AppException("Failed to get DAO factory instance", e);
+            throw new DatabaseModuleException("Failed to get DAO factory instance", e);
         }
     }
 

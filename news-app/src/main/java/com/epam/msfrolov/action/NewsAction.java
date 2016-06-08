@@ -17,7 +17,7 @@ import java.util.Date;
 public class NewsAction extends DispatchAction {
 
     private static final Logger LOG = LoggerFactory.getLogger(NewsAction.class);
-    private NewsService service = new NewsService();
+    private NewsService service = NewsService.newInstance();
 
     public ActionForward showNewsList(ActionMapping mapping, ActionForm form, HttpServletRequest ignoredRequest, HttpServletResponse ignoredResponse) {
         NewsForm newsForm = (NewsForm) form;
@@ -27,6 +27,7 @@ public class NewsAction extends DispatchAction {
 
     public ActionForward viewNews(ActionMapping mapping, ActionForm form, HttpServletRequest ignoredRequest, HttpServletResponse ignoredResponse) {
         NewsForm newsForm = (NewsForm) form;
+        LOG.debug("VIEW NEWS: ID = {}", newsForm.getIdNews());
         newsForm.setNews(service.findById(newsForm.getIdNews()));
         return mapping.findForward("view-news");
     }

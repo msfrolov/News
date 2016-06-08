@@ -1,7 +1,9 @@
-package com.epam.msfrolov.dao;
+package com.epam.msfrolov.dao.jdbc;
 
-import com.epam.msfrolov.exception.AppException;
+import com.epam.msfrolov.dao.NewsDao;
+import com.epam.msfrolov.exception.DatabaseModuleException;
 import com.epam.msfrolov.model.News;
+import com.epam.msfrolov.query.QueryDesigner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,10 +42,10 @@ public class JdbcNewsDao implements NewsDao {
                 news.setBrief(resultSet.getString("brief"));
                 news.setContent(resultSet.getString("content"));
             } else {
-                throw new AppException("The object News [id=" + id + "] is not found");
+                throw new DatabaseModuleException("The object News [id=" + id + "] is not found");
             }
         } catch (Exception e) {
-            throw new AppException("Failed to find objects from database", e);
+            throw new DatabaseModuleException("Failed to find objects from database", e);
         }
         return news;
     }
@@ -69,7 +71,7 @@ public class JdbcNewsDao implements NewsDao {
             }
             return newsList;
         } catch (Exception e) {
-            throw new AppException("Failed to process query for to get a list of news from database", e);
+            throw new DatabaseModuleException("Failed to process query for to get a list of news from database", e);
         }
     }
 
@@ -96,7 +98,7 @@ public class JdbcNewsDao implements NewsDao {
             news.setId(generatedKeys.getInt(1));
             return news;
         } catch (Exception e) {
-            throw new AppException("Failed to save object in database", e);
+            throw new DatabaseModuleException("Failed to save object in database", e);
         }
     }
 
@@ -120,7 +122,7 @@ public class JdbcNewsDao implements NewsDao {
             stm.executeUpdate();
             return news;
         } catch (Exception e) {
-            throw new AppException("Failed to process query for to update change object in database", e);
+            throw new DatabaseModuleException("Failed to process query for to update change object in database", e);
         }
     }
 
@@ -129,7 +131,7 @@ public class JdbcNewsDao implements NewsDao {
         if (remove(news.getId())) {
             return news;
         } else {
-            throw new AppException("Failed to delete object from database");
+            throw new DatabaseModuleException("Failed to delete object from database");
         }
     }
 
@@ -144,7 +146,7 @@ public class JdbcNewsDao implements NewsDao {
             stm.setInt(1, id);
             return stm.execute();
         } catch (Exception e) {
-            throw new AppException("Failed to remove object from database", e);
+            throw new DatabaseModuleException("Failed to remove object from database", e);
         }
     }
 
@@ -167,7 +169,7 @@ public class JdbcNewsDao implements NewsDao {
             }
             return stm.executeUpdate();
         } catch (Exception e) {
-            throw new AppException("Failed to delete objects from database", e);
+            throw new DatabaseModuleException("Failed to delete objects from database", e);
         }
     }
 
