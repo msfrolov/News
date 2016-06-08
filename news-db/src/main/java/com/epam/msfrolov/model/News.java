@@ -1,12 +1,24 @@
 package com.epam.msfrolov.model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "NEWS")
+@Inheritance(strategy = InheritanceType.JOINED)
+@NamedQuery(name = "News.getAll", query = "select n from News n")
 public class News extends BaseEntity {
 
+    @Column(name = "DATE_D")
     private Date date;
+
+    @Column(name = "TITLE")
     private String title;
+
+    @Column(name = "BRIEF")
     private String brief;
+
+    @Column(name = "CONTENT")
     private String content;
 
     public News() {

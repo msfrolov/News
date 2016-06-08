@@ -5,6 +5,8 @@
 
     <persistence-unit name="oraclePU">
 
+        <class>com.epam.msfrolov.model.News</class>
+
         <properties>
             <property name="hibernate.archive.autodetection" value="class"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
