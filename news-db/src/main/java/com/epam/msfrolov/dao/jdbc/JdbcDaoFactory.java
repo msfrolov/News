@@ -1,7 +1,7 @@
 package com.epam.msfrolov.dao.jdbc;
 
+import com.epam.msfrolov.dao.Dao;
 import com.epam.msfrolov.dao.DaoFactory;
-import com.epam.msfrolov.dao.NewsDao;
 import com.epam.msfrolov.exception.DatabaseModuleException;
 import com.epam.msfrolov.pool.DBConnectionPool;
 
@@ -17,7 +17,7 @@ public class JdbcDaoFactory implements DaoFactory {
 
 
     @Override
-    public NewsDao getDao() {
+    public Dao getDao() {
         return new JdbcNewsDao(connection);
     }
 

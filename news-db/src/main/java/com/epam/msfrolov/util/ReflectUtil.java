@@ -19,9 +19,12 @@ import static com.epam.msfrolov.util.CommonsUtil.firstUpperCase;
  * TODO: What does it stand for?
  */
 @Deprecated
-public class ReflectUtil {
+public final class ReflectUtil {
 
-    private static Logger log = LoggerFactory.getLogger(ReflectUtil.class);
+    private static Logger LOG = LoggerFactory.getLogger(ReflectUtil.class);
+
+    private ReflectUtil() {
+    }
 
     public static Method getSetter(String methodName, Class clazz) {
         Method[] declaredMethods = clazz.getDeclaredMethods();
@@ -88,7 +91,6 @@ public class ReflectUtil {
         fields = fields.stream().filter(field -> ((Class) field.getType()) != List.class).collect(Collectors.toList());
         StringBuilder sb = new StringBuilder();
         fields.forEach(s -> sb.append(s.getName()).append(' '));
-//        log.debug("all fields {} - {}", clazz.getSimpleName(), sb.toString());
         return fields;
     }
 

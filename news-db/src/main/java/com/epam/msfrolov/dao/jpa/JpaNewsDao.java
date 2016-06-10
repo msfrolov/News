@@ -1,6 +1,6 @@
 package com.epam.msfrolov.dao.jpa;
 
-import com.epam.msfrolov.dao.NewsDao;
+import com.epam.msfrolov.dao.Dao;
 import com.epam.msfrolov.model.News;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +11,7 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class JpaNewsDao implements NewsDao {
+public class JpaNewsDao implements Dao {
 
     private static final Logger LOG = LoggerFactory.getLogger(JpaNewsDao.class);
 

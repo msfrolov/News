@@ -21,6 +21,6 @@ public interface DaoFactory extends AutoCloseable {
         }
     }
 
-    NewsDao getDao();
+    Dao getDao();
 
 }

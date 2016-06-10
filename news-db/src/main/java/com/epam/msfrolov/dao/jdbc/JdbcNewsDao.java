@@ -1,6 +1,6 @@
 package com.epam.msfrolov.dao.jdbc;
 
-import com.epam.msfrolov.dao.NewsDao;
+import com.epam.msfrolov.dao.Dao;
 import com.epam.msfrolov.exception.DatabaseModuleException;
 import com.epam.msfrolov.model.News;
 import com.epam.msfrolov.query.QueryDesigner;
@@ -14,7 +14,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JdbcNewsDao implements NewsDao {
+public class JdbcNewsDao implements Dao {
 
     private static final Logger log = LoggerFactory.getLogger(JdbcNewsDao.class);
 
