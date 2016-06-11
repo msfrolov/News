@@ -12,7 +12,7 @@
     <modules>
         <module>news-db</module>
         <module>news-service</module>
-        <module>news-app</module>
+        <module>news-webapp</module>
     </modules>
 
     <name>NEWS Project</name>
