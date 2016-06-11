@@ -5,7 +5,7 @@
     <display-name>News</display-name>
     <filter>
         <filter-name>0CharacterEncodingFilter</filter-name>
-        <filter-class>com.epam.msfrolov.news.filter.CharEncodingFilter</filter-class>
+        <filter-class>com.epam.msfrolov.filter.CharEncodingFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>0CharacterEncodingFilter</filter-name>

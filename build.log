@@ -1,0 +1,133 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] NEWS Project
+[INFO] NEWS Project :: Database Module
+[INFO] NEWS Project :: Services Module
+[INFO] NEWS Project :: Web Application
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building NEWS Project 2.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ News ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ News ---
+[INFO] Installing C:\Users\Maxim_Frolov\IdeaProjects\News\pom.xml to C:\Users\Maxim_Frolov\.m2\repository\com\epam\msfrolov\News\2.0-SNAPSHOT\News-2.0-SNAPSHOT.pom
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building NEWS Project :: Database Module 2.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ news-db ---
+[INFO] Deleting C:\Users\Maxim_Frolov\IdeaProjects\News\news-db\target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ news-db ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.5.1:compile (default-compile) @ news-db ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 14 source files to C:\Users\Maxim_Frolov\IdeaProjects\News\news-db\target\classes
+[WARNING] /C:/Users/Maxim_Frolov/IdeaProjects/News/news-db/src/main/java/com/epam/msfrolov/util/ReflectUtil.java:[103,46] sun.misc.Service is internal proprietary API and may be removed in a future release
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ news-db ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\Users\Maxim_Frolov\IdeaProjects\News\news-db\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.5.1:testCompile (default-testCompile) @ news-db ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ news-db ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ news-db ---
+[INFO] Building jar: C:\Users\Maxim_Frolov\IdeaProjects\News\news-db\target\News-2.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ news-db ---
+[INFO] Installing C:\Users\Maxim_Frolov\IdeaProjects\News\news-db\target\News-2.0-SNAPSHOT.jar to C:\Users\Maxim_Frolov\.m2\repository\com\epam\msfrolov\news-db\2.0-SNAPSHOT\news-db-2.0-SNAPSHOT.jar
+[INFO] Installing C:\Users\Maxim_Frolov\IdeaProjects\News\news-db\pom.xml to C:\Users\Maxim_Frolov\.m2\repository\com\epam\msfrolov\news-db\2.0-SNAPSHOT\news-db-2.0-SNAPSHOT.pom
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building NEWS Project :: Services Module 2.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ news-service ---
+[INFO] Deleting C:\Users\Maxim_Frolov\IdeaProjects\News\news-service\target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ news-service ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.5.1:compile (default-compile) @ news-service ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to C:\Users\Maxim_Frolov\IdeaProjects\News\news-service\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ news-service ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\Users\Maxim_Frolov\IdeaProjects\News\news-service\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.5.1:testCompile (default-testCompile) @ news-service ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ news-service ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ news-service ---
+[INFO] Building jar: C:\Users\Maxim_Frolov\IdeaProjects\News\news-service\target\News-2.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ news-service ---
+[INFO] Installing C:\Users\Maxim_Frolov\IdeaProjects\News\news-service\target\News-2.0-SNAPSHOT.jar to C:\Users\Maxim_Frolov\.m2\repository\com\epam\msfrolov\news-service\2.0-SNAPSHOT\news-service-2.0-SNAPSHOT.jar
+[INFO] Installing C:\Users\Maxim_Frolov\IdeaProjects\News\news-service\pom.xml to C:\Users\Maxim_Frolov\.m2\repository\com\epam\msfrolov\news-service\2.0-SNAPSHOT\news-service-2.0-SNAPSHOT.pom
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building NEWS Project :: Web Application 2.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ news-webapp ---
+[INFO] Deleting C:\Users\Maxim_Frolov\IdeaProjects\News\news-app\target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ news-webapp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.5.1:compile (default-compile) @ news-webapp ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 5 source files to C:\Users\Maxim_Frolov\IdeaProjects\News\news-app\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ news-webapp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\Users\Maxim_Frolov\IdeaProjects\News\news-app\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.5.1:testCompile (default-testCompile) @ news-webapp ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ news-webapp ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-war-plugin:2.6:war (default-war) @ news-webapp ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [news-webapp] in [C:\Users\Maxim_Frolov\IdeaProjects\News\news-app\target\news]
+[INFO] Processing war project
+[INFO] Copying webapp resources [C:\Users\Maxim_Frolov\IdeaProjects\News\news-app\src\main\webapp]
+[INFO] Webapp assembled in [230 msecs]
+[INFO] Building war: C:\Users\Maxim_Frolov\IdeaProjects\News\news-app\target\news.war
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ news-webapp ---
+[INFO] Installing C:\Users\Maxim_Frolov\IdeaProjects\News\news-app\target\news.war to C:\Users\Maxim_Frolov\.m2\repository\com\epam\msfrolov\news-webapp\2.0-SNAPSHOT\news-webapp-2.0-SNAPSHOT.war
+[INFO] Installing C:\Users\Maxim_Frolov\IdeaProjects\News\news-app\pom.xml to C:\Users\Maxim_Frolov\.m2\repository\com\epam\msfrolov\news-webapp\2.0-SNAPSHOT\news-webapp-2.0-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] NEWS Project ....................................... SUCCESS [  0.446 s]
+[INFO] NEWS Project :: Database Module .................... SUCCESS [  2.928 s]
+[INFO] NEWS Project :: Services Module .................... SUCCESS [  0.283 s]
+[INFO] NEWS Project :: Web Application .................... SUCCESS [  2.141 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 5.931 s
+[INFO] Finished at: 2016-06-07T11:34:43+06:00
+[INFO] Final Memory: 25M/272M
+[INFO] ------------------------------------------------------------------------

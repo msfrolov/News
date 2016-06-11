@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+    <form-beans>
+        <form-bean name="newsForm" type="com.epam.msfrolov.form.NewsForm"/>
+    </form-beans>
+    <action-mappings>
+        <action path="/news"
+                type="com.epam.msfrolov.action.NewsAction"
+                parameter="method"
+                name="newsForm">
+            <forward name="welcome" path="page.welcome"/>
+            <forward name="show-news-list" path="page.newsList"/>
+            <forward name="add-news" path="page.addNews"/>
+            <forward name="view-news" path="page.viewNews"/>
+            <forward name="edit-news" path="page.editNews"/>
+            <forward name="delete" path="/news.do?method=showNewsList" redirect="true"/>
+        </action>
+        <action path="/locale"
+                type="com.epam.msfrolov.action.LocaleAction"
+                parameter="method"
+                name="newsForm">
+            <forward name="success" path="page.newsList"/>
+        </action>
+    </action-mappings>
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+    <message-resources parameter="properties.messages"/>
+    <plug-in className="org.apache.struts.tiles.TilesPlugin">
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml"/>
+        <set-property property="moduleAware" value="true"/>
+    </plug-in>
+</struts-config>
+

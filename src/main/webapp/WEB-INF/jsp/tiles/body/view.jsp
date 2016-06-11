@@ -23,23 +23,23 @@
         height: auto;
     }
 </style>
-<h:form action="/news?method=editNews&idNews=${newsForm.news.id}">
+<h:form action="/news?method=editNews&idNews=${newsForm.id}">
     <h2><b:message key="body.title.view"/></h2>
     <div class="c001" style="text-align: left;">
         <div class="c002"><b:message key="body.field.title"/>:</div>
-        <div class="c003"><b:write name="newsForm" property="news.title"/></div>
+        <div class="c003"><b:write name="newsForm" property="title"/></div>
     </div>
     <div class="c001" style="text-align: left;">
         <div class="c002"><b:message key="body.field.date"/>:</div>
-        <div class="c003"><b:write name="newsForm" property="news.dateFormat"/></div>
+        <div class="c003"><b:write name="newsForm" property="date"/></div>
     </div>
     <div class="c001" style="text-align: left;">
         <div class="c002"><b:message key="body.field.brief"/>:</div>
-        <div class="c004"><b:write name="newsForm" property="news.brief"/></div>
+        <div class="c004"><b:write name="newsForm" property="brief"/></div>
     </div>
     <div class="c001" style="text-align: left;">
         <div class="c002"><b:message key="body.field.content"/>:</div>
-        <div class="c004"><b:write name="newsForm" property="news.content"/></div>
+        <div class="c004"><b:write name="newsForm" property="content"/></div>
     </div>
     <b:define id="news" name="newsForm"/>
     <h:submit><b:message key="body.button.edit"/></h:submit>
