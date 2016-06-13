@@ -4,8 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
 
-    <!--<bean id="news" class="com.epam.msfrolov.model.News" scope="prototype"/>-->
+    <bean id="news" class="com.epam.msfrolov.model.News" scope="prototype"/>
 
-    <!--<bean id="dao" class="com.epam.msfrolov.dao.JpaNewsDao"/>-->
+    <bean id="dao" class="com.epam.msfrolov.dao.JpaNewsDao"/>
 
 </beans>

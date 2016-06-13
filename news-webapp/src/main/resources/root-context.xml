@@ -6,6 +6,6 @@ http://www.springframework.org/schema/beans/spring-beans-4.1.xsd http://www.spri
 
     <context:annotation-config/>
 
-    <!--<import resource="webapp-context.xml"/>-->
+    <import resource="webapp-context.xml"/>
 
 </beans>
