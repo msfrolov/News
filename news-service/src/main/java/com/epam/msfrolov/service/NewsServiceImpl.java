@@ -2,10 +2,19 @@ package com.epam.msfrolov.service;
 
 import com.epam.msfrolov.dao.Dao;
 import com.epam.msfrolov.model.News;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.List;
 
 public class NewsServiceImpl implements NewsService {
+
+    private static final Logger LOG = LoggerFactory.getLogger(NewsServiceImpl.class);
+
+    @Autowired
     private Dao dao;
 
     public NewsServiceImpl() {
@@ -14,6 +23,16 @@ public class NewsServiceImpl implements NewsService {
 
     public NewsServiceImpl(Dao dao) {
         this.dao = dao;
+    }
+
+    @PostConstruct
+    private void postConstruct() {
+        LOG.debug("Construct Bean:service");
+    }
+
+    @PreDestroy
+    private void preDestroy() {
+        LOG.debug("Destroy Bean:service");
     }
 
     public Dao getDaoFactory() {

@@ -3,15 +3,15 @@ package com.epam.msfrolov.dao;
 import com.epam.msfrolov.model.News;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-@Repository
 public class JpaNewsDao implements Dao {
 
     private static final Logger LOG = LoggerFactory.getLogger(JpaNewsDao.class);
@@ -21,6 +21,16 @@ public class JpaNewsDao implements Dao {
     public JpaNewsDao() {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("oraclePU");
         this.entityManager = entityManagerFactory.createEntityManager();
+    }
+
+    @PostConstruct
+    private void postConstruct() {
+        LOG.debug("Construct Bean:service");
+    }
+
+    @PreDestroy
+    private void preDestroy() {
+        LOG.debug("Destroy Bean:service");
     }
 
     public List<News> getList() {
