@@ -1,6 +1,5 @@
-package com.epam.msfrolov.dao.jdbc;
+package com.epam.msfrolov.dao;
 
-import com.epam.msfrolov.dao.Dao;
 import com.epam.msfrolov.exception.DatabaseModuleException;
 import com.epam.msfrolov.model.News;
 import com.epam.msfrolov.query.QueryDesigner;

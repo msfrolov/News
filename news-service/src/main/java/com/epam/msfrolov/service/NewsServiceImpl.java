@@ -1,42 +1,54 @@
 package com.epam.msfrolov.service;
 
-import com.epam.msfrolov.dao.DaoFactory;
+import com.epam.msfrolov.dao.Dao;
 import com.epam.msfrolov.model.News;
 
 import java.util.List;
 
 public class NewsServiceImpl implements NewsService {
-    private final DaoFactory daoFactory;
+    private Dao dao;
 
     public NewsServiceImpl() {
-        this.daoFactory = DaoFactory.newInstance();
+
+    }
+
+    public NewsServiceImpl(Dao dao) {
+        this.dao = dao;
+    }
+
+    public Dao getDaoFactory() {
+        return dao;
+    }
+
+    public void setDaoFactory(Dao dao) {
+        this.dao = dao;
     }
 
     public List<News> getList() {
-        return daoFactory.getDao().getList();
+        return dao.getList();
     }
 
     public News findById(int id) {
-        return daoFactory.getDao().findById(id);
+        return dao.findById(id);
     }
 
     public News save(News news) {
-        return daoFactory.getDao().save(news);
+        return dao.save(news);
     }
 
     public News update(News news) {
-        return daoFactory.getDao().update(news);
+        return dao.update(news);
     }
 
     public int remove(int[] idArray) {
-        return daoFactory.getDao().remove(idArray);
+        return dao.remove(idArray);
     }
 
     public boolean remove(int id) {
-        return daoFactory.getDao().remove(id);
+        return dao.remove(id);
     }
 
     public News remove(News news) {
-        return daoFactory.getDao().remove(news);
+        return dao.remove(news);
     }
 }

@@ -3,6 +3,7 @@ package com.epam.msfrolov.action;
 import com.epam.msfrolov.form.NewsForm;
 import com.epam.msfrolov.model.News;
 import com.epam.msfrolov.service.NewsService;
+import com.epam.msfrolov.spring.BeanFactory;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -17,7 +18,8 @@ import java.util.Date;
 public class NewsAction extends DispatchAction {
 
     private static final Logger LOG = LoggerFactory.getLogger(NewsAction.class);
-    private NewsService service = NewsService.newInstance();
+
+    private NewsService service = BeanFactory.getBean("service", NewsService.class);
 
     public ActionForward showNewsList(ActionMapping mapping, ActionForm form, HttpServletRequest ignoredRequest, HttpServletResponse ignoredResponse) {
         NewsForm newsForm = (NewsForm) form;
@@ -34,7 +36,7 @@ public class NewsAction extends DispatchAction {
 
     public ActionForward addNews(ActionMapping mapping, ActionForm form, HttpServletRequest ignoredRequest, HttpServletResponse ignoredResponse) {
         NewsForm newsForm = (NewsForm) form;
-        News news = new News();
+        News news = BeanFactory.getBean("news", News.class);
         news.setDate(new Date());
         newsForm.setNews(news);
         return mapping.findForward("add-news");
