@@ -2,13 +2,11 @@ package com.epam.msfrolov.spring;
 
 import com.epam.msfrolov.service.NewsService;
 import com.epam.msfrolov.service.NewsServiceImpl;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Description;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.*;
 
 @Configuration
 @Import(DbConfiguration.class)
+@ComponentScan(basePackages = {"com.epam.msfrolov.service"})
 public class ServiceConfiguration {
 
     @Bean(name = {"service", "newsService"})

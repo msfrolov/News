@@ -3,6 +3,7 @@ package com.epam.msfrolov.dao;
 import com.epam.msfrolov.model.News;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -12,6 +13,7 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+@Repository
 public class JpaNewsDao implements Dao {
 
     private static final Logger LOG = LoggerFactory.getLogger(JpaNewsDao.class);

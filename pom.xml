@@ -37,7 +37,9 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <spring.version>4.1.6.RELEASE</spring.version>
+        <spring.context.version>4.1.6.RELEASE</spring.context.version>
+        <spring.mvc.version>4.1.6.RELEASE</spring.mvc.version>
+        <spring.data.version>1.3.4.RELEASE</spring.data.version>
 
         <struts.version>1.3.10</struts.version>
 
@@ -85,13 +87,23 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
+            <version>${spring.context.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>commons-logging</groupId>
                     <artifactId>commons-logging</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.mvc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring.data.version}</version>
         </dependency>
 
         <!--Logger-->
