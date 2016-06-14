@@ -5,7 +5,7 @@ import com.epam.msfrolov.model.News;
 
 import java.util.List;
 
-public interface Dao {
+public interface NewsDao {
 
     List<News> getList();
 
@@ -13,11 +13,11 @@ public interface Dao {
 
     News save(News news);
 
-    News remove(News news);
+    void remove(News news);
 
-    boolean remove(int id);
+    void remove(int id);
 
-    int remove(int[] idsToRemove);
+    void remove(int[] idsToRemove);
 
     News findById(int id);
 

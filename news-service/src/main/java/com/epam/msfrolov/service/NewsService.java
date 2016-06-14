@@ -14,9 +14,9 @@ public interface NewsService {
 
     News update(News news);
 
-    int remove(int[] idArray);
+    void remove(int[] idArray);
 
-    boolean remove(int id);
+    void remove(int id);
 
-    News remove(News news);
+    void remove(News news);
 }

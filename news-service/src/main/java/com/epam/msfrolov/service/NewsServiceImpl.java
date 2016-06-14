@@ -1,6 +1,6 @@
 package com.epam.msfrolov.service;
 
-import com.epam.msfrolov.dao.Dao;
+import com.epam.msfrolov.dao.NewsDao;
 import com.epam.msfrolov.model.News;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,14 +17,14 @@ public class NewsServiceImpl implements NewsService {
     private static final Logger LOG = LoggerFactory.getLogger(NewsServiceImpl.class);
 
     @Autowired
-    private Dao dao;
+    private NewsDao newsDao;
 
     public NewsServiceImpl() {
 
     }
 
-    public NewsServiceImpl(Dao dao) {
-        this.dao = dao;
+    public NewsServiceImpl(NewsDao newsDao) {
+        this.newsDao = newsDao;
     }
 
     @PostConstruct
@@ -37,39 +37,39 @@ public class NewsServiceImpl implements NewsService {
         LOG.debug("Destroy Bean:service");
     }
 
-    public Dao getDaoFactory() {
-        return dao;
+    public NewsDao getDaoFactory() {
+        return newsDao;
     }
 
-    public void setDaoFactory(Dao dao) {
-        this.dao = dao;
+    public void setDaoFactory(NewsDao newsDao) {
+        this.newsDao = newsDao;
     }
 
     public List<News> getList() {
-        return dao.getList();
+        return newsDao.getList();
     }
 
     public News findById(int id) {
-        return dao.findById(id);
+        return newsDao.findById(id);
     }
 
     public News save(News news) {
-        return dao.save(news);
+        return newsDao.save(news);
     }
 
     public News update(News news) {
-        return dao.update(news);
+        return newsDao.update(news);
     }
 
-    public int remove(int[] idArray) {
-        return dao.remove(idArray);
+    public void remove(int[] idArray) {
+        newsDao.remove(idArray);
     }
 
-    public boolean remove(int id) {
-        return dao.remove(id);
+    public void remove(int id) {
+        newsDao.remove(id);
     }
 
-    public News remove(News news) {
-        return dao.remove(news);
+    public void remove(News news) {
+        newsDao.remove(news);
     }
 }

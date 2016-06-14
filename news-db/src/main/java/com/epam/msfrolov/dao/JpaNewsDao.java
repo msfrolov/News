@@ -14,7 +14,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
-public class JpaNewsDao implements Dao {
+public class JpaNewsDao implements NewsDao {
 
     private static final Logger LOG = LoggerFactory.getLogger(JpaNewsDao.class);
 
@@ -57,28 +57,23 @@ public class JpaNewsDao implements Dao {
         return save(news);
     }
 
-    public int remove(int[] idsToRemove) {
+    public void remove(int[] idsToRemove) {
         entityManager.getTransaction().begin();
         for (int i : idsToRemove) {
             entityManager.remove(findById(i));
         }
         entityManager.getTransaction().commit();
-        return 0;
     }
 
-    public boolean remove(int id) {
+    public void remove(int id) {
         entityManager.getTransaction().begin();
         entityManager.remove(findById(id));
         entityManager.getTransaction().commit();
-        //// TODO: 6/6/2016 ?
-        return true;
     }
 
-    public News remove(News news) {
+    public void remove(News news) {
         entityManager.getTransaction().begin();
         entityManager.remove(news);
         entityManager.getTransaction().commit();
-        //// TODO: 6/6/2016 ?
-        return news;
     }
 }

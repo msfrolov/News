@@ -13,7 +13,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JdbcNewsDao implements Dao {
+public class JdbcNewsDao implements NewsDao {
 
     private static final Logger log = LoggerFactory.getLogger(JdbcNewsDao.class);
 
@@ -126,16 +126,12 @@ public class JdbcNewsDao implements Dao {
     }
 
     @Override
-    public News remove(News news) {
-        if (remove(news.getId())) {
-            return news;
-        } else {
-            throw new DatabaseModuleException("Failed to delete object from database");
-        }
+    public void remove(News news) {
+        remove(news.getId());
     }
 
     @Override
-    public boolean remove(int id) {
+    public void remove(int id) {
         QueryDesigner query = new QueryDesigner();
         query.delete()
                 .from().table(News.class)
@@ -143,14 +139,14 @@ public class JdbcNewsDao implements Dao {
         log.debug("Query remove: {}", query.toString());
         try (PreparedStatement stm = connection.prepareStatement(query.toString())) {
             stm.setInt(1, id);
-            return stm.execute();
+            stm.execute();
         } catch (Exception e) {
             throw new DatabaseModuleException("Failed to remove object from database", e);
         }
     }
 
     @Override
-    public int remove(int[] idsToRemove) {
+    public void remove(int[] idsToRemove) {
         QueryDesigner query = new QueryDesigner();
         query.delete()
                 .from().table(News.class)
@@ -166,7 +162,7 @@ public class JdbcNewsDao implements Dao {
             for (int i = 0; i < idsToRemove.length; i++) {
                 stm.setInt(i + 1, idsToRemove[i]);
             }
-            return stm.executeUpdate();
+            stm.executeUpdate();
         } catch (Exception e) {
             throw new DatabaseModuleException("Failed to delete objects from database", e);
         }
