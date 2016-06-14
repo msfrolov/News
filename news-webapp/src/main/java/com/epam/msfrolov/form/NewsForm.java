@@ -5,11 +5,13 @@ import com.epam.msfrolov.model.News;
 import org.apache.struts.action.ActionForm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+@Component
 public class NewsForm extends ActionForm {
 
     private final static Logger log = LoggerFactory.getLogger(NewsForm.class);
@@ -143,7 +145,7 @@ public class NewsForm extends ActionForm {
         String idString = "";
         try {
             idString = String.valueOf(integer);
-            if (idString == null) {
+            if ("null".equals(idString)) {
                 idString = "";
             }
         } catch (Exception ignored) {
@@ -159,6 +161,5 @@ public class NewsForm extends ActionForm {
         }
         return integer;
     }
-
 
 }

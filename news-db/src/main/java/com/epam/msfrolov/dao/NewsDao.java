@@ -5,6 +5,10 @@ import com.epam.msfrolov.model.News;
 
 import java.util.List;
 
+/**
+ * @deprecated use 'repository' package instead.
+ */
+@Deprecated
 public interface NewsDao {
 
     List<News> getList();

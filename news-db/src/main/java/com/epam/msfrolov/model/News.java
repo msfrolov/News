@@ -3,21 +3,29 @@ package com.epam.msfrolov.model;
 import javax.persistence.*;
 import java.util.Date;
 
+
+//@Table(name = "NEWS")
+//@Inheritance(strategy = InheritanceType.JOINED)
+//@NamedQueries({
+//        @NamedQuery(
+//                name = "News.getAll",
+//                query = "select n from News n"
+//        ),
+//        @NamedQuery(
+//                name = "News.getByIdParam",
+//                query = "select n from News n " +
+//                        "where n.id = :id"
+//        )
+//})
+
 @Entity
 @Table(name = "NEWS")
-@Inheritance(strategy = InheritanceType.JOINED)
-@NamedQueries({
-        @NamedQuery(
-                name = "News.getAll",
-                query = "select n from News n"
-        ),
-        @NamedQuery(
-                name = "News.getByIdParam",
-                query = "select n from News n " +
-                        "where n.id = :id"
-        )
-})
-public class News extends BaseEntity {
+public class News {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Integer id;
 
     @Column(name = "DATE_D")
     private Date date;
@@ -32,6 +40,14 @@ public class News extends BaseEntity {
     private String content;
 
     public News() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Date getDate() {

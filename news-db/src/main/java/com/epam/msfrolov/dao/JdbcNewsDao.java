@@ -13,13 +13,14 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class JdbcNewsDao implements NewsDao {
 
     private static final Logger log = LoggerFactory.getLogger(JdbcNewsDao.class);
 
     private final Connection connection;
 
-    JdbcNewsDao(Connection connection) {
+    public JdbcNewsDao(Connection connection) {
         this.connection = connection;
     }
 

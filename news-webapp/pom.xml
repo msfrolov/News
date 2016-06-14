@@ -56,6 +56,13 @@
             <scope>provided</scope>
         </dependency>
 
+        <!--Spring MVC-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
         <!--Struts-->
         <dependency>
             <groupId>org.apache.struts</groupId>

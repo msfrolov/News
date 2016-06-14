@@ -13,7 +13,8 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-@Repository
+@Deprecated
+@Repository("jpa")
 public class JpaNewsDao implements NewsDao {
 
     private static final Logger LOG = LoggerFactory.getLogger(JpaNewsDao.class);
