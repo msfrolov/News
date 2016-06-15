@@ -1,6 +1,5 @@
 package com.epam.msfrolov.model;
 
-import javax.persistence.*;
 import java.util.Date;
 
 
@@ -18,25 +17,25 @@ import java.util.Date;
 //        )
 //})
 
-@Entity
-@Table(name = "NEWS")
+//@Entity
+//@Table(name = "NEWS")
 public class News {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    //    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "DATE_D")
+    //    @Column(name = "DATE_D")
     private Date date;
 
-    @Column(name = "TITLE")
+    //    @Column(name = "TITLE")
     private String title;
 
-    @Column(name = "BRIEF")
+    //    @Column(name = "BRIEF")
     private String brief;
 
-    @Column(name = "CONTENT")
+    //    @Column(name = "CONTENT")
     private String content;
 
     public News() {
@@ -55,6 +54,7 @@ public class News {
     }
 
     public void setDate(Date date) {
+
         this.date = date;
     }
 

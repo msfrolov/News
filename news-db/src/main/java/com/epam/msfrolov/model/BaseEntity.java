@@ -1,14 +1,13 @@
 package com.epam.msfrolov.model;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
-@MappedSuperclass
+//@MappedSuperclass
 public class BaseEntity implements Serializable, Cloneable {
 
-    @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    //    @Id
+//    @Column(name = "ID")
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
     public BaseEntity() {
