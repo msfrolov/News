@@ -1,6 +1,6 @@
 package com.epam.msfrolov.form;
 
-import com.epam.msfrolov.exception.DatabaseModuleException;
+import com.epam.msfrolov.exception.DbModuleException;
 import com.epam.msfrolov.model.News;
 import org.apache.struts.action.ActionForm;
 import org.slf4j.Logger;
@@ -119,7 +119,7 @@ public class NewsForm extends ActionForm {
             try {
                 dateString = simpleDateFormat.format(date);
             } catch (Exception e) {
-                throw new DatabaseModuleException("Failed to format date [" + date + "] for field", e);
+                throw new DbModuleException("Failed to format date [" + date + "] for field", e);
             }
         }
         return dateString;
@@ -136,7 +136,7 @@ public class NewsForm extends ActionForm {
             isValid = false;
         }
         if (!isValid) {
-            throw new DatabaseModuleException("Failed to parse date [" + dateString + "] from field");
+            throw new DbModuleException("Failed to parse date [" + dateString + "] from field");
         }
         return parsedDate;
     }

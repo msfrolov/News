@@ -3,12 +3,13 @@ package com.epam.msfrolov.spring;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class BeanFactory {
 
     //    private static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("root-context.xml");
-    private static ApplicationContext applicationContext = new AnnotationConfigApplicationContext(WebappConfiguration.class);
+//    private static ApplicationContext applicationContext = new AnnotationConfigApplicationContext(WebappConfiguration.class);
+    private static ApplicationContext applicationContext = null;
+
 
     public static <T> T getBean(String s, Class<T> clazz) throws BeansException {
         return applicationContext.getBean(s, clazz);

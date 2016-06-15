@@ -10,19 +10,17 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
-@Component
+//@Component
 public class NewsAction extends DispatchAction {
 
     private static final Logger LOG = LoggerFactory.getLogger(NewsAction.class);
 
-    @Autowired
+    //    @Autowired
     private NewsService service;
 
     public NewsAction() {

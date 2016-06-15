@@ -2,17 +2,15 @@ package com.epam.msfrolov.service;
 
 import com.epam.msfrolov.model.News;
 import com.epam.msfrolov.repository.NewsRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@Component
+//@Component
 public class SpringDataNewsService implements NewsService {
 
-    @Autowired
+    //    @Autowired
     private NewsRepository newsRepository;
 
     public SpringDataNewsService() {

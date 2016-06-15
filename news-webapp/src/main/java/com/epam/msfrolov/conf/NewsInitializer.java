@@ -2,6 +2,9 @@ package com.epam.msfrolov.conf;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+/**
+ * Class for Spring MVC configuration initialization
+ */
 public class NewsInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
