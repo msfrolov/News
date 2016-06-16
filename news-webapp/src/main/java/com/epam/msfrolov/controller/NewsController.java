@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/")
 public class NewsController {
 
+    //Hello World
+
     @RequestMapping(method = RequestMethod.GET)
     public String sayHello(ModelMap model) {
         model.addAttribute("greeting", "Hello World from Spring 4 MVC");
@@ -24,4 +26,20 @@ public class NewsController {
         model.addAttribute("greeting", "Hello World Again, from Spring 4 MVC");
         return "welcome";
     }
+
+    //News
+
+    @RequestMapping(value = "/view-list", method = RequestMethod.GET)
+    public String viewList(ModelMap model) {
+        model.addAttribute("greeting", "Hello World Again, from Spring 4 MVC");
+        return "view-list";
+    }
+
+    @RequestMapping(value = "/view-add", method = RequestMethod.GET)
+    public String viewAdd(ModelMap model) {
+        model.addAttribute("greeting", "Hello World Again, from Spring 4 MVC");
+        return "view-add";
+    }
+
+
 }
