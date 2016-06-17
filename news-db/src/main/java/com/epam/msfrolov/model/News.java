@@ -1,5 +1,6 @@
 package com.epam.msfrolov.model;
 
+
 import java.util.Date;
 
 
@@ -19,6 +20,9 @@ import java.util.Date;
 
 //@Entity
 //@Table(name = "NEWS")
+
+
+//@Entity(name = "NEWS")
 public class News {
 
     //    @Id

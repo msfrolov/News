@@ -1,21 +1,29 @@
-package com.epam.msfrolov.conf;
+package com.epam.msfrolov.configuration;
 
+import com.epam.msfrolov.spring.WebappConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 /**
  * Class for Spring MVC configuration
  */
+
+
 @Configuration
+@ComponentScan
 @EnableWebMvc
-@ComponentScan(basePackages = "com.epam.msfrolov")
-public class NewsConfiguration {
+@EnableJpaRepositories
+@Import({WebappConfiguration.class})
+public class NewsConfiguration extends WebMvcConfigurerAdapter {
 
     private static final String VIEW_PACKAGE = "/WEB-INF/view/";
     private static final String VIEW_SUFFIX = ".jsp";
@@ -45,5 +53,4 @@ public class NewsConfiguration {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController(URL_PATH).setViewName(WELCOME_PAGE_NAME);
     }
-
 }

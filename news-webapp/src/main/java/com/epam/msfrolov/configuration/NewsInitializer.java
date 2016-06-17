@@ -1,4 +1,4 @@
-package com.epam.msfrolov.conf;
+package com.epam.msfrolov.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

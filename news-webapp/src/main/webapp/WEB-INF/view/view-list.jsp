@@ -12,5 +12,6 @@
 </head>
 <body>
 View List
+${newsList}
 </body>
 </html>
