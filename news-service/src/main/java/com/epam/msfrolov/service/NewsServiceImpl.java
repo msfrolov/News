@@ -3,23 +3,19 @@ package com.epam.msfrolov.service;
 import com.epam.msfrolov.model.News;
 import com.epam.msfrolov.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service("newsService")
-@Repository
-@Transactional
-@Lazy
+//@Repository
+//@Transactional
+//@Lazy
+@Repository("newsService")
 public class NewsServiceImpl implements NewsService {
 
+    //    @Qualifier("newsRepository")
     @Autowired
-    @Qualifier("newsRepository")
     private NewsRepository newsRepository;
 
     public NewsServiceImpl() {
@@ -27,10 +23,10 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public List<News> getAll() {
-//        List<News> newsList = new ArrayList<>();
-//        newsRepository.findAll().forEach(newsList::add);
-//        return newsList;
-        return new ArrayList<>();
+        List<News> newsList = new ArrayList<>();
+        newsRepository.findAll().forEach(newsList::add);
+        return newsList;
+//        return new ArrayList<>();
     }
 
     @Override
@@ -61,5 +57,13 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public void remove(News news) {
 
+    }
+
+    public NewsRepository getNewsRepository() {
+        return newsRepository;
+    }
+
+    public void setNewsRepository(NewsRepository newsRepository) {
+        this.newsRepository = newsRepository;
     }
 }

@@ -19,11 +19,11 @@ import org.springframework.web.servlet.view.JstlView;
 
 
 @Configuration
-@ComponentScan
 @EnableWebMvc
 @EnableJpaRepositories
 @Import({WebappConfiguration.class})
-public class NewsConfiguration extends WebMvcConfigurerAdapter {
+@ComponentScan(basePackages = {"com.epam.msfrolov"})
+public class RootConfiguration extends WebMvcConfigurerAdapter {
 
     private static final String VIEW_PACKAGE = "/WEB-INF/view/";
     private static final String VIEW_SUFFIX = ".jsp";
