@@ -40,22 +40,20 @@
     </build>
 
     <dependencies>
-        <!--NEWS-SERVICE-->
         <dependency>
             <groupId>com.epam.msfrolov</groupId>
             <artifactId>news-service</artifactId>
         </dependency>
 
         <!--Spring-->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework</groupId>-->
-        <!--<artifactId>spring-web</artifactId>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-        <!--<groupId>org.springframework</groupId>-->
-        <!--<artifactId>spring-context</artifactId>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
 
         <!--JSTL-->
         <dependency>

@@ -1,5 +1,8 @@
 package com.epam.msfrolov.exception;
 
+/**
+ * Web module exceptions wrappers
+ */
 public class WebModuleException extends RuntimeException {
 
     public WebModuleException(String message) {

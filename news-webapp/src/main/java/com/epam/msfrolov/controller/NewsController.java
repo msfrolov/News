@@ -21,32 +21,16 @@ public class NewsController {
     @Qualifier("newsService")
     NewsService service;
 
-    //Hello World
-
-//    @RequestMapping(method = RequestMethod.GET)
-//    public String sayHello(ModelMap model) {
-//        model.addAttribute("greeting", "Hello World from Spring 4 MVC");
-//        return "welcome";
-//    }
-//
-//    @RequestMapping(value = "/helloagain", method = RequestMethod.GET)
-//    public String sayHelloAgain(ModelMap model) {
-//        model.addAttribute("greeting", "Hello World Again, from Spring 4 MVC");
-//        return "welcome";
-//    }
-
-    //News
-
-    @RequestMapping(value = "/view-list", method = RequestMethod.GET)
+    @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public String viewList(ModelMap model) {
         model.addAttribute("newsList", service.getAll());
         model.addAttribute("greeting", "Hello World Again, from Spring 4 MVC");
-        return "view-list";
+        return "page/view-welcome";
     }
 
-    @RequestMapping(value = "/view-add", method = RequestMethod.GET)
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String viewAdd(ModelMap model) {
         model.addAttribute("greeting", "Hello World Again, from Spring 4 MVC");
-        return "view-add";
+        return "page/view-add";
     }
 }

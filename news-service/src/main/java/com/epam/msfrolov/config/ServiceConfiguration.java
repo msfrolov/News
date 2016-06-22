@@ -1,18 +1,16 @@
-package com.epam.msfrolov.spring;
+package com.epam.msfrolov.config;
 
-import com.epam.msfrolov.configuration.DbConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
+
+/**
+ * Service module Spring JavaConfig
+ * connection parameters (URL, user, password)
+ */
 @Configuration
 @Import(DbConfiguration.class)
 @ComponentScan(basePackages = {"com.epam.msfrolov"})
 public class ServiceConfiguration {
-
-//    @Bean(name = {"service", "newsService"})
-//    @Description("Service class for call DAO")
-//    NewsService service() {
-//        return new NewsServiceImpl();
-//    }
 }

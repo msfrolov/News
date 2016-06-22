@@ -1,5 +1,8 @@
 package com.epam.msfrolov.exception;
 
+/**
+ * DataBase module exceptions wrappers
+ */
 public class DbModuleException extends RuntimeException {
 
     public DbModuleException(String message) {

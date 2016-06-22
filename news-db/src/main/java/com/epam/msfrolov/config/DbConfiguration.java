@@ -1,5 +1,6 @@
-package com.epam.msfrolov.configuration;
+package com.epam.msfrolov.config;
 
+import com.epam.msfrolov.exception.DbModuleException;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,26 +12,44 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import java.io.IOException;
 import java.util.Properties;
 
 /**
- * Data base configuration (URL, user, password)
+ * DB module Spring JavaConfig
+ * connection parameters (URL, user, password)
  */
-
 @Configuration
 @EnableJpaRepositories(basePackages = {"com.epam.msfrolov.repository"})
 @EnableTransactionManagement
 @ComponentScan(basePackages = {"com.epam.msfrolov"})
 public class DbConfiguration {
 
+    private static final String CONNECTION_PROPERTIES = "properties/connection.properties";
+    private static final String SQL_DIALECT = "hibernate.dialect";
+    private static final String HIBERNATE_ORACLE10G = "org.hibernate.dialect.Oracle10gDialect";
+    private static final String PACKAGE_REPOSITORY = "com.epam.msfrolov.repository";
+    private static final String PACKAGE_MODEL = "com.epam.msfrolov.model";
+
     @Bean
     public DriverManagerDataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-        dataSource.setUrl("jdbc:oracle:thin:@//localhost:1521/XE");
-        dataSource.setUsername("FROLOV");
-        dataSource.setPassword("Qwer55355");
+        Properties properties = getConnectionProperties();
+        dataSource.setDriverClassName(properties.getProperty("db.param.driver"));
+        dataSource.setUrl(properties.getProperty("db.param.url"));
+        dataSource.setUsername(properties.getProperty("db.param.user"));
+        dataSource.setPassword(properties.getProperty("db.param.password"));
         return dataSource;
+    }
+
+    private Properties getConnectionProperties() {
+        try {
+            Properties properties = new Properties();
+            properties.load(DbConfiguration.class.getClassLoader().getResourceAsStream(CONNECTION_PROPERTIES));
+            return properties;
+        } catch (IOException e) {
+            throw new DbModuleException("IOException: failed to get property", e);
+        }
     }
 
     @Bean
@@ -40,9 +59,9 @@ public class DbConfiguration {
         emFactory.setPersistenceProviderClass(HibernatePersistenceProvider.class);
         emFactory.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         Properties properties = new Properties();
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
+        properties.setProperty(SQL_DIALECT, HIBERNATE_ORACLE10G);
         emFactory.setJpaProperties(properties);
-        emFactory.setPackagesToScan("com.epam.msfrolov.repository", "com.epam.msfrolov.model");
+        emFactory.setPackagesToScan(PACKAGE_REPOSITORY, PACKAGE_MODEL);
         return emFactory;
     }
 
@@ -52,5 +71,4 @@ public class DbConfiguration {
         transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
         return transactionManager;
     }
-
 }

@@ -4,25 +4,6 @@ package com.epam.msfrolov.model;
 import javax.persistence.*;
 import java.util.Date;
 
-
-//@Table(name = "NEWS")
-//@Inheritance(strategy = InheritanceType.JOINED)
-//@NamedQueries({
-//        @NamedQuery(
-//                name = "News.getAll",
-//                query = "select n from News n"
-//        ),
-//        @NamedQuery(
-//                name = "News.getByIdParam",
-//                query = "select n from News n " +
-//                        "where n.id = :id"
-//        )
-//})
-
-//@Entity
-//@Table(name = "NEWS")
-
-
 @Entity(name = "NEWS")
 public class News {
 

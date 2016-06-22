@@ -8,6 +8,10 @@ import org.springframework.stereotype.Repository;
  * Interface for generic CRUD operations on a repository for a specific type.
  */
 
-@Repository
+@Repository("newsRepository")
 public interface NewsRepository extends CrudRepository<News, Integer> {
+
+//    void deleteFromNewsWhereIdIn(List<Integer> newsList);
+
+//    void deleteById(int[] idList);
 }
