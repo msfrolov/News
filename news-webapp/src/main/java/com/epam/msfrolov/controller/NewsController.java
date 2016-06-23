@@ -21,14 +21,14 @@ public class NewsController {
     @Qualifier("newsService")
     NewsService service;
 
-    @RequestMapping(value = "/welcome", method = RequestMethod.GET)
+    @RequestMapping(value = "welcome", method = RequestMethod.GET)
     public String viewList(ModelMap model) {
         model.addAttribute("newsList", service.getAll());
         model.addAttribute("greeting", "Hello World Again, from Spring 4 MVC");
         return "page/view-welcome";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    @RequestMapping(value = "add", method = RequestMethod.GET)
     public String viewAdd(ModelMap model) {
         model.addAttribute("greeting", "Hello World Again, from Spring 4 MVC");
         return "page/view-add";

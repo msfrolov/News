@@ -7,6 +7,3 @@
 <c:set var="comp_footer" scope="request" value="/WEB-INF/view/component/footer/footer.jsp"/>
 <c:set var="comp_header" scope="request" value="/WEB-INF/view/component/header/header.jsp"/>
 <c:set var="comp_menu" scope="request" value="/WEB-INF/view/component/menu/menu.jsp"/>
-<%--<c:set var="body_welcome" scope="request">--%>
-<%--<c:url value="/WEB-INF/view/component/body/view-welcome.jsp"/>--%>
-<%--</c:set>--%>

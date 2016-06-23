@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <div style="background-color : lightgray; widht:100%; height:120px;">
-    <h1><fmt:message key="header.title"/></h1>
+    <h1><spring:message code="header.title"/></h1>
     <div align="right">
-        <fmt:message key="header.language"/>
-        <a href="/locale?method=english">English</a>
-        <a href="/locale?method=russian">Русский</a>
+        <spring:message code="header.language"/>
+        <a href="welcome?news-local=en">English</a>
+        <a href="welcome?news-local=ru">Русский</a>
     </div>
 </div>
