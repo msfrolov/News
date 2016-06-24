@@ -1,5 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <tags:page-components/>
 <html>
@@ -10,20 +9,20 @@
 <table border="0" width="100%">
     <tr>
         <td colspan="2" valign="top">
-            <c:import url="${comp_header}"/>
+            <jsp:include page="#{comp_header}"/>
         </td>
     </tr>
     <tr valign="top">
         <td height="200" width="20%">
-            <c:import url="${comp_menu}"/>
+            <jsp:include page="#{comp_menu}"/>
         </td>
         <td width="80%">
-            <c:import url="${body_edit}"/>
+            <jsp:include page="#{body_edit}"/>
         </td>
     </tr>
     <tr>
         <td colspan="2" valign="top">
-            <c:import url="${comp_footer}"/>
+            <jsp:include page="#{comp_footer}"/>
         </td>
     </tr>
 </table>

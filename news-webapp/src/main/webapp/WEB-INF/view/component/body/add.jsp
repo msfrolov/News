@@ -1,40 +1,42 @@
-<%@ taglib prefix="h" uri="http://struts.apache.org/tags-html" %>
-<%@ taglib prefix="b" uri="http://struts.apache.org/tags-bean" %>
-<%@ taglib prefix="t" uri="http://struts.apache.org/tags-tiles" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<link href="<c:out value='/css/style.css'/>" rel="stylesheet">--%>
 <style>
-    .c001 {
+    .c001add {
         border: 1px solid #000000;
         border-radius: 1px;
         margin: 1px 0;
         padding: 1%;
     }
 
-    .c002 {
+    .c002add {
         font-size: 17px;
     }
 
-    .c003 {
+    .c003add {
         font-size: 15px;
     }
 
-    .c004 {
+    .c004add {
         font-size: 15px;
         width: 800px;
     }
 </style>
-<h2><b:message key="body.title.add"/></h2>
-<h:form action="/news?method=save">
-    <div class="c001">
-        <div class="c002"><b:message key="body.field.title"/>:</div>
-        <h:text styleClass="c003" name="newsForm" property="title"/>
-        <div class="c002"><b:message key="body.field.date"/>:</div>
-        <h:text styleClass="c003" name="newsForm" property="date" value="${newsForm.date}"/>
-        <div class="c002"><b:message key="body.field.brief"/>:</div>
-        <h:textarea styleClass="c004" name="newsForm" property="brief"/>
-        <div class="c002"><b:message key="body.field.content"/>:</div>
-        <h:textarea styleClass="c004" name="newsForm" property="content"/>
+<h2><spring:message code="body.title.add"/></h2>
+<form:form action="save">
+    <div class="c001add">
+        <div class="c002add"><spring:message code="body.field.title"/>:</div>
+        <form:input styleClass="c003add" path="${newsItem.title}"/>
+        <div class="c002add"><spring:message code="body.field.date"/>:</div>
+        <form:input styleClass="c003add" path="${newsItem.date}"/>
+        <div class="c002add"><spring:message code="body.field.brief"/>:</div>
+        <form:textarea styleClass="c004add" path="${newsItem.brief}"/>
+        <div class="c002add"><spring:message code="body.field.content"/>:</div>
+        <form:textarea styleClass="c004add" path="${newsItem.content}"/>
     </div>
-    <h:submit><b:message key="body.button.save"/></h:submit>
-    <h:reset onclick="history.back()"><b:message key="body.button.cancel"/></h:reset>
-</h:form>
+    <input type="submit" value="<spring:message code='body.button.save'/>">
+    <input type="button" value="<spring:message code='body.button.cancel'/>"
+           onclick="javascript:document.location.href='<c:out value="list"/>'"/>
+</form:form>

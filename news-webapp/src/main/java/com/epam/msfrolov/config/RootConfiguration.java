@@ -15,5 +15,4 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @ComponentScan(basePackages = {"com.epam.msfrolov"})
 public class RootConfiguration {
 
-
 }

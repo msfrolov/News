@@ -2,10 +2,13 @@ package com.epam.msfrolov.model;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity(name = "NEWS")
-public class News {
+public class News implements Serializable {
+
+    private static final long serialVersionUID = -5527566248002296042L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -25,17 +25,21 @@ import java.util.Locale;
 @ComponentScan(basePackages = {"com.epam.msfrolov"})
 public class WebappConfiguration extends WebMvcConfigurerAdapter {
 
-    private static final String I18N_BUNDLE = "/i18n/messages";
-    private static final String DEFAULT_ENCODING = "UTF-8";
-    private static final int COOKIE_MAX_AGE = 4800;
-    private static final String PACKAGE_RESOURCES = "/resources/";
-    private static final String PACKAGE_RESOURCES_HIERARCHY = "/resources/**";
-    private static final String VIEW_PACKAGE = "/WEB-INF/view/";
-    private static final String VIEW_EXTENSION = ".jsp";
     private static final String URL_PATH = "/";
     private static final String WELCOME_PAGE_NAME = "index";
+    private static final String VIEW_PACKAGE = "/WEB-INF/view/";
+    private static final String VIEW_EXTENSION = ".jsp";
+
     private static final String LOCALE_COOKIE_NAME = "NewsLocaleCookie";
-    private static final String LOCAL_PARAM_NAME = "news-local";
+    private static final int COOKIE_MAX_AGE = 4800;
+
+    private static final Locale DEFAULT_LOCALE = Locale.US;
+    private static final String DEFAULT_ENCODING = "UTF-8";
+    private static final String LOCALE_PARAM_NAME = "news-local";
+
+    private static final String I18N_BUNDLE = "/i18n/messages";
+    private static final String PACKAGE_RESOURCES = "/resources/";
+    private static final String PACKAGE_RESOURCES_HIERARCHY = "/resources/**";
 
     /**
      * Setup "welcome page"
@@ -82,7 +86,7 @@ public class WebappConfiguration extends WebMvcConfigurerAdapter {
     @Bean
     public LocaleResolver localeResolver() {
         CookieLocaleResolver resolver = new CookieLocaleResolver();
-        resolver.setDefaultLocale(Locale.US);
+        resolver.setDefaultLocale(DEFAULT_LOCALE);
         resolver.setCookieName(LOCALE_COOKIE_NAME);
         resolver.setCookieMaxAge(COOKIE_MAX_AGE);
         return resolver;
@@ -94,7 +98,7 @@ public class WebappConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
-        interceptor.setParamName(LOCAL_PARAM_NAME);
+        interceptor.setParamName(LOCALE_PARAM_NAME);
         registry.addInterceptor(interceptor);
     }
 }

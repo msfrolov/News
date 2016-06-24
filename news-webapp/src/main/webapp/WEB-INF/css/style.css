@@ -1,0 +1,51 @@
+.menu-main {
+    background-color: lightgray
+}
+
+.menu-navigation {
+    background-color: darkgray;
+    font-size: large;
+}
+
+.c001view {
+    border: 1px solid #000000;
+    border-radius: 1px;
+    margin: 1px 0;
+    padding: 1%;
+}
+
+.c002view {
+    font-size: 17px;
+}
+
+.c003view {
+    font-size: 15px;
+}
+
+.c004view {
+    font-size: 15px;
+    width: 800px;
+    height: auto;
+}
+
+.c000newslist {
+    border: 1px solid #000000;
+    border-radius: 1px;
+    margin: 1px 0;
+    padding: 1%;
+}
+
+.c001newslist {
+    border: 1px solid gainsboro;
+    border-radius: 1px;
+    margin: 1px 0;
+    padding: 6px;
+}
+
+.c002newslist {
+    font-size: 17px;
+}
+
+.c003newslist {
+    font-size: 15px;
+}

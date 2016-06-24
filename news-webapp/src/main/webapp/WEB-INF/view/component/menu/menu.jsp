@@ -1,12 +1,22 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<div style="background-color: lightgray">
-    <div style="background-color: darkgray; font-size: large;">
+<style>
+    .menu-main {
+        background-color: lightgray
+    }
+
+    .menu-navigation {
+        background-color: darkgray;
+        font-size: large;
+    }
+</style>
+<div class="menu-main">
+    <div class="menu-navigation">
         <h4><spring:message code="menu.navigation"/></h4>
     </div>
     <br/>
-    <a action="news?method=showNewsList"><spring:message code="menu.list"/></a>
+    <a href="list"><spring:message code="menu.list"/></a>
     <br/>
-    <a action="news?method=addNews"><spring:message code="menu.add"/></a>
+    <a href="add"><spring:message code="menu.add"/></a>
     <br/>
 </div>
