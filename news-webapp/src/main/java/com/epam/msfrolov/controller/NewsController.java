@@ -39,21 +39,23 @@ public class NewsController {
     }
 
     @RequestMapping(value = "view", method = RequestMethod.GET)
-    public String view(@RequestParam("id") Integer id, ModelMap model) {
+    public String view(@RequestParam(value = "id", required = true) Integer id, ModelMap model) {
         model.addAttribute("newsItem", service.findById(id));
         return "page/view-news";
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.GET)
-    public String getEdit(@ModelAttribute("newsItem") News news, ModelMap model) {
-        model.addAttribute("newsItem", news);
+    public String getEdit(@RequestParam(value = "id", required = true) Integer id, ModelMap model) {
+        model.addAttribute("newsItem", service.findById(id));
         return "page/view-edit";
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public String postEdit(@ModelAttribute("newsItem") News news, ModelMap model) {
+    public String postEdit(@ModelAttribute(value = "newsItem") News news, @RequestParam(value = "id", required = true) Integer id, ModelMap model) {
+        news.setId(id);
         service.update(news);
         model.addAttribute("newsItem", news);
+        model.addAttribute("message", "edited");
         return "page/view-edit";
     }
 
@@ -68,13 +70,13 @@ public class NewsController {
     public String postAdd(@ModelAttribute("newsItem") News news, ModelMap model) {
         News savedNews = service.save(news);
         model.put("newsItem", savedNews);
+        model.addAttribute("message", "added");
         return "page/view-add";
     }
 
 
     @RequestMapping(value = "delete", method = RequestMethod.GET)
     public String delete(ModelMap model) {
-        LOG.debug("DELETE!!!");
         return "page/view-list";
     }
 }

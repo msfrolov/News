@@ -32,17 +32,25 @@
     </div>
     <div class="c001" style="text-align: left;">
         <div class="c002"><form:label path="date"><spring:message code="body.field.date"/>:</form:label></div>
-        <div class="c003"><form:input path="date"/></div>
+        <spring:message code="date.format" var="datePattern" scope="page"/>
+        <f:formatDate value="${newsItem.date}" pattern="${datePattern}" var="dateFormatter"/>
+        <div class="c003"><form:input path="date" value="${dateFormatter}"/></div>
     </div>
     <div class="c001" style="text-align: left;">
-        <div class="c002"><form:label path="date"><spring:message code="body.field.brief"/>:</form:label><</div>
-        <div class="c004"><form:input path=""</div>
+        <div class="c002"><form:label path="brief"><spring:message code="body.field.brief"/>:</form:label></div>
+        <div class="c004"><form:input path="brief"/></div>
     </div>
-    <%--<div class="c001" style="text-align: left;">--%>
-    <%--<div class="c002"><spring:message code="body.field.content"/>:</div>--%>
-    <%--<div class="c004"><h:textarea name="newsForm" property="content"/></div>--%>
-    <%--</div>--%>
-    <input type="submit" value="<spring:message code='body.button.save'/>">
+    <div class="c001" style="text-align: left;">
+        <div class="c002"><form:label path="content"><spring:message code="body.field.content"/>:</form:label></div>
+        <div class="c004"><form:input path="content"/></div>
+    </div>
+    <c:if test="${not empty message}">
+        <div>
+            <label style="text-decoration-color: green" for="button-submit">Successfully ${message}</label>
+        </div>
+    </c:if>
+    <input type="hidden" value="${newsItem.id}" name="id"/>
+    <input id="button-submit" type="submit" value="<spring:message code='body.button.save'/>">
     <input type="button" value="<spring:message code='body.button.cancel'/>"
            onclick="javascript:document.location.href='<c:out value="list"/>'"/>
 </form:form>

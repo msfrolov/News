@@ -27,7 +27,7 @@
         height: auto;
     }
 </style>
-<form:form action="edit?id=${newsItem.id}">
+<form:form action="edit" method="GET">
     <h2><spring:message code="body.title.view"/></h2>
     <div class="c001view" style="text-align: left;">
         <div class="c002view"><spring:message code="body.field.title"/>:</div>
@@ -46,6 +46,7 @@
         <div class="c002view"><spring:message code="body.field.content"/>:</div>
         <div class="c004view">${newsItem.content}</div>
     </div>
+    <input type="hidden" value="${newsItem.id}" name="id"/>
     <input type="submit" value="<spring:message code='body.button.edit'/>">
     <input type="button" value="<spring:message code='body.button.cancel'/>"
            onclick="javascript:document.location.href='<c:out value="list"/>'"/>

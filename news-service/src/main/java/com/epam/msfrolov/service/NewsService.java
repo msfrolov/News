@@ -14,7 +14,7 @@ public interface NewsService {
 
     News update(News news);
 
-    void remove(int[] idArray);
+    void remove(Integer [] idArray);
 
     void remove(int id);
 

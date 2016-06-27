@@ -3,7 +3,7 @@
 <tags:page-components/>
 <html>
 <head>
-    <title>Add news</title>
+    <title>List news</title>
 </head>
 <body>
 <table border="0" width="100%">

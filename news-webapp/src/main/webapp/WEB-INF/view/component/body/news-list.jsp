@@ -51,7 +51,7 @@
             </div>
             <a href="view?id=${newsItem.id}"><spring:message code="body.button.view"/></a>
             <a href="edit?id=${newsItem.id}"><spring:message code="body.button.edit"/></a>
-                <%--<form:checkbox path="delete" value="${newsItem.id}"/>--%>
+            <form:checkbox path="delete" value="${newsItem.id}"/>
         </div>
     </c:forEach>
     <input type="submit" value="<spring:message code='body.button.delete'/>"/>

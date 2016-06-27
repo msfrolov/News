@@ -8,13 +8,12 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-
+@Repository("newsService")
 @Transactional
 @Lazy
-@Repository("newsService")
 public class NewsServiceImpl implements NewsService {
 
     @Autowired
@@ -26,9 +25,7 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public List<News> getAll() {
-        List<News> newsList = new ArrayList<>();
-        newsRepository.findAll().forEach(newsList::add);
-        return newsList;
+        return newsRepository.findAll();
     }
 
     @Override
@@ -38,17 +35,18 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public News save(News news) {
-        return newsRepository.save(news);
+        return newsRepository.saveAndFlush(news);
     }
 
     @Override
     public News update(News news) {
-        return newsRepository.save(news);
+        return newsRepository.saveAndFlush(news);
     }
 
     @Override
-    public void remove(int[] idArray) {
-//        newsRepository.deleteById(idArray);
+    public void remove(Integer[] arrayId) {
+        List<News> newsListForDelete = newsRepository.findAll(Arrays.asList(arrayId));
+        newsRepository.delete(newsListForDelete);
     }
 
     @Override
@@ -58,7 +56,7 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public void remove(News news) {
-        remove(news);
+        newsRepository.delete(news);
     }
 
     public NewsRepository getNewsRepository() {
