@@ -1,23 +1,19 @@
 package com.epam.msfrolov.model;
 
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
-@Entity
-@Table(name = "NEWS")
-@Inheritance(strategy = InheritanceType.JOINED)
-@NamedQueries({
-        @NamedQuery(
-                name = "News.getAll",
-                query = "select n from News n"
-        ),
-        @NamedQuery(
-                name = "News.getByIdParam",
-                query = "select n from News n " +
-                        "where n.id = :id"
-        )
-})
-public class News extends BaseEntity {
+@Entity(name = "NEWS")
+public class News implements Serializable {
+
+    private static final long serialVersionUID = -5527566248002296042L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Integer id;
 
     @Column(name = "DATE_D")
     private Date date;
@@ -34,11 +30,20 @@ public class News extends BaseEntity {
     public News() {
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Date getDate() {
         return date;
     }
 
     public void setDate(Date date) {
+
         this.date = date;
     }
 
