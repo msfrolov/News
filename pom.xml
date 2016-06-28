@@ -17,6 +17,8 @@
 
     <name>NEWS Project</name>
 
+    <description>Task "News management".</description>
+
     <developers>
         <developer>
             <name>Maxim Frolov</name>
@@ -31,7 +33,11 @@
         <url>https://github.com/msfrolov/News/issues</url>
     </issueManagement>
 
-    <description>Task "News management".</description>
+    <scm>
+        <connection></connection>
+        <url>https://github.com/msfrolov</url>
+    </scm>
+
 
     <properties>
         <java.version>1.8</java.version>

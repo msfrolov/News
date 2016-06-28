@@ -1,6 +1,7 @@
 package com.epam.msfrolov.controller;
 
 
+import com.epam.msfrolov.dto.NewsTO;
 import com.epam.msfrolov.model.News;
 import com.epam.msfrolov.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,7 @@ public class NewsController {
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public String list(ModelMap model) {
         model.addAttribute("newsList", service.getAll());
+        model.addAttribute("ids", new NewsTO());
         return PAGE_NEWS_LIST;
     }
 
@@ -74,12 +76,15 @@ public class NewsController {
         News savedNews = service.save(news);
         model.put("newsItem", savedNews);
         model.addAttribute("message", "added");
-        return PAGE_NEWS_ADD;
+        return PAGE_NEWS_EDIT;
     }
 
 
-    @RequestMapping(value = "delete", method = RequestMethod.GET)
-    public String delete(ModelMap model) {
+    @RequestMapping(value = "delete", method = RequestMethod.POST)
+    public String delete(@ModelAttribute("ids") NewsTO newsTO, ModelMap model) {
+        service.remove(newsTO.getIds());
+        model.addAttribute("newsList", service.getAll());
+        model.addAttribute("ids", new NewsTO());
         return PAGE_NEWS_LIST;
     }
 }

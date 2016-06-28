@@ -31,7 +31,7 @@
 </style>
 <%--<f:setLocale value="${sessionScope.}"/>--%>
 <h2><spring:message code="body.title.list"/></h2>
-<form:form action="delete">
+<form:form action="delete" modelAttribute="ids">
     <c:forEach items="${newsList}" var="newsItem">
         <div class="c000newslist">
             <div class="c001newslist" style="text-align: left;">
@@ -51,7 +51,7 @@
             </div>
             <a href="view?id=${newsItem.id}"><spring:message code="body.button.view"/></a>
             <a href="edit?id=${newsItem.id}"><spring:message code="body.button.edit"/></a>
-                <%--<form:checkbox path="delete" value="${newsItem.id}"/>--%>
+            <form:checkbox value="${newsItem.id}" path="ids"/>
         </div>
     </c:forEach>
     <input type="submit" value="<spring:message code='body.button.delete'/>"/>

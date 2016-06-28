@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--<link href="<c:out value='/css/style.css'/>" rel="stylesheet">--%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f" %>
 <style>
     .c001add {
         border: 1px solid #000000;
@@ -25,18 +25,48 @@
     }
 </style>
 <h2><spring:message code="body.title.add"/></h2>
-<form:form action="save">
-    <div class="c001add">
-        <div class="c002add"><spring:message code="body.field.title"/>:</div>
-        <form:input styleClass="c003add" path="${newsItem.title}"/>
-        <div class="c002add"><spring:message code="body.field.date"/>:</div>
-        <form:input styleClass="c003add" path="${newsItem.date}"/>
-        <div class="c002add"><spring:message code="body.field.brief"/>:</div>
-        <form:textarea styleClass="c004add" path="${newsItem.brief}"/>
-        <div class="c002add"><spring:message code="body.field.content"/>:</div>
-        <form:textarea styleClass="c004add" path="${newsItem.content}"/>
+<%--<form:form action="save">--%>
+<%--<div class="c001add">--%>
+<%--<div class="c002add"><spring:message code="body.field.title"/>:</div>--%>
+<%--<form:input styleClass="c003add" path="${newsItem.title}"/>--%>
+<%--<div class="c002add"><spring:message code="body.field.date"/>:</div>--%>
+<%--<form:input styleClass="c003add" path="${newsItem.date}"/>--%>
+<%--<div class="c002add"><spring:message code="body.field.brief"/>:</div>--%>
+<%--<form:textarea styleClass="c004add" path="${newsItem.brief}"/>--%>
+<%--<div class="c002add"><spring:message code="body.field.content"/>:</div>--%>
+<%--<form:textarea styleClass="c004add" path="${newsItem.content}"/>--%>
+<%--</div>--%>
+<%--<input type="submit" value="<spring:message code='body.button.save'/>">--%>
+<%--<input type="button" value="<spring:message code='body.button.cancel'/>"--%>
+<%--onclick="javascript:document.location.href='<c:out value="list"/>'"/>--%>
+<%--</form:form>--%>
+
+<form:form action="add" modelAttribute="newsItem" method="post">
+    <div class="c001" style="text-align: left;">
+        <div class="c002"><form:label path="title"><spring:message code="body.field.title"/>:</form:label></div>
+        <div class="c003"><form:input path="title"/></div>
     </div>
-    <input type="submit" value="<spring:message code='body.button.save'/>">
+    <div class="c001" style="text-align: left;">
+        <div class="c002"><form:label path="date"><spring:message code="body.field.date"/>:</form:label></div>
+        <spring:message code="date.format" var="datePattern" scope="page"/>
+        <f:formatDate value="${newsItem.date}" pattern="${datePattern}" var="dateFormatter"/>
+        <div class="c003"><form:input path="date" value="${dateFormatter}"/></div>
+    </div>
+    <div class="c001" style="text-align: left;">
+        <div class="c002"><form:label path="brief"><spring:message code="body.field.brief"/>:</form:label></div>
+        <div class="c004"><form:input path="brief"/></div>
+    </div>
+    <div class="c001" style="text-align: left;">
+        <div class="c002"><form:label path="content"><spring:message code="body.field.content"/>:</form:label></div>
+        <div class="c004"><form:input path="content"/></div>
+    </div>
+    <c:if test="${not empty message}">
+        <div>
+            <label style="text-decoration-color: green" for="button-submit">Successfully ${message}</label>
+        </div>
+    </c:if>
+    <input type="hidden" value="${newsItem.id}" name="id"/>
+    <input id="button-submit" type="submit" value="<spring:message code='body.button.save'/>">
     <input type="button" value="<spring:message code='body.button.cancel'/>"
            onclick="javascript:document.location.href='<c:out value="list"/>'"/>
 </form:form>

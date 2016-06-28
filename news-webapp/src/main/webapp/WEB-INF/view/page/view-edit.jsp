@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <tags:page-components/>
 <html>
 <head>
@@ -17,7 +18,20 @@
             <jsp:include page="#{comp_menu}"/>
         </td>
         <td width="80%">
-            <jsp:include page="#{body_edit}"/>
+            <c:choose>
+                <c:when test="${current-page eq view-edit}">
+                    <jsp:include page="#{body_edit}"/>
+                </c:when>
+                <c:when test="${current-page eq view-edit}">
+                    <jsp:include page="#{body_edit}"/>
+                </c:when>
+
+
+                <c:otherwise>
+                    <jsp:include page="#{body_welcome}"/>
+                </c:otherwise>
+            </c:choose>
+
         </td>
     </tr>
     <tr>
