@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -51,11 +51,13 @@
             </div>
             <a href="view?id=${newsItem.id}"><spring:message code="body.button.view"/></a>
             <a href="edit?id=${newsItem.id}"><spring:message code="body.button.edit"/></a>
-            <form:checkbox value="${newsItem.id}" path="ids"/>
+            <form:checkbox value="${newsItem.id}" path="ids"/><spring:message code="body.checkbox.select"/>
         </div>
     </c:forEach>
     <input type="submit" value="<spring:message code='body.button.delete'/>"/>
 </form:form>
+
+
 
 
 

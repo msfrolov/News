@@ -1,11 +1,12 @@
 package com.epam.msfrolov.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Class for transfer data between view and controller
  */
-public class NewsTO {
+public class DTO implements Serializable {
 
     private Integer id;
 

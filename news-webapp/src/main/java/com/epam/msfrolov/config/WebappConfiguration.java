@@ -25,28 +25,12 @@ import java.util.Locale;
 @ComponentScan(basePackages = {"com.epam.msfrolov"})
 public class WebappConfiguration extends WebMvcConfigurerAdapter {
 
-    private static final String URL_PATH = "/";
-    private static final String WELCOME_PAGE_NAME = "index";
-    private static final String VIEW_PACKAGE = "/WEB-INF/view/";
-    private static final String VIEW_EXTENSION = ".jsp";
-
-    private static final String LOCALE_COOKIE_NAME = "NewsLocaleCookie";
-    private static final int COOKIE_MAX_AGE = 4800;
-
-    private static final Locale DEFAULT_LOCALE = Locale.US;
-    private static final String DEFAULT_ENCODING = "UTF-8";
-    private static final String LOCALE_PARAM_NAME = "news-local";
-
-    private static final String I18N_BUNDLE = "/i18n/messages";
-    private static final String PACKAGE_RESOURCES = "/resources/";
-    private static final String PACKAGE_RESOURCES_HIERARCHY = "/resources/**";
-
     /**
      * Setup "welcome page"
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController(URL_PATH).setViewName(WELCOME_PAGE_NAME);
+        registry.addViewController("/").setViewName("index");
     }
 
     /**
@@ -54,7 +38,8 @@ public class WebappConfiguration extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler(PACKAGE_RESOURCES_HIERARCHY).addResourceLocations(PACKAGE_RESOURCES);
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+//        registry.addResourceHandler("/css/**").addResourceLocations("/css/");
     }
 
     /**
@@ -63,8 +48,8 @@ public class WebappConfiguration extends WebMvcConfigurerAdapter {
     @Bean
     public InternalResourceViewResolver viewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix(VIEW_PACKAGE);
-        resolver.setSuffix(VIEW_EXTENSION);
+        resolver.setPrefix("/WEB-INF/view/");
+        resolver.setSuffix(".jsp");
         return resolver;
     }
 
@@ -74,8 +59,8 @@ public class WebappConfiguration extends WebMvcConfigurerAdapter {
     @Bean
     public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename(I18N_BUNDLE);
-        messageSource.setDefaultEncoding(DEFAULT_ENCODING);
+        messageSource.setBasename("/i18n/messages");
+        messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
 
@@ -86,9 +71,9 @@ public class WebappConfiguration extends WebMvcConfigurerAdapter {
     @Bean
     public LocaleResolver localeResolver() {
         CookieLocaleResolver resolver = new CookieLocaleResolver();
-        resolver.setDefaultLocale(DEFAULT_LOCALE);
-        resolver.setCookieName(LOCALE_COOKIE_NAME);
-        resolver.setCookieMaxAge(COOKIE_MAX_AGE);
+        resolver.setDefaultLocale(Locale.US);
+        resolver.setCookieName("NewsLocaleCookie");
+        resolver.setCookieMaxAge(4800);
         return resolver;
     }
 
@@ -98,7 +83,7 @@ public class WebappConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
-        interceptor.setParamName(LOCALE_PARAM_NAME);
+        interceptor.setParamName("news-local");
         registry.addInterceptor(interceptor);
     }
 }

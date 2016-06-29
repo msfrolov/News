@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -15,17 +15,17 @@
         font-size: 17px;
     }
 
-    .c003 {
+    .c003add {
         font-size: 15px;
     }
 
-    .c004 {
+    .c004add {
         font-size: 15px;
         width: 800px;
     }
 </style>
-<h2><spring:message code="body.title.edit"/></h2>
-<form:form action="edit" modelAttribute="newsItem" method="post">
+<h2><spring:message code="body.title.add"/></h2>
+<form:form action="add" modelAttribute="newsItem" method="post">
     <div class="c001" style="text-align: left;">
         <div class="c002"><form:label path="title"><spring:message code="body.field.title"/>:</form:label></div>
         <div class="c003"><form:input path="title"/></div>
@@ -46,10 +46,9 @@
     </div>
     <c:if test="${not empty message}">
         <div>
-            <label style="text-decoration-color: green" for="button-submit">Successfully ${message}</label>
+            <label style="text-decoration-color: green" for="button-submit"><spring:message code="${message}"/></label>
         </div>
     </c:if>
-    <input type="hidden" value="${newsItem.id}" name="id"/>
     <input id="button-submit" type="submit" value="<spring:message code='body.button.save'/>">
     <input type="button" value="<spring:message code='body.button.cancel'/>"
            onclick="javascript:document.location.href='<c:out value="list"/>'"/>

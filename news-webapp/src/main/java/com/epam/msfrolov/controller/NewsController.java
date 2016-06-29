@@ -1,8 +1,7 @@
 package com.epam.msfrolov.controller;
 
 
-import com.epam.msfrolov.dto.NewsTO;
-import com.epam.msfrolov.model.News;
+import com.epam.msfrolov.dto.DTO;
 import com.epam.msfrolov.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -38,7 +37,7 @@ public class NewsController {
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public String list(ModelMap model) {
         model.addAttribute("newsList", service.getAll());
-        model.addAttribute("ids", new NewsTO());
+        model.addAttribute("ids", new DTO());
         return PAGE_NEWS_LIST;
     }
 
@@ -55,36 +54,35 @@ public class NewsController {
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public String postEdit(@ModelAttribute(value = "newsItem") News news, @RequestParam(value = "id") Integer id, ModelMap model) {
+    public String postEdit(@ModelAttribute(value = "newsItem") DTO news, @RequestParam(value = "id") Integer id, ModelMap model) {
         news.setId(id);
         service.update(news);
         model.addAttribute("newsItem", news);
-        model.addAttribute("message", "edited");
-        return PAGE_NEWS_EDIT;
+        model.addAttribute("message", "body.message.edit");
+        return PAGE_SHOW_NEWS;
     }
 
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String getAdd(ModelMap model) {
-        model.put("newsItem", new News());
+        model.put("newsItem", new DTO());
         return PAGE_NEWS_ADD;
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String postAdd(@ModelAttribute("newsItem") News news, @RequestParam(value = "id") Integer id, ModelMap model) {
-        news.setId(id);
-        News savedNews = service.save(news);
+    public String postAdd(@ModelAttribute("newsItem") DTO news, ModelMap model) {
+        DTO savedNews = service.save(news);
         model.put("newsItem", savedNews);
-        model.addAttribute("message", "added");
-        return PAGE_NEWS_EDIT;
+        model.addAttribute("message", "body.message.add");
+        return PAGE_SHOW_NEWS;
     }
 
 
     @RequestMapping(value = "delete", method = RequestMethod.POST)
-    public String delete(@ModelAttribute("ids") NewsTO newsTO, ModelMap model) {
-        service.remove(newsTO.getIds());
+    public String delete(@ModelAttribute("ids") DTO dto, ModelMap model) {
+        service.remove(dto.getIds());
         model.addAttribute("newsList", service.getAll());
-        model.addAttribute("ids", new NewsTO());
+        model.addAttribute("ids", dto);
         return PAGE_NEWS_LIST;
     }
 }

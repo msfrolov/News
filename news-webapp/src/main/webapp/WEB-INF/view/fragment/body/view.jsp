@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
@@ -46,6 +46,11 @@
         <div class="c004view">${newsItem.content}</div>
     </div>
     <input type="hidden" value="${newsItem.id}" name="id"/>
+    <c:if test="${not empty message}">
+        <div>
+            <label style="text-decoration-color: green"><spring:message code="${message}"/></label>
+        </div>
+    </c:if>
     <input type="submit" value="<spring:message code='body.button.edit'/>">
     <input type="button" value="<spring:message code='body.button.cancel'/>"
            onclick="javascript:document.location.href='<c:out value="list"/>'"/>

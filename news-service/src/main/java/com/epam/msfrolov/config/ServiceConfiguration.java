@@ -2,6 +2,7 @@ package com.epam.msfrolov.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 
 
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.Import;
  */
 @Configuration
 @Import(DbConfiguration.class)
-@ComponentScan(basePackages = {"com.epam.msfrolov"})
+@EnableAspectJAutoProxy(proxyTargetClass = true)
+@ComponentScan(basePackages = {"com.epam.msfrolov.aspect", "com.epam.msfrolov"})
 public class ServiceConfiguration {
 }

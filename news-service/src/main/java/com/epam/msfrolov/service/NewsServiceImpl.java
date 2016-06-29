@@ -1,5 +1,7 @@
 package com.epam.msfrolov.service;
 
+import com.epam.msfrolov.adapter.DTOAdapter;
+import com.epam.msfrolov.dto.DTO;
 import com.epam.msfrolov.model.News;
 import com.epam.msfrolov.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Arrays;
 import java.util.List;
 
+
 @Repository("newsService")
 @Transactional
 @Lazy
@@ -20,27 +23,35 @@ public class NewsServiceImpl implements NewsService {
     @Qualifier("newsRepository")
     private NewsRepository newsRepository;
 
+    @Autowired
+    @Qualifier("adapter")
+    private DTOAdapter adapter;
+
     public NewsServiceImpl() {
     }
 
     @Override
-    public List<News> getAll() {
-        return newsRepository.findAll();
+    public List<DTO> getAll() {
+        return adapter.newsToDtoList(newsRepository.findAll());
     }
 
     @Override
-    public News findById(int id) {
-        return newsRepository.findOne(id);
+    public DTO findById(int id) {
+        return adapter.newsToDto(newsRepository.findOne(id));
     }
 
     @Override
-    public News save(News news) {
-        return newsRepository.saveAndFlush(news);
+    public DTO save(DTO dto) {
+        News news = adapter.dtoToNews(dto);
+        News savedNews = newsRepository.saveAndFlush(news);
+        return adapter.newsToDto(savedNews);
     }
 
     @Override
-    public News update(News news) {
-        return newsRepository.saveAndFlush(news);
+    public DTO update(DTO dto) {
+        News news = adapter.dtoToNews(dto);
+        News savedNews = newsRepository.saveAndFlush(news);
+        return adapter.newsToDto(savedNews);
     }
 
     @Override
@@ -55,8 +66,8 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public void remove(News news) {
-        newsRepository.delete(news);
+    public void remove(DTO dto) {
+        newsRepository.delete(adapter.dtoToNews(dto));
     }
 
     public NewsRepository getNewsRepository() {
