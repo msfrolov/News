@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Import;
  */
 @Configuration
 @Import(DbConfiguration.class)
-@EnableAspectJAutoProxy(proxyTargetClass = true)
+@EnableAspectJAutoProxy
 @ComponentScan(basePackages = {"com.epam.msfrolov.aspect", "com.epam.msfrolov"})
 public class ServiceConfiguration {
 }

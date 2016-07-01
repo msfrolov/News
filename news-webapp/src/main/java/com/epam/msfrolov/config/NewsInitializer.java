@@ -29,7 +29,7 @@ public class NewsInitializer extends AbstractAnnotationConfigDispatcherServletIn
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return null;
+        return new Class[]{WebappConfiguration.class};
     }
 
     @Override

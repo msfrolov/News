@@ -48,6 +48,8 @@ public class WebappConfiguration extends WebMvcConfigurerAdapter {
     @Bean
     public InternalResourceViewResolver viewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setContentType("text/html;charset=UTF-8");
+//        resolver.set
         resolver.setPrefix("/WEB-INF/view/");
         resolver.setSuffix(".jsp");
         return resolver;

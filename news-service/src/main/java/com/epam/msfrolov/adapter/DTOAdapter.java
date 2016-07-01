@@ -17,6 +17,7 @@ public class DTOAdapter {
     public DTO newsToDto(News news) {
         DTO dto = new DTO();
         dto.setId(news.getId());
+        dto.setTitle(news.getTitle());
         dto.setBrief(news.getBrief());
         dto.setDate(news.getDate());
         dto.setContent(news.getContent());
@@ -26,6 +27,7 @@ public class DTOAdapter {
     public News dtoToNews(DTO dto) {
         News news = new News();
         news.setId(dto.getId());
+        news.setTitle(dto.getTitle());
         news.setBrief(dto.getBrief());
         news.setDate(dto.getDate());
         news.setContent(dto.getContent());

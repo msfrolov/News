@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  */
 @Configuration
 @EnableWebMvc
-@Import({WebappConfiguration.class})
+@Import({ServiceConfiguration.class})
 @ComponentScan(basePackages = {"com.epam.msfrolov"})
 public class RootConfiguration {
 
