@@ -95,6 +95,7 @@ public class NewsController {
         //efgwergerg
         //efgwergerg
         //efgwergerg
+        //efgwergerg
         return PAGE_NEWS_LIST;
     }
 }
