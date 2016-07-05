@@ -85,6 +85,10 @@ public class NewsController {
         model.addAttribute("newsList", service.getAll());
         model.addAttribute("ids", dto);
         //efgwergerg
+        //efgwergerg
+        //efgwergerg
+        //efgwergerg
+        //efgwergerg
         return PAGE_NEWS_LIST;
     }
 }
