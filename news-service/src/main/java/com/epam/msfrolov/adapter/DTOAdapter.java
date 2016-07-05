@@ -1,6 +1,6 @@
 package com.epam.msfrolov.adapter;
 
-import com.epam.msfrolov.dto.DTO;
+import com.epam.msfrolov.dto.NewsDTO;
 import com.epam.msfrolov.model.News;
 import org.springframework.stereotype.Repository;
 
@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Transfer data between com.epam.msfrolov.model.News and com.epam.msfrolov.dto.DTO
+ * Transfer data between com.epam.msfrolov.model.News and com.epam.msfrolov.dto.NewsDTO
  */
 
 @Repository("adapter")
 public class DTOAdapter {
 
-    public DTO newsToDto(News news) {
-        DTO dto = new DTO();
+    public NewsDTO newsToDto(News news) {
+        NewsDTO dto = new NewsDTO();
         dto.setId(news.getId());
         dto.setTitle(news.getTitle());
         dto.setBrief(news.getBrief());
@@ -24,7 +24,7 @@ public class DTOAdapter {
         return dto;
     }
 
-    public News dtoToNews(DTO dto) {
+    public News dtoToNews(NewsDTO dto) {
         News news = new News();
         news.setId(dto.getId());
         news.setTitle(dto.getTitle());
@@ -34,17 +34,16 @@ public class DTOAdapter {
         return news;
     }
 
-    public List<DTO> newsToDtoList(List<News> newsList) {
-        List<DTO> list = new ArrayList<>();
+    public List<NewsDTO> newsToDtoList(List<News> newsList) {
+        List<NewsDTO> list = new ArrayList<>();
         newsList.forEach(news -> list.add(newsToDto(news)));
         return list;
     }
 
-    public List<News> DtoToNewsList(List<DTO> dtoList) {
+    public List<News> DtoToNewsList(List<NewsDTO> dtoList) {
         List<News> list = new ArrayList<>();
         dtoList.forEach(dto -> list.add(dtoToNews(dto)));
         return list;
     }
-
 
 }

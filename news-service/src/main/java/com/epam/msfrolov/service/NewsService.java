@@ -1,22 +1,22 @@
 package com.epam.msfrolov.service;
 
-import com.epam.msfrolov.dto.DTO;
+import com.epam.msfrolov.dto.NewsDTO;
 
 import java.util.List;
 
 public interface NewsService {
 
-    List<DTO> getAll();
+    List<NewsDTO> getAll();
 
-    DTO findById(int id);
+    NewsDTO findById(int id);
 
-    DTO save(DTO dto);
+    NewsDTO save(NewsDTO dto);
 
-    DTO update(DTO dto);
+    NewsDTO update(NewsDTO dto);
 
-    void remove(Integer [] idArray);
+    void remove(Integer[] idArray);
 
     void remove(int id);
 
-    void remove(DTO dto);
+    void remove(NewsDTO dto);
 }

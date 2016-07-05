@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * Class for transfer data between view and controller
  */
-public class DTO implements Serializable {
+public class NewsDTO implements Serializable {
 
     private Integer id;
 
@@ -17,8 +17,6 @@ public class DTO implements Serializable {
     private String brief;
 
     private String content;
-
-    private Integer[] ids;
 
     public Integer getId() {
         return id;
@@ -60,11 +58,4 @@ public class DTO implements Serializable {
         this.content = content;
     }
 
-    public Integer[] getIds() {
-        return ids;
-    }
-
-    public void setIds(Integer[] ids) {
-        this.ids = ids;
-    }
 }

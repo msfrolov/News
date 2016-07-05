@@ -1,7 +1,8 @@
 package com.epam.msfrolov.controller;
 
 
-import com.epam.msfrolov.dto.DTO;
+import com.epam.msfrolov.dto.ArrayDTO;
+import com.epam.msfrolov.dto.NewsDTO;
 import com.epam.msfrolov.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -37,7 +38,7 @@ public class NewsController {
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public String list(ModelMap model) {
         model.addAttribute("newsList", service.getAll());
-        model.addAttribute("ids", new DTO());
+        model.addAttribute("ids", new NewsDTO());
         return PAGE_NEWS_LIST;
     }
 
@@ -54,7 +55,7 @@ public class NewsController {
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public String postEdit(@ModelAttribute(value = "newsItem") DTO news, @RequestParam(value = "id") Integer id, ModelMap model) {
+    public String postEdit(@ModelAttribute(value = "newsItem") NewsDTO news, @RequestParam(value = "id") Integer id, ModelMap model) {
         news.setId(id);
         service.update(news);
         model.addAttribute("newsItem", news);
@@ -65,13 +66,13 @@ public class NewsController {
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String getAdd(ModelMap model) {
-        model.put("newsItem", new DTO());
+        model.put("newsItem", new NewsDTO());
         return PAGE_NEWS_ADD;
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String postAdd(@ModelAttribute("newsItem") DTO news, ModelMap model) {
-        DTO savedNews = service.save(news);
+    public String postAdd(@ModelAttribute("newsItem") NewsDTO news, ModelMap model) {
+        NewsDTO savedNews = service.save(news);
         model.put("newsItem", savedNews);
         model.addAttribute("message", "body.message.add");
         return PAGE_SHOW_NEWS;
@@ -79,7 +80,7 @@ public class NewsController {
 
 
     @RequestMapping(value = "delete", method = RequestMethod.POST)
-    public String delete(@ModelAttribute("ids") DTO dto, ModelMap model) {
+    public String delete(@ModelAttribute("ids") ArrayDTO dto, ModelMap model) {
         service.remove(dto.getIds());
         model.addAttribute("newsList", service.getAll());
         model.addAttribute("ids", dto);

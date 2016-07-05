@@ -1,7 +1,7 @@
 package com.epam.msfrolov.service;
 
 import com.epam.msfrolov.adapter.DTOAdapter;
-import com.epam.msfrolov.dto.DTO;
+import com.epam.msfrolov.dto.NewsDTO;
 import com.epam.msfrolov.model.News;
 import com.epam.msfrolov.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,24 +31,24 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public List<DTO> getAll() {
+    public List<NewsDTO> getAll() {
         return adapter.newsToDtoList(newsRepository.findAll());
     }
 
     @Override
-    public DTO findById(int id) {
+    public NewsDTO findById(int id) {
         return adapter.newsToDto(newsRepository.findOne(id));
     }
 
     @Override
-    public DTO save(DTO dto) {
+    public NewsDTO save(NewsDTO dto) {
         News news = adapter.dtoToNews(dto);
         News savedNews = newsRepository.saveAndFlush(news);
         return adapter.newsToDto(savedNews);
     }
 
     @Override
-    public DTO update(DTO dto) {
+    public NewsDTO update(NewsDTO dto) {
         News news = adapter.dtoToNews(dto);
         News savedNews = newsRepository.saveAndFlush(news);
         return adapter.newsToDto(savedNews);
@@ -66,7 +66,7 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public void remove(DTO dto) {
+    public void remove(NewsDTO dto) {
         newsRepository.delete(adapter.dtoToNews(dto));
     }
 
