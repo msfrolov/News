@@ -14,8 +14,8 @@ public class NewsDTO implements Serializable {
 
     private Integer id;
 
-    @NotBlank
     @DateTimeFormat(pattern = "MM/dd/yyyy")
+    @NotBlank
     private Date date;
 
     @NotBlank
