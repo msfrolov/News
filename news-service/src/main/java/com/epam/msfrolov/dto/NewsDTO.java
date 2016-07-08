@@ -1,7 +1,6 @@
 package com.epam.msfrolov.dto;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -15,7 +14,6 @@ public class NewsDTO implements Serializable {
     private Integer id;
 
     @NotBlank
-    @DateTimeFormat(pattern = "MM/dd/yyyy")
     private Date date;
 
     @NotBlank
