@@ -1,0 +1,57 @@
+<%--<?xml version="1.0" encoding="UTF-8" ?>--%>
+<%--<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>--%>
+<%@ page language="java" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f" %>
+<style>
+    .c001add {
+        border: 1px solid #000000;
+        border-radius: 1px;
+        margin: 1px 0;
+        padding: 1%;
+    }
+
+    .c002add {
+        font-size: 17px;
+    }
+
+    .c003 {
+        font-size: 15px;
+    }
+
+    .c004 {
+        font-size: 15px;
+        width: 800px;
+    }
+</style>
+<h2><spring:message code="body.title.edit"/></h2>
+<form:form action="edit" modelAttribute="newsDTO" method="post">
+    <div class="c001" style="text-align: left;">
+        <div class="c002"><form:label path="title"><spring:message code="body.field.title"/>:</form:label></div>
+        <div class="c003"><form:input path="title"/></div>
+        <form:errors path="title"/>
+    </div>
+    <div class="c001" style="text-align: left;">
+        <div class="c002"><form:label path="date"><spring:message code="body.field.date"/>:</form:label></div>
+        <spring:message code="date.format" var="datePattern" scope="page"/>
+        <f:formatDate value="${newsDTO.date}" pattern="${datePattern}" var="dateFormatter"/>
+        <div class="c003"><form:input path="date" value="${dateFormatter}"/></div>
+        <form:errors path="date"/>
+    </div>
+    <div class="c001" style="text-align: left;">
+        <div class="c002"><form:label path="brief"><spring:message code="body.field.brief"/>:</form:label></div>
+        <div class="c004"><form:input path="brief"/></div>
+        <form:errors path="brief"/>
+    </div>
+    <div class="c001" style="text-align: left;">
+        <div class="c002"><form:label path="content"><spring:message code="body.field.content"/>:</form:label></div>
+        <div class="c004"><form:input path="content"/></div>
+        <form:errors path="content"/>
+    </div>
+    <input type="hidden" value="${newsDTO.id}" name="id"/>
+    <input id="button-submit" type="submit" value="<spring:message code='body.button.save'/>">
+    <input type="button" value="<spring:message code='body.button.cancel'/>"
+           onclick="javascript:document.location.href='<c:out value="list"/>'"/>
+</form:form>

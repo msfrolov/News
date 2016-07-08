@@ -4,7 +4,7 @@
     <h1><spring:message code="header.title"/></h1>
     <div align="right">
         <spring:message code="header.language"/>
-        <a href="welcome?news-local=en">English</a>
-        <a href="welcome?news-local=ru">Русский</a>
+        <a href="?lang=en">English</a>
+        <a href="?lang=ru">Русский</a>
     </div>
 </div>

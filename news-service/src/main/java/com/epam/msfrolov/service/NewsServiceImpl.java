@@ -1,46 +1,68 @@
 package com.epam.msfrolov.service;
 
+import com.epam.msfrolov.adapter.DTOAdapter;
+import com.epam.msfrolov.dto.NewsDTO;
 import com.epam.msfrolov.model.News;
 import com.epam.msfrolov.repository.NewsRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
+
 
 @Repository("newsService")
 @Transactional
 @Lazy
 public class NewsServiceImpl implements NewsService {
 
+    private static final Logger LOG = LoggerFactory.getLogger(NewsServiceImpl.class);
+
     @Autowired
     @Qualifier("newsRepository")
     private NewsRepository newsRepository;
+
+    @Autowired
+    @Qualifier("adapter")
+    private DTOAdapter adapter;
+
+    @Autowired
+    private MessageSource ms;
 
     public NewsServiceImpl() {
     }
 
     @Override
-    public List<News> getAll() {
-        return newsRepository.findAll();
+    public List<NewsDTO> getAll() {
+        return adapter.newsToDtoList(newsRepository.findAll());
     }
 
     @Override
-    public News findById(int id) {
-        return newsRepository.findOne(id);
+    public NewsDTO findById(int id) {
+        LOG.debug("!!! {}", ms.getMessage("error.title.empty", null, Locale.US));
+        LOG.debug("!!! {}", ms.getMessage("error.title.size", null, new Locale("ru")));
+        return adapter.newsToDto(newsRepository.findOne(id));
     }
 
     @Override
-    public News save(News news) {
-        return newsRepository.saveAndFlush(news);
+    public NewsDTO save(NewsDTO dto) {
+        News news = adapter.dtoToNews(dto);
+        News savedNews = newsRepository.saveAndFlush(news);
+        return adapter.newsToDto(savedNews);
     }
 
     @Override
-    public News update(News news) {
-        return newsRepository.saveAndFlush(news);
+    public NewsDTO update(NewsDTO dto) {
+        News news = adapter.dtoToNews(dto);
+        News savedNews = newsRepository.saveAndFlush(news);
+        return adapter.newsToDto(savedNews);
     }
 
     @Override
@@ -55,8 +77,8 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public void remove(News news) {
-        newsRepository.delete(news);
+    public void remove(NewsDTO dto) {
+        newsRepository.delete(adapter.dtoToNews(dto));
     }
 
     public NewsRepository getNewsRepository() {
