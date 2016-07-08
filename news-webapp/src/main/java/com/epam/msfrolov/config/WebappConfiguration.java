@@ -1,18 +1,11 @@
 package com.epam.msfrolov.config;
 
-import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
-import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import java.util.Locale;
@@ -21,26 +14,10 @@ import java.util.Locale;
  * Web module Spring JavaConfig
  */
 @Configuration
-@Import(ServiceConfiguration.class)
 @ComponentScan(basePackages = {"com.epam.msfrolov"})
-public class WebappConfiguration extends WebMvcConfigurerAdapter {
+@Import(ServiceConfiguration.class)
+public class WebappConfiguration {
 
-    /**
-     * Setup "welcome page"
-     */
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
-    }
-
-    /**
-     * set default resources package
-     */
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-//        registry.addResourceHandler("/css/**").addResourceLocations("/css/");
-    }
 
     /**
      * Setting the path to the jsp page
@@ -55,16 +32,6 @@ public class WebappConfiguration extends WebMvcConfigurerAdapter {
         return resolver;
     }
 
-    /**
-     * Setting the default encoding and path to bundle properties
-     */
-    @Bean
-    public MessageSource messageSource() {
-        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename("/i18n/messages");
-        messageSource.setDefaultEncoding("UTF-8");
-        return messageSource;
-    }
 
     /**
      * This is method which uses cookie that is sent back on the browser
@@ -79,13 +46,5 @@ public class WebappConfiguration extends WebMvcConfigurerAdapter {
         return resolver;
     }
 
-    /**
-     * Class which the responsible of changing the current locale if requested.
-     */
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
-        interceptor.setParamName("news-local");
-        registry.addInterceptor(interceptor);
-    }
+
 }

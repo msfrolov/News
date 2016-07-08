@@ -29,20 +29,24 @@
     <div class="c001" style="text-align: left;">
         <div class="c002"><form:label path="title"><spring:message code="body.field.title"/>:</form:label></div>
         <div class="c003"><form:input path="title"/></div>
+        <form:errors path="title"/>
     </div>
     <div class="c001" style="text-align: left;">
         <div class="c002"><form:label path="date"><spring:message code="body.field.date"/>:</form:label></div>
         <spring:message code="date.format" var="datePattern" scope="page"/>
         <f:formatDate value="${newsItem.date}" pattern="${datePattern}" var="dateFormatter"/>
         <div class="c003"><form:input path="date" value="${dateFormatter}"/></div>
+        <form:errors path="date"/>
     </div>
     <div class="c001" style="text-align: left;">
         <div class="c002"><form:label path="brief"><spring:message code="body.field.brief"/>:</form:label></div>
         <div class="c004"><form:input path="brief"/></div>
+        <form:errors path="brief"/>
     </div>
     <div class="c001" style="text-align: left;">
         <div class="c002"><form:label path="content"><spring:message code="body.field.content"/>:</form:label></div>
         <div class="c004"><form:input path="content"/></div>
+        <form:errors path="content"/>
     </div>
     <c:if test="${not empty message}">
         <div>

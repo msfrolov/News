@@ -1,5 +1,9 @@
 package com.epam.msfrolov.dto;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -8,14 +12,22 @@ import java.util.Date;
  */
 public class NewsDTO implements Serializable {
 
+
     private Integer id;
 
     private Date date;
 
+
+    @NotBlank(message = "error.title.empty")
+    @Length(min = 1, max = 100, message = "error.title.size")
     private String title;
 
+    @NotBlank(message = "error.title.empty")
+    @Size(min = 1, max = 500, message = "error.title.size")
     private String brief;
 
+    @NotBlank(message = "error.title.empty")
+    @Size(min = 1, max = 2048, message = "error.title.size")
     private String content;
 
     public Integer getId() {

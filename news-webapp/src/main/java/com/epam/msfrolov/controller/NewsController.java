@@ -8,10 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
 
 /**
  * Spring MVC Front Controller
@@ -38,7 +41,7 @@ public class NewsController {
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public String list(ModelMap model) {
         model.addAttribute("newsList", service.getAll());
-        model.addAttribute("ids", new NewsDTO());
+        model.addAttribute("ids", new ArrayDTO());
         return PAGE_NEWS_LIST;
     }
 
@@ -55,7 +58,10 @@ public class NewsController {
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public String postEdit(@ModelAttribute(value = "newsItem") NewsDTO news, @RequestParam(value = "id") Integer id, ModelMap model) {
+    public String postEdit(@ModelAttribute(value = "newsItem") @Valid NewsDTO news, final BindingResult result, @RequestParam(value = "id") Integer id, ModelMap model) {
+        if (result.hasErrors()) {
+            return PAGE_NEWS_EDIT;
+        }
         news.setId(id);
         service.update(news);
         model.addAttribute("newsItem", news);
@@ -71,37 +77,21 @@ public class NewsController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String postAdd(@ModelAttribute("newsItem") NewsDTO news, ModelMap model) {
+    public String postAdd(@ModelAttribute("newsItem") @Valid NewsDTO news, final BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return PAGE_NEWS_ADD;
+        }
         NewsDTO savedNews = service.save(news);
         model.put("newsItem", savedNews);
         model.addAttribute("message", "body.message.add");
         return PAGE_SHOW_NEWS;
     }
 
-
     @RequestMapping(value = "delete", method = RequestMethod.POST)
     public String delete(@ModelAttribute("ids") ArrayDTO dto, ModelMap model) {
         service.remove(dto.getIds());
         model.addAttribute("newsList", service.getAll());
         model.addAttribute("ids", dto);
-        //efgwergerg
-        //efgwergerg
-        //efgwergerg
-        //efgwergerg
-        //efgwergerg
-        //efgwergerg
-        //efgwergerg
-        //efgwergerg
-        //efgwergerg
-        //efgwergerg
-        //efgwergerg
-        //efgwergerg
-        //efgwergerg
-        //efgwergerg
-        //efgwergerg
-        //efgwergerg
-        //efgwergerg
-        //efgwergerg
         return PAGE_NEWS_LIST;
     }
 }
