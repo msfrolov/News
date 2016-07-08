@@ -6,7 +6,11 @@
 
     <groupId>com.epam.msfrolov</groupId>
     <artifactId>News</artifactId>
+<<<<<<< HEAD
     <version>5.0-SNAPSHOT</version>
+=======
+    <version>4.0</version>
+>>>>>>> origin/develop
     <packaging>pom</packaging>
 
     <modules>
