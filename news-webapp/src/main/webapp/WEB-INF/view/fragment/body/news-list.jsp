@@ -32,26 +32,26 @@
 <%--<f:setLocale value="${sessionScope.}"/>--%>
 <h2><spring:message code="body.title.list"/></h2>
 <form:form action="delete" modelAttribute="ids">
-    <c:forEach items="${newsList}" var="newsItem">
+    <c:forEach items="${newsList}" var="newsDTO">
         <div class="c000newslist">
             <div class="c001newslist" style="text-align: left;">
                 <div class="c002newslist"><spring:message code="body.field.title"/>:</div>
-                <div class="c003newslist">${newsItem.title}</div>
+                <div class="c003newslist">${newsDTO.title}</div>
             </div>
             <div class="c001newslist" style="text-align: left;">
                 <div class="c002newslist"><spring:message code="body.field.date"/>:</div>
                 <div class="c003newslist">
                     <spring:message code="date.format" var="datePattern" scope="page"/>
-                    <f:formatDate value="${newsItem.date}" pattern="${datePattern}"/>
+                    <f:formatDate value="${newsDTO.date}" pattern="${datePattern}"/>
                 </div>
             </div>
             <div class="c001newslist" style="text-align: left;">
                 <div class="c002newslist"><spring:message code="body.field.brief"/>:</div>
-                <div class="c003newslist">${newsItem.brief}</div>
+                <div class="c003newslist">${newsDTO.brief}</div>
             </div>
-            <a href="view?id=${newsItem.id}"><spring:message code="body.button.view"/></a>
-            <a href="edit?id=${newsItem.id}"><spring:message code="body.button.edit"/></a>
-            <form:checkbox value="${newsItem.id}" path="ids"/><spring:message code="body.checkbox.select"/>
+            <a href="view?id=${newsDTO.id}"><spring:message code="body.button.view"/></a>
+            <a href="edit?id=${newsDTO.id}"><spring:message code="body.button.edit"/></a>
+            <form:checkbox value="${newsDTO.id}" path="ids"/><spring:message code="body.checkbox.select"/>
         </div>
     </c:forEach>
     <input type="submit" value="<spring:message code='body.button.delete'/>"/>

@@ -47,24 +47,24 @@ public class NewsController {
 
     @RequestMapping(value = "view", method = RequestMethod.GET)
     public String view(@RequestParam(value = "id") Integer id, ModelMap model) {
-        model.addAttribute("newsItem", service.findById(id));
+        model.addAttribute("newsDTO", service.findById(id));
         return PAGE_SHOW_NEWS;
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.GET)
     public String getEdit(@RequestParam(value = "id") Integer id, ModelMap model) {
-        model.addAttribute("newsItem", service.findById(id));
+        model.addAttribute("newsDTO", service.findById(id));
         return PAGE_NEWS_EDIT;
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public String postEdit(@ModelAttribute(value = "newsItem") @Valid NewsDTO news, final BindingResult result, @RequestParam(value = "id") Integer id, ModelMap model) {
+    public String postEdit(@ModelAttribute(value = "newsDTO") @Valid NewsDTO newsDTO, final BindingResult result, @RequestParam(value = "id") Integer id, ModelMap model) {
         if (result.hasErrors()) {
             return PAGE_NEWS_EDIT;
         }
-        news.setId(id);
-        service.update(news);
-        model.addAttribute("newsItem", news);
+        newsDTO.setId(id);
+        service.update(newsDTO);
+        model.addAttribute("newsDTO", newsDTO);
         model.addAttribute("message", "body.message.edit");
         return PAGE_SHOW_NEWS;
     }
@@ -72,17 +72,17 @@ public class NewsController {
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String getAdd(ModelMap model) {
-        model.put("newsItem", new NewsDTO());
+        model.put("newsDTO", new NewsDTO());
         return PAGE_NEWS_ADD;
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String postAdd(@ModelAttribute("newsItem") @Valid NewsDTO news, final BindingResult result, ModelMap model) {
+    public String postAdd(@ModelAttribute("newsDTO") @Valid NewsDTO newsDTO, final BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return PAGE_NEWS_ADD;
         }
-        NewsDTO savedNews = service.save(news);
-        model.put("newsItem", savedNews);
+        NewsDTO savedNews = service.save(newsDTO);
+        model.put("newsDTO", savedNews);
         model.addAttribute("message", "body.message.add");
         return PAGE_SHOW_NEWS;
     }

@@ -1,8 +1,9 @@
 package com.epam.msfrolov.config;
 
-import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.*;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -21,17 +22,6 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 public class ServiceConfiguration extends WebMvcConfigurerAdapter {
 
     /**
-     * Setting the default encoding and path to bundle properties
-     */
-    @Bean
-    public MessageSource messageSource() {
-        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasenames("/i18n/messages", "/i18n/ValidationMessages");
-        messageSource.setDefaultEncoding("UTF-8");
-        return messageSource;
-    }
-
-    /**
      * Setup "welcome page"
      */
     @Override
@@ -44,7 +34,7 @@ public class ServiceConfiguration extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/**");
 //        registry.addResourceHandler("/css/**").addResourceLocations("/css/");
     }
 

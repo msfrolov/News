@@ -27,7 +27,7 @@
     }
 </style>
 <h2><spring:message code="body.title.edit"/></h2>
-<form:form action="edit" modelAttribute="newsItem" method="post">
+<form:form action="edit" modelAttribute="newsDTO" method="post">
     <div class="c001" style="text-align: left;">
         <div class="c002"><form:label path="title"><spring:message code="body.field.title"/>:</form:label></div>
         <div class="c003"><form:input path="title"/></div>
@@ -36,7 +36,7 @@
     <div class="c001" style="text-align: left;">
         <div class="c002"><form:label path="date"><spring:message code="body.field.date"/>:</form:label></div>
         <spring:message code="date.format" var="datePattern" scope="page"/>
-        <f:formatDate value="${newsItem.date}" pattern="${datePattern}" var="dateFormatter"/>
+        <f:formatDate value="${newsDTO.date}" pattern="${datePattern}" var="dateFormatter"/>
         <div class="c003"><form:input path="date" value="${dateFormatter}"/></div>
         <form:errors path="date"/>
     </div>
@@ -50,7 +50,7 @@
         <div class="c004"><form:input path="content"/></div>
         <form:errors path="content"/>
     </div>
-    <input type="hidden" value="${newsItem.id}" name="id"/>
+    <input type="hidden" value="${newsDTO.id}" name="id"/>
     <input id="button-submit" type="submit" value="<spring:message code='body.button.save'/>">
     <input type="button" value="<spring:message code='body.button.cancel'/>"
            onclick="javascript:document.location.href='<c:out value="list"/>'"/>

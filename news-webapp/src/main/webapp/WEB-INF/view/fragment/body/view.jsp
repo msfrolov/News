@@ -30,22 +30,22 @@
     <h2><spring:message code="body.title.view"/></h2>
     <div class="c001view" style="text-align: left;">
         <div class="c002view"><spring:message code="body.field.title"/>:</div>
-        <div class="c003view">${newsItem.title}</div>
+        <div class="c003view">${newsDTO.title}</div>
     </div>
     <div class="c001view" style="text-align: left;">
         <div class="c002view"><spring:message code="body.field.date"/>:</div>
         <spring:message code="date.format" var="datePattern" scope="page"/>
-        <f:formatDate value="${newsItem.date}" pattern="${datePattern}"/>
+        <f:formatDate value="${newsDTO.date}" pattern="${datePattern}"/>
     </div>
     <div class="c001view" style="text-align: left;">
         <div class="c002view"><spring:message code="body.field.brief"/>:</div>
-        <div class="c004view">${newsItem.brief}</div>
+        <div class="c004view">${newsDTO.brief}</div>
     </div>
     <div class="c001view" style="text-align: left;">
         <div class="c002view"><spring:message code="body.field.content"/>:</div>
-        <div class="c004view">${newsItem.content}</div>
+        <div class="c004view">${newsDTO.content}</div>
     </div>
-    <input type="hidden" value="${newsItem.id}" name="id"/>
+    <input type="hidden" value="${newsDTO.id}" name="id"/>
     <c:if test="${not empty message}">
         <div>
             <label style="text-decoration-color: green"><spring:message code="${message}"/></label>

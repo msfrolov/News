@@ -46,8 +46,8 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public NewsDTO findById(int id) {
-        LOG.debug("!!!", ms.getMessage("error.title.empty", null, new Locale("en")));
-        LOG.debug("!!!", ms.getMessage("error.title.size", null, new Locale("ru")));
+        LOG.debug("!!! {}", ms.getMessage("error.title.empty", null, Locale.US));
+        LOG.debug("!!! {}", ms.getMessage("error.title.size", null, new Locale("ru")));
         return adapter.newsToDto(newsRepository.findOne(id));
     }
 

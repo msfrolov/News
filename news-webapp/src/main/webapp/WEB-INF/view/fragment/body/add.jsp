@@ -25,7 +25,7 @@
     }
 </style>
 <h2><spring:message code="body.title.add"/></h2>
-<form:form action="add" modelAttribute="newsItem" method="post">
+<form:form action="add" modelAttribute="newsDTO" method="post">
     <div class="c001" style="text-align: left;">
         <div class="c002"><form:label path="title"><spring:message code="body.field.title"/>:</form:label></div>
         <div class="c003"><form:input path="title"/></div>
@@ -34,7 +34,7 @@
     <div class="c001" style="text-align: left;">
         <div class="c002"><form:label path="date"><spring:message code="body.field.date"/>:</form:label></div>
         <spring:message code="date.format" var="datePattern" scope="page"/>
-        <f:formatDate value="${newsItem.date}" pattern="${datePattern}" var="dateFormatter"/>
+        <f:formatDate value="${newsDTO.date}" pattern="${datePattern}" var="dateFormatter"/>
         <div class="c003"><form:input path="date" value="${dateFormatter}"/></div>
         <form:errors path="date"/>
     </div>
